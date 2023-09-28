@@ -37,17 +37,11 @@ ontimize:
          client-permission-column: XMLCLIENTPERMISSION
       user-information-service:
          user-repository: UserDao
-         user-login-column: USER_
+         user-login-column: NAME
          user-password-column: PASSWORD
          query-id: login
          other-data:
-            - NAME
-            - SURNAME
-            - EMAIL
-            - NIF
-            - USERBLOCKED
-            - LASTPASSWORDUPDATE
-            - FIRSTLOGIN
+            - ID
       user-role-information-service:
          user-role-repository: UserRoleDao
          query-id: userRole
@@ -62,7 +56,7 @@ server:
       mime-types: application/json, application/xml
 spring:
    datasource:
-#      driver-class-name: org.postgresql.Driver
+      driver-class-name: org.postgresql.Driver
       jdbc-url: jdbc:postgresql://45.84.210.174:65432/2023_BFS_2_G2
       username: 2023_BFS_2_G2
       password: b2f34VKzTvt2
