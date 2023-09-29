@@ -20,5 +20,8 @@
   "FOOTER_CREATED_BY": "Created by Imatia Innovation",
   "FOOTER_RIGHTS": "All rights reserved",
   "USERS": "Users",
-  "PROJECTS": "Projects"
+  "PROJECTS": "Projects",
+  "P_ID": "ID",
+  "P_NAME": "Name",
+  "P_DESCRIPTION": "Description"
 }
