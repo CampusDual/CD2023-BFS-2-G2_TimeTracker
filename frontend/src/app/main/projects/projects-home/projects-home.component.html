@@ -1,1 +1,6 @@
-<p>projects-home works!</p>
+<div fxFill fxLayout="column" fxLayoutAlign="start">
+  <o-table attr="projectTable" service="projects" entity="project" keys="P_ID"
+           columns="P_ID;P_NAME;P_DESCRIPTION"
+           visible-columns="P_ID;P_NAME;P_DESCRIPTION" query-rows="20">
+  </o-table>
+</div>
