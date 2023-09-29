@@ -38,6 +38,6 @@ public class ProjectService implements IProjectService {
 
     @Override
     public EntityResult projectDelete(Map<?, ?> keyMap) {
-        return return this.daoHelper.delete(this.projectDao, keyMap);;
+        return this.daoHelper.delete(this.projectDao, keyMap);
     }
 }
