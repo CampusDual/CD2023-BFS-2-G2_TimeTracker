@@ -3,7 +3,7 @@
         xmlns="http://www.ontimize.com/schema/jdbc"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-        catalog="" schema="${mainschema}" table="TPROJECTS"
+        catalog="" schema="${mainschema}" table="PROJECTS"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
         <Column>P_ID</Column>
@@ -24,7 +24,7 @@
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.TUSER
+                        ${mainschema}.PROJECTS
                     #WHERE#
                 ]]>
             </Sentence>
