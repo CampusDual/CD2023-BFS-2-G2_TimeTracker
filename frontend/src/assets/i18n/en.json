@@ -27,5 +27,10 @@
   "RECENT_TASKS_TITLE": "Recent tasks",
   "RECENT_PROJECTS_TITLE": "Recent Projects",
   "START_BUTTON": "Start",
-  "NEW_PROJECT": "New project"
+  "NEW_PROJECT": "New project",
+  "TASKS": "Tasks",
+  "T_NAME":"Name task",
+  "T_DESCRIPTION":"Description task",
+  "NEW_TASK":"New task",
+  "SELECT_PROJECT": "Select Project"
 }

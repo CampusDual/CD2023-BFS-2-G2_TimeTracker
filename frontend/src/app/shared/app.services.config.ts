@@ -3,6 +3,9 @@ export const SERVICE_CONFIG: Object = {
     'path': '/users'
   },
   'projects': {
-      'path': '/projects'
-    }
+    'path': '/projects'
+  },
+  'tasks': {
+    'path': '/tasks'
+  }
 };

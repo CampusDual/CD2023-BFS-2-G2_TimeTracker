@@ -27,5 +27,10 @@
   "RECENT_TASKS_TITLE": "Tareas recientes",
   "RECENT_PROJECTS_TITLE": "Proyectos recentes",
   "START_BUTTON": "Empezar",
-  "NEW_PROJECT": "Nuevo proyecto"
+  "NEW_PROJECT": "Nuevo proyecto",
+  "TASKS": "Tareas",
+  "T_NAME":"Nombre tarea",
+  "T_DESCRIPTION":"Descripcion tarea",
+  "NEW_TASK":"Nueva tarea",
+  "SELECT_PROJECT": "Selecciona Proyecto"
 }
