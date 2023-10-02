@@ -23,5 +23,9 @@
   "PROJECTS": "Projects",
   "P_ID": "ID",
   "P_NAME": "Name",
-  "P_DESCRIPTION": "Description"
+  "P_DESCRIPTION": "Description",
+  "RECENT_TASKS_TITLE": "Recent tasks",
+  "RECENT_PROJECTS_TITLE": "Recent Projects",
+  "START_BUTTON": "Start",
+  "NEW_PROJECT": "New project"
 }

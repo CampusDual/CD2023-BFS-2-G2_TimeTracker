@@ -1,5 +1,10 @@
 <div fxLayout="row" layout-padding fxLayoutAlign="center center">
-  <p>
-    Welcome!
-  </p>
+  <o-list #list attr="recentProjectsList" title="RECENT_PROJECTS_TITLE" service="projects" entity="project" keys="P_ID"
+          columns="P_ID;P_NAME;P_DESCRIPTION">
+    <o-list-item *ngFor="let row of list.dataArray">
+      <o-list-item-card #item title="{{ row.P_NAME }}" subtitle="{{ row.P_DESCRIPTION }}"
+                        action-1-text="START_BUTTON">
+      </o-list-item-card>
+    </o-list-item>
+  </o-list>
 </div>

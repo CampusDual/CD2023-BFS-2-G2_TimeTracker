@@ -21,7 +21,11 @@
   "FOOTER_RIGHTS": "Todos los derechos reservados",
   "USERS": "Usuarios",
   "PROJECTS": "Proyectos",
-  "P_ID": "Proyecto ID",
+  "P_ID": "ID",
   "P_NAME": "Nombre",
-  "P_DESCRIPTION": "Descripción"
+  "P_DESCRIPTION": "Descripción",
+  "RECENT_TASKS_TITLE": "Tareas recientes",
+  "RECENT_PROJECTS_TITLE": "Proyectos recentes",
+  "START_BUTTON": "Empezar",
+  "NEW_PROJECT": "Nuevo proyecto"
 }
