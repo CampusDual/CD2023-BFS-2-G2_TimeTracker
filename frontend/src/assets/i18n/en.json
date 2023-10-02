@@ -32,5 +32,6 @@
   "T_NAME":"Name task",
   "T_DESCRIPTION":"Description task",
   "NEW_TASK":"New task",
-  "SELECT_PROJECT": "Select Project"
+  "SELECT_PROJECT": "Select Project",
+  "T_ID": "ID"
 }

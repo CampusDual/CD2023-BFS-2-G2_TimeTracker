@@ -32,5 +32,6 @@
   "T_NAME":"Nombre tarea",
   "T_DESCRIPTION":"Descripcion tarea",
   "NEW_TASK":"Nueva tarea",
-  "SELECT_PROJECT": "Selecciona Proyecto"
+  "SELECT_PROJECT": "Selecciona Proyecto",
+  "T_ID": "ID"
 }
