@@ -21,7 +21,7 @@
   "FOOTER_RIGHTS": "Todos los derechos reservados",
   "USERS": "Usuarios",
   "PROJECTS": "Proyectos",
-  "P_ID": "ID",
+  "P_ID": "Identificador de proyecto",
   "P_NAME": "Nombre",
   "P_DESCRIPTION": "Descripción",
   "RECENT_TASKS_TITLE": "Tareas recientes",
@@ -29,9 +29,14 @@
   "START_BUTTON": "Empezar",
   "NEW_PROJECT": "Nuevo proyecto",
   "TASKS": "Tareas",
-  "T_NAME":"Nombre tarea",
-  "T_DESCRIPTION":"Descripcion tarea",
+  "T_NAME":"Nombre",
+  "T_DESCRIPTION":"Descripcion",
   "NEW_TASK":"Nueva tarea",
   "SELECT_PROJECT": "Selecciona Proyecto",
-  "T_ID": "ID"
+  "T_ID": "Identificador de tarea",
+  "T_DATE": "Fecha de creacion",
+  "T_TIME": "Tiempo empleado",
+  "TS_ID": "Identificador de estado",
+  "P_TIME": "Tiempo empleado",
+  "P_DATE": "Fecha de creacion"
 }

@@ -21,7 +21,7 @@
   "FOOTER_RIGHTS": "All rights reserved",
   "USERS": "Users",
   "PROJECTS": "Projects",
-  "P_ID": "ID",
+  "P_ID": "Id project",
   "P_NAME": "Name",
   "P_DESCRIPTION": "Description",
   "RECENT_TASKS_TITLE": "Recent tasks",
@@ -29,9 +29,14 @@
   "START_BUTTON": "Start",
   "NEW_PROJECT": "New project",
   "TASKS": "Tasks",
-  "T_NAME":"Name task",
-  "T_DESCRIPTION":"Description task",
+  "T_NAME":"Name",
+  "T_DESCRIPTION":"Description",
   "NEW_TASK":"New task",
   "SELECT_PROJECT": "Select Project",
-  "T_ID": "ID"
+  "T_ID": "Id task",
+  "T_DATE": "Start date",
+  "T_TIME": "Time spent",
+  "TS_ID": "Id state",
+  "P_TIME": "Time spent",
+  "P_DATE": "Start date"
 }
