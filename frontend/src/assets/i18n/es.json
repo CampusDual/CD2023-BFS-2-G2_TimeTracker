@@ -33,5 +33,7 @@
   "T_DESCRIPTION":"Descripcion tarea",
   "NEW_TASK":"Nueva tarea",
   "SELECT_PROJECT": "Selecciona Proyecto",
-  "T_ID": "ID"
+  "T_ID": "ID",
+  "P_DATE": "Fecha de creación",
+  "P_TIME": "Tiempo empleado"
 }
