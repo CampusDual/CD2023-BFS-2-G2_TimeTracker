@@ -1,7 +1,21 @@
 <o-app-layout show-language-selector="yes">
   <nav class="subnav">
-    <button><i class="material-icons">play_arrow</i>Iniciar Jornada</button>
-    <button><i class="material-icons">stop</i> Finalizar Jornada</button>
+    <button *ngIf="mostrarIniciarJornada" (click)="iniciarJornada()" class="iniciar-jornada">
+      <i class="material-icons">play_arrow</i>
+      Iniciar Jornada
+    </button>
+    <button *ngIf="jornadaEstado === 'pausar'" (click)="pausarJornada()" class="pausar-jornada">
+      <i class="material-icons">pause</i>
+      Pausar Jornada
+    </button>
+    <button *ngIf="jornadaEstado === 'reanudar'" (click)="reanudarJornada()" class="reanudar-jornada">
+      <i class="material-icons">play_circle_outline</i>
+      Reanudar Jornada
+    </button>
+    <button *ngIf="jornadaEstado !== 'finalizar'" (click)="finalizarJornada()" class="finalizar-jornada">
+      <i class="material-icons">stop</i>
+      Finalizar Jornada
+    </button>
   </nav>
   <router-outlet></router-outlet>
 </o-app-layout>
