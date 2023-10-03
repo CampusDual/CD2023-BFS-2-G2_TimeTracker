@@ -1,1 +1,30 @@
-/* You can add main module styles to this file */
+.subnav {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+
+    button {
+        padding: 8px 16px;
+        border-radius: 3px;
+        border: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        transition: 0.2s ease;
+
+        &:hover {
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+
+        &:first-child {
+            background-color: #3366CC;
+        }
+
+        &:last-child {
+            background-color: #E74C3C;
+        }
+    }
+}
