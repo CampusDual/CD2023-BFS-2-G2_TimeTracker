@@ -38,5 +38,6 @@
   "T_TIME": "Time spent",
   "TS_ID": "Id state",
   "P_TIME": "Time spent",
-  "P_DATE": "Start date"
+  "P_DATE": "Start date",
+  "TRACKING": "Tracking"
 }

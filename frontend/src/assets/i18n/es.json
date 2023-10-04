@@ -38,5 +38,6 @@
   "T_TIME": "Tiempo empleado",
   "TS_ID": "Identificador de estado",
   "P_TIME": "Tiempo empleado",
-  "P_DATE": "Fecha de creacion"
+  "P_DATE": "Fecha de creacion",
+  "TRACKING": "Seguimiento"
 }

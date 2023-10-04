@@ -1,0 +1,30 @@
+
+      <button *ngIf="mostrarIniciarJornada" (click)="iniciarJornada()" class="iniciar-jornada">
+        <i class="material-icons">play_arrow</i>
+        Iniciar Jornada
+      </button>
+      <button *ngIf="jornadaEstado === 'pausar'" (click)="pausarJornada()" class="pausar-jornada">
+        <i class="material-icons">pause</i>
+        Pausar Jornada
+      </button>
+      <button *ngIf="jornadaEstado === 'reanudar'" (click)="reanudarJornada()" class="reanudar-jornada">
+        <i class="material-icons">play_circle_outline</i>
+        Reanudar Jornada
+      </button>
+      <button *ngIf="jornadaEstado !== 'finalizar'" (click)="finalizarJornada()" class="finalizar-jornada">
+        <i class="material-icons">stop</i>
+        Finalizar Jornada
+      </button>
+ 
+      <div fxLayout="row" layout-padding fxLayoutAlign="center center">
+        <o-list #list attr="recentProjectsList" title="RECENT_PROJECTS_TITLE" service="projects" entity="project" keys="P_ID"
+                columns="P_ID;P_NAME;P_DESCRIPTION">
+          <o-list-item *ngFor="let row of list.dataArray">
+            <o-list-item-card #item title="{{ row.P_NAME }}" subtitle="{{ row.P_DESCRIPTION }}" image="./assets/images/project-icon-6.png" 
+                              action-1-text="START">
+            </o-list-item-card>
+          </o-list-item>
+        </o-list>
+      </div>
+      
+  
