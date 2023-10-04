@@ -3,29 +3,26 @@
         xmlns="http://www.ontimize.com/schema/jdbc"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-        catalog="" schema="${mainschema}" table="TASKS"
+        catalog="" schema="${mainschema}" table="TASK_STATE"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
-        <Column>T_ID</Column>
+        <Column>TS_ID</Column>
     </DeleteKeys>
     <UpdateKeys>
-        <Column>T_ID</Column>
+        <Column>TS_ID</Column>
     </UpdateKeys>
     <Queries>
         <Query id="default">
             <ValidColumns>
-                <Column>T_ID</Column>
-                <Column>T_NAME</Column>
-                <Column>T_DESCRIPTION</Column>
-                <Column>P_ID</Column>
                 <Column>TS_ID</Column>
+                <Column>TS_NAME</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.TASKS
+                        ${mainschema}.TASK_STATE
                     #WHERE#
                 ]]>
             </Sentence>
