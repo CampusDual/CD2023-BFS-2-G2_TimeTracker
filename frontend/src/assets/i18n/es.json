@@ -22,7 +22,7 @@
   "USERS": "Usuarios",
   "PROJECTS": "Proyectos",
   "P_ID": "Identificador de proyecto",
-  "P_NAME": "Nombre",
+  "P_NAME": "Projecto",
   "P_DESCRIPTION": "Descripción",
   "RECENT_TASKS_TITLE": "Tareas recientes",
   "RECENT_PROJECTS_TITLE": "Proyectos recentes",
@@ -36,7 +36,7 @@
   "T_ID": "Identificador de tarea",
   "T_DATE": "Fecha de creacion",
   "T_TIME": "Tiempo empleado",
-  "TS_ID": "Identificador de estado",
+  "TS_NAME": "Estado",
   "P_TIME": "Tiempo empleado",
   "P_DATE": "Fecha de creacion",
   "TRACKING": "Seguimiento"

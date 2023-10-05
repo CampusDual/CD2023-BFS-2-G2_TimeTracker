@@ -22,7 +22,7 @@
   "USERS": "Users",
   "PROJECTS": "Projects",
   "P_ID": "Id project",
-  "P_NAME": "Name",
+  "P_NAME": "Name project",
   "P_DESCRIPTION": "Description",
   "RECENT_TASKS_TITLE": "Recent tasks",
   "RECENT_PROJECTS_TITLE": "Recent Projects",
@@ -36,7 +36,7 @@
   "T_ID": "Id task",
   "T_DATE": "Start date",
   "T_TIME": "Time spent",
-  "TS_ID": "Id state",
+  "TS_NAME": "State",
   "P_TIME": "Time spent",
   "P_DATE": "Start date",
   "TRACKING": "Tracking"
