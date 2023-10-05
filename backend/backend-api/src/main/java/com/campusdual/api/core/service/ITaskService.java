@@ -11,6 +11,5 @@ public interface ITaskService {
     public EntityResult taskInsert(Map<?, ?> attrMap);
     public EntityResult taskUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
     public EntityResult taskDelete(Map<?, ?> keyMap);
-    public EntityResult taskTimerQuery(Map<?, ?> keyMap, List<?> attrList);
 
 }

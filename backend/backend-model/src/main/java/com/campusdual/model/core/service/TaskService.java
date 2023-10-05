@@ -40,9 +40,4 @@ public class TaskService implements ITaskService {
     public EntityResult taskDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.taskDao, keyMap);
     }
-
-    @Override
-    public EntityResult taskTimerQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(this.taskDao, keyMap, attrList, "taskTimer");
-    }
 }
