@@ -1,14 +1,16 @@
 <o-form-layout-manager mode="dialog" title="NEW_TASK" label-columns="T_NAME;T_DESCRIPTION;P_ID;TS_ID" separator=""
                        attr="o-form-layout-branches-home">
-  <o-form-layout-dialog-options width="600px" height="400px" disable-close="false"></o-form-layout-dialog-options>
+  <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
   <div fxFill fxLayout="column" fxLayoutAlign="start">
     <o-table attr="tasksTable" service="tasks" entity="task" keys="T_ID"
              columns="T_NAME;T_DESCRIPTION;P_ID;TS_ID"
-             visible-columns="T_NAME;T_DESCRIPTION;P_ID;TS_ID" query-rows="20">
-      <o-table-column attr="TS_ID" service="taskStates" entity="taskState" keys="TS_ID"
-                      columns="TS_NAME"
-                      visible-columns="TS_NAME">
+             visible-columns="T_NAME;T_DESCRIPTION;P_ID" query-rows="20">
+      <o-table-column attr="P_ID" title="Project" type="service" service="projects" 
+        entity="project" columns="P_ID;P_NAME" parent-keys="P_ID:T_ID" value-column="P_NAME">
       </o-table-column>
+      <!-- <o-table-column attr="TS_ID" title="State" type="service" service="taskStates" 
+        entity="taskState" columns="TS_ID;TS_NAME" parent-keys="TS_ID:T_ID" value-column="TS_NAME">
+      </o-table-column> -->
     </o-table>
   </div>
 </o-form-layout-manager>

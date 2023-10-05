@@ -1,4 +1,5 @@
 
+    <div class="timer-control-btns">
       <button *ngIf="mostrarIniciarJornada" (click)="iniciarJornada()" class="iniciar-jornada">
         <i class="material-icons">play_arrow</i>
         Iniciar Jornada
@@ -15,8 +16,9 @@
         <i class="material-icons">stop</i>
         Finalizar Jornada
       </button>
+    </div>
  
-      <div fxLayout="row" layout-padding fxLayoutAlign="center center">
+      <div fxLayout="row" layout-padding fxLayoutAlign="center center" class="tracking-content">
         <o-list #list attr="recentProjectsList" title="RECENT_PROJECTS_TITLE" service="projects" entity="project" keys="P_ID"
                 columns="P_ID;P_NAME;P_DESCRIPTION">
           <o-list-item *ngFor="let row of list.dataArray">
