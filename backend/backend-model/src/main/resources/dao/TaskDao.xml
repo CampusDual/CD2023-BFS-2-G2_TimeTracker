@@ -12,20 +12,20 @@
         <Column>T_ID</Column>
     </UpdateKeys>
     <Queries>
-        <Query id="taskTimer">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="T_ID" prefix="t" />
-            </AmbiguousColumns>
-            <Sentence>
-                <![CDATA[
-                    SELECT
-                        #COLUMNS#
-                    FROM
-                        ${mainschema}.TASKS t
-                        JOIN ${mainschema}.TIMERS tim ON t.T_ID = tim.T_ID
-                    #WHERE#
-                ]]>
-            </Sentence>
-        </Query>
-    </Queries>
-</JdbcEntitySetup>
+        <!--  <Query id="taskTimer">
+             <AmbiguousColumns>
+                 <AmbiguousColumn name="T_ID" prefix="t" />
+             </AmbiguousColumns>
+             <Sentence>
+                 <![CDATA[
+                     SELECT
+                         #COLUMNS#
+                     FROM
+                         ${mainschema}.TASKS t
+                         JOIN ${mainschema}.TIMERS tim ON t.T_ID = tim.T_ID
+                     #WHERE#
+                 ]]>
+             </Sentence>
+         </Query> -->
+     </Queries>
+ </JdbcEntitySetup>
