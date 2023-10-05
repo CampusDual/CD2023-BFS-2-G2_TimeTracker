@@ -1,32 +1,38 @@
 
-    <div class="timer-control-btns">
-      <button *ngIf="mostrarIniciarJornada" (click)="iniciarJornada()" class="iniciar-jornada">
-        <i class="material-icons">play_arrow</i>
-        Iniciar Jornada
-      </button>
-      <button *ngIf="jornadaEstado === 'pausar'" (click)="pausarJornada()" class="pausar-jornada">
-        <i class="material-icons">pause</i>
-        Pausar Jornada
-      </button>
-      <button *ngIf="jornadaEstado === 'reanudar'" (click)="reanudarJornada()" class="reanudar-jornada">
-        <i class="material-icons">play_circle_outline</i>
-        Reanudar Jornada
-      </button>
-      <button *ngIf="jornadaEstado !== 'finalizar'" (click)="finalizarJornada()" class="finalizar-jornada">
-        <i class="material-icons">stop</i>
-        Finalizar Jornada
-      </button>
-    </div>
+<div class="timer-control-btns">
+  <button *ngIf="mostrarIniciarJornada" (click)="iniciarJornada()" class="iniciar-jornada">
+    <i class="material-icons">play_arrow</i>
+    Iniciar Jornada
+  </button>
+  <button *ngIf="jornadaEstado === 'pausar'" (click)="pausarJornada()" class="pausar-jornada">
+    <i class="material-icons">pause</i>
+    Pausar Jornada
+  </button>
+  <button *ngIf="jornadaEstado === 'reanudar'" (click)="reanudarJornada()" class="reanudar-jornada">
+    <i class="material-icons">play_circle_outline</i>
+    Reanudar Jornada
+  </button>
+  <button *ngIf="jornadaEstado !== 'finalizar'" (click)="finalizarJornada()" class="finalizar-jornada">
+    <i class="material-icons">stop</i>
+    Finalizar Jornada
+  </button>
+</div>
  
-      <div fxLayout="row" layout-padding fxLayoutAlign="center center" class="tracking-content">
-        <o-list #list attr="recentProjectsList" title="RECENT_PROJECTS_TITLE" service="projects" entity="project" keys="P_ID"
-                columns="P_ID;P_NAME;P_DESCRIPTION">
-          <o-list-item *ngFor="let row of list.dataArray">
-            <o-list-item-card #item title="{{ row.P_NAME }}" subtitle="{{ row.P_DESCRIPTION }}" image="./assets/images/project-icon-6.png" 
-                              action-1-text="START">
-            </o-list-item-card>
-          </o-list-item>
-        </o-list>
-      </div>
+<o-form-layout-manager mode="dialog" title="NEW_TASK" label-columns="T_NAME;T_DESCRIPTION;P_ID;TS_ID" separator=""
+                       attr="o-form-layout-branches-home" class="tracking-content">
+  <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
+  <div fxFill fxLayout="column" fxLayoutAlign="start">
+    <o-table attr="tasksTable" service="tasks" entity="task" keys="T_ID"
+             columns="T_NAME;T_DESCRIPTION;P_ID;TS_ID"
+             visible-columns="T_NAME;T_DESCRIPTION;P_ID" query-rows="20">
+      <o-table-column attr="P_ID" title="Project" type="service" service="projects" 
+        entity="project" columns="P_ID;P_NAME" parent-keys="P_ID:T_ID" value-column="P_NAME">
+      </o-table-column>
+      <!-- <o-table-column attr="TS_ID" title="State" type="service" service="taskStates" 
+        entity="taskState" columns="TS_ID;TS_NAME" parent-keys="TS_ID:T_ID" value-column="TS_NAME">
+      </o-table-column> -->
+    </o-table>
+  </div>
+</o-form-layout-manager>
       
   
