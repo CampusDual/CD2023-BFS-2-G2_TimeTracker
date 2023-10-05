@@ -12,20 +12,17 @@
         <Column>T_ID</Column>
     </UpdateKeys>
     <Queries>
-        <Query id="default">
-            <ValidColumns>
-                <Column>T_ID</Column>
-                <Column>T_NAME</Column>
-                <Column>T_DESCRIPTION</Column>
-                <Column>P_ID</Column>
-                <Column>TS_ID</Column>
-            </ValidColumns>
+        <Query id="taskTimer">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="T_ID" prefix="t" />
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.TASKS
+                        ${mainschema}.TASKS t
+                        JOIN ${mainschema}.TIMERS tim ON t.T_ID = tim.T_ID
                     #WHERE#
                 ]]>
             </Sentence>
