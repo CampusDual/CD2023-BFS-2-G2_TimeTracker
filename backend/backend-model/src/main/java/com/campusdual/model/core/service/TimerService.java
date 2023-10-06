@@ -39,7 +39,10 @@ public class TimerService implements ITimerService {
 
     @Override
     public EntityResult timerUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
-        return this.daoHelper.update(this.timerDao, attrMap, keyMap);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newMap = new HashMap<String, Object>(attrMap);
+        newMap.put(timerDao.USER_, authentication.getName());
+        return this.daoHelper.update(this.timerDao, attrMap, newMap);
     }
 
     @Override
