@@ -7,5 +7,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'tasks': {
     'path': '/tasks'
+  },
+  'timers': {
+    'path': '/timers'
   }
 };

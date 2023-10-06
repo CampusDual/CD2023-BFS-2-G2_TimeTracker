@@ -38,8 +38,8 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
 
   startTimer() {
     if (this.service !== null) {
-      const values = { T_ID: this.getComboValue() };
-      this.service.insert(values, "timer").subscribe((resp) => {
+      const values = {T_ID: this.getComboValue()};
+      this.service.insert(values, "timer").subscribe(resp => {
         if (resp.code === 0) {
         } else {
         }
@@ -49,7 +49,7 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
   }
 
   getComboValue() {
-    this.taskCombo.getValue();
+    return this.taskCombo.getValue();
   }
 
   iniciarJornada(): void {

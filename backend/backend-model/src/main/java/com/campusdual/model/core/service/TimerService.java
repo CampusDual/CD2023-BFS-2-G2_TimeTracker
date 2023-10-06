@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,8 +32,9 @@ public class TimerService implements ITimerService {
     @Override
     public EntityResult timerInsert(Map<String, Object> attrMap) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        attrMap.put(timerDao.USER_, authentication.getName());//NOMBRE ususario
-        return this.daoHelper.insert(this.timerDao, attrMap);
+        Map<String, Object> newMap = new HashMap<String, Object>(attrMap);
+        newMap.put(timerDao.USER_, authentication.getName());//NOMBRE usuario
+        return this.daoHelper.insert(this.timerDao, newMap);
     }
 
     @Override
