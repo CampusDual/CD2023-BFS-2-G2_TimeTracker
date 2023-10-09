@@ -22,6 +22,8 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
 
   mostrarIniciarJornada: boolean = true;
 
+  jornadaIniciada: boolean = false;
+
   protected service: OntimizeService;
 
   @ViewChild('taskCombo', {static: true})taskCombo : OComboComponent;
@@ -77,20 +79,23 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
 
   iniciarJornada(): void {
     this.jornadaEstado = JornadaEstado.pausar;
-    this.mostrarIniciarJornada = false;
-  }
+    this.jornadaIniciada = true;
+    // this.mostrarIniciarJornada = false;
+  }  
 
-  pausarJornada(): void {
-    this.jornadaEstado = JornadaEstado.reanudar;
-  }
 
-  reanudarJornada(): void {
-    this.jornadaEstado = JornadaEstado.pausar;
-  }
+  // pausarJornada(): void {
+  //   this.jornadaEstado = JornadaEstado.reanudar;
+  // }
+
+  // reanudarJornada(): void {
+  //   this.jornadaEstado = JornadaEstado.pausar;
+  // }
 
   finalizarJornada(): void {
     this.jornadaEstado = JornadaEstado.iniciar;
-    this.mostrarIniciarJornada = true;
+    this.jornadaIniciada = false;
+    // this.mostrarIniciarJornada = true;
   }
   
 }

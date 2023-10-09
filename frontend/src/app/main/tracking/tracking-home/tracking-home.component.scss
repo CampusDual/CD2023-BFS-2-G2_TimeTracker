@@ -22,6 +22,16 @@
 
     .iniciar-jornada {
         background-color: #3366CC;
+
+        &[disabled] {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+
+            &:hover {
+                filter: brightness(1);
+            }
+        }
     }
 
     .pausar-jornada {
