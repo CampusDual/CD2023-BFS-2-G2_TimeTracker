@@ -4,15 +4,15 @@
     <i class="material-icons">play_arrow</i>
     Iniciar Jornada
   </button>
-  <button *ngIf="jornadaEstado === 'pausar'" (click)="pausarJornada()" class="pausar-jornada">
+  <button *ngIf="jornadaEstado === JornadaEstado.pausar" (click)="pausarJornada()" class="pausar-jornada">
     <i class="material-icons">pause</i>
     Pausar Jornada
   </button>
-  <button *ngIf="jornadaEstado === 'reanudar'" (click)="reanudarJornada()" class="reanudar-jornada">
+  <button *ngIf="jornadaEstado === JornadaEstado.reanudar" (click)="reanudarJornada()" class="reanudar-jornada">
     <i class="material-icons">play_circle_outline</i>
     Reanudar Jornada
   </button>
-  <button *ngIf="jornadaEstado !== 'finalizar'" (click)="finalizarJornada()" class="finalizar-jornada">
+  <button *ngIf="jornadaEstado !== JornadaEstado.finalizar" (click)="finalizarJornada()" class="finalizar-jornada">
     <i class="material-icons">stop</i>
     Finalizar Jornada
   </button>

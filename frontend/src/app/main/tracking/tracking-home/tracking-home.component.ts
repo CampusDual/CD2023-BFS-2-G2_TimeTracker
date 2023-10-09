@@ -2,6 +2,13 @@ import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { Injectable, Injector } from "@angular/core";
 import { OComboComponent, OntimizeService } from "ontimize-web-ngx";
 
+enum JornadaEstado {
+  iniciar = "iniciar",
+  pausar = "pausar",
+  reanudar = "reanudar",
+  finalizar = "finalizar"
+}
+
 @Component({
   selector: "app-tracking-home",
   templateUrl: "./tracking-home.component.html",
@@ -9,8 +16,9 @@ import { OComboComponent, OntimizeService } from "ontimize-web-ngx";
 })
 export class TrackingHomeComponent implements OnInit, AfterViewInit {
 
-  // Cambiar valores (sin string)
-  jornadaEstado: "iniciar" | "pausar" | "reanudar" | "finalizar" = "iniciar";
+  JornadaEstado = JornadaEstado; 
+
+  protected jornadaEstado: JornadaEstado = JornadaEstado.iniciar;
 
   mostrarIniciarJornada: boolean = true;
 
@@ -21,6 +29,7 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
   constructor(protected injector: Injector) {
     this.service = this.injector.get(OntimizeService);
   }
+
   ngAfterViewInit(): void {
     console.log(this.taskCombo.getValue());
   }
@@ -47,26 +56,27 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
+  
   getComboValue() {
     return this.taskCombo.getValue();
   }
 
   iniciarJornada(): void {
-    this.jornadaEstado = "pausar";
+    this.jornadaEstado = JornadaEstado.pausar;
     this.mostrarIniciarJornada = false;
   }
 
   pausarJornada(): void {
-    this.jornadaEstado = "reanudar";
+    this.jornadaEstado = JornadaEstado.reanudar;
   }
 
   reanudarJornada(): void {
-    this.jornadaEstado = "pausar";
+    this.jornadaEstado = JornadaEstado.pausar;
   }
 
   finalizarJornada(): void {
-    this.jornadaEstado = "iniciar";
+    this.jornadaEstado = JornadaEstado.iniciar;
     this.mostrarIniciarJornada = true;
   }
+  
 }
