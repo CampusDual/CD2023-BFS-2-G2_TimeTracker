@@ -63,7 +63,7 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
     if (this.service !== null) {
       const values = {};
       const filter = {};
-      this.service.update(filter, values, 'close').subscribe(resp => {
+      this.service.update(filter, values, "close").subscribe(resp => {
         if (resp.code === 0) {
           
         } else {

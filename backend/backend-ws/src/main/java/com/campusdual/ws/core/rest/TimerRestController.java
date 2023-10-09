@@ -10,10 +10,12 @@ import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.rest.ORestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -33,18 +35,21 @@ public class TimerRestController extends ORestController<ITimerService> {
         return this.timerService;
     }
 
-    @RequestMapping(value="close")
-    public EntityResult closeTimer() {
-        Integer TM_ID = (Integer) ((List<Object>)getUnclosedTimer().get(TimerDao.TM_ID)).get(0);
-        Map<String, Object> key = new HashMap<>();
-        Map<String, Object> attr = new HashMap<>();
-        key.put(TimerDao.TM_ID, TM_ID);
-        attr.put(TimerDao.TM_END_TIME, LocalDateTime.now());
+    @RequestMapping(value="close", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void closeTimer() {
+        List<Object> unclosedTimersList = (List<Object>)getUnclosedTimer().get(TimerDao.TM_ID);
 
-        return timerService.timerUpdate(attr, key);
+        for (int i = 0; i < unclosedTimersList.size(); i++) {
+            Integer timerID = (Integer) unclosedTimersList.get(i);
+            Map<String, Object> key = new HashMap<>();
+            Map<String, Object> attr = new HashMap<>();
+            key.put(TimerDao.TM_ID, timerID);
+            attr.put(TimerDao.TM_END_TIME, LocalDateTime.now());
+            timerService.timerUpdate(attr, key);
+        }
     }
 
-    @RequestMapping(value = "getUnclose")
+    @RequestMapping(value = "getUnclose", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     private EntityResult showUnclosed() {
         return getUnclosedTimer();
     }
@@ -69,7 +74,7 @@ public class TimerRestController extends ORestController<ITimerService> {
         BasicField userField = new BasicField(TimerDao.USER_);
         BasicExpression timeExp = new BasicExpression(timeField, BasicOperator.NULL_OP, null);
         BasicExpression userExp = new BasicExpression(userField, BasicOperator.EQUAL_OP, user);
-        return new BasicExpression(timeExp, BasicOperator.EQUAL_OP, userExp);
+        return new BasicExpression(timeExp, BasicOperator.AND_OP, userExp);
     }
 
     // where USER_ = nombreUser && TM_END_TIME is NULL

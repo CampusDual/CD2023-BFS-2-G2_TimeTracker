@@ -11,25 +11,4 @@
     <UpdateKeys>
         <Column>P_ID</Column>
     </UpdateKeys>
-    <Queries>
-<!--        <Query id="default">-->
-<!--            <ValidColumns>-->
-<!--                <Column>P_ID</Column>-->
-<!--                <Column>P_NAME</Column>-->
-<!--                <Column>P_DESCRIPTION</Column>-->
-<!--                <Column>USER_</Column>-->
-<!--                <Column>P_TIME</Column>-->
-<!--                <Column>P_DATE</Column>-->
-<!--            </ValidColumns>-->
-<!--            <Sentence>-->
-<!--                <![CDATA[-->
-<!--                    SELECT-->
-<!--                        #COLUMNS#-->
-<!--                    FROM-->
-<!--                        ${mainschema}.PROJECTS-->
-<!--                    #WHERE#-->
-<!--                ]]>-->
-<!--            </Sentence>-->
-<!--        </Query>-->
-    </Queries>
 </JdbcEntitySetup>

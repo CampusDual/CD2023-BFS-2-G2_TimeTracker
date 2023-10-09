@@ -34,21 +34,6 @@
                                  prefix="P" />
                 <AmbiguousColumn name="TS_ID" prefix="ts" />
             </AmbiguousColumns>
-            <ValidColumns>
-                <Column>T_ID</Column>
-                <Column>T_NAME</Column>
-                <Column>T_DESCRIPTION</Column>
-                <Column>T_DATE</Column>
-                <Column>T_TIME</Column>
-                <Column>P_ID</Column>
-                <Column>P_NAME</Column>
-                <Column>P_DESCRIPTION</Column>
-                <Column>P_DATE</Column>
-                <Column>P_TIME</Column>
-                <Column>TS_ID</Column>
-                <Column>TS_NAME</Column>
-                <Column>USER_</Column>
-            </ValidColumns>
             <Sentence>
                 <![CDATA[
                     SELECT
