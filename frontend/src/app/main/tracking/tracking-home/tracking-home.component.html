@@ -12,7 +12,11 @@
     <i class="material-icons">play_circle_outline</i>
     Reanudar Jornada
   </button>
+<<<<<<< Updated upstream
   <button *ngIf="jornadaEstado !== JornadaEstado.finalizar" (click)="finalizarJornada()" class="finalizar-jornada">
+=======
+  <button *ngIf="jornadaEstado !== 'finalizar'" (click)="finalizarJornada();stopTimer()" class="finalizar-jornada">
+>>>>>>> Stashed changes
     <i class="material-icons">stop</i>
     Finalizar Jornada
   </button>

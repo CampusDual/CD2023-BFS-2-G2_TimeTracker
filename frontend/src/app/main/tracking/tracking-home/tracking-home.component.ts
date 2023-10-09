@@ -40,7 +40,6 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
   }
 
   protected configureService() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
     const conf = this.service.getDefaultServiceConfiguration("timers");
     this.service.configureService(conf);
   }
@@ -50,6 +49,21 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
       const values = {T_ID: this.getComboValue()};
       this.service.insert(values, "timer").subscribe(resp => {
         if (resp.code === 0) {
+
+        } else {
+        }
+        console.log(resp);
+      });
+    }
+  }
+
+  stopTimer(){
+    if (this.service !== null) {
+      const values = {};
+      const filter = {};
+      this.service.update(filter, values, 'close').subscribe(resp => {
+        if (resp.code === 0) {
+          
         } else {
         }
         console.log(resp);
