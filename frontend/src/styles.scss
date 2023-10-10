@@ -10,3 +10,9 @@ mat-toolbar {
 .tracking-content o-table-buttons {
   display: none !important;
 }
+
+.tracking-form {
+  o-form-toolbar {
+    display: none !important;
+  }
+}
