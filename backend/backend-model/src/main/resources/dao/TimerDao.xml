@@ -11,4 +11,22 @@
     <UpdateKeys>
         <Column>TM_ID</Column>
     </UpdateKeys>
+    <Queries>
+        <Query id="recods">
+            <Sentence>
+                <![CDATA[
+                    WITH tabla AS (
+                        SELECT t.*, t2.t_name , (tm_end_time - tm_start_time) AS tm_duration
+                        FROM timers t
+                        INNER JOIN tasks t2 on t.t_id = t2.t_id
+                        WHERE not tm_end_time is null
+                    )
+                    SELECT t_name, tm_duration, tm_start_time, tm_end_time
+                    FROM tabla
+                    #WHERE#
+                    ;
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

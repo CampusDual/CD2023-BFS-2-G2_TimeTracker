@@ -12,27 +12,9 @@
         <Column>T_ID</Column>
     </UpdateKeys>
     <Queries>
-        <Query id="taskTimer">
+        <Query id="projectTask">
             <AmbiguousColumns>
-                <AmbiguousColumn name="T_ID" prefix="t" />
-            </AmbiguousColumns>
-            <Sentence>
-                <![CDATA[
-                    SELECT
-                        #COLUMNS#
-                    FROM
-                        ${mainschema}.TASKS t
-                        JOIN ${mainschema}.TIMERS tim ON t.T_ID = tim.T_ID
-                    #WHERE#
-                ]]>
-            </Sentence>
-        </Query>
-
-        <Query id="full">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="P_ID"
-                                 prefix="P" />
-                <AmbiguousColumn name="TS_ID" prefix="ts" />
+                <AmbiguousColumn name="P_ID" prefix="p" />
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
@@ -41,7 +23,6 @@
                     FROM
                         ${mainschema}.TASKS t
                         JOIN ${mainschema}.PROJECTS p ON t.P_ID = p.P_ID
-                        JOIN ${mainschema}.TASK_STATES ts ON t.TS_ID = ts.TS_ID
                     #WHERE#
                 ]]>
             </Sentence>

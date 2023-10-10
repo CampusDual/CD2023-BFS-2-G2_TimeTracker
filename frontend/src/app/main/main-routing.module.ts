@@ -15,6 +15,7 @@ export const routes: Routes = [
       { path: 'tracking', loadChildren: () => import('./tracking/tracking.module').then(m => m.TrackingModule) },
       { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
       { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule) },
+      { path: 'record', loadChildren: () => import('./record/record.module').then(m => m.RecordModule) },
       
     ]
   }
