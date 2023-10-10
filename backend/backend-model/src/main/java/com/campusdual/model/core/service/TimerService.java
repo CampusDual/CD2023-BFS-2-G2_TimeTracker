@@ -4,14 +4,13 @@ import com.campusdual.api.core.service.ITimerService;
 import com.campusdual.model.core.dao.TimerDao;
 import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.dto.EntityResult;
-import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,8 @@ public class TimerService implements ITimerService {
     public EntityResult timerInsert(Map<String, Object> attrMap) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newMap = new HashMap<>(attrMap);
-        newMap.put(timerDao.USER_, authentication.getName());//NOMBRE usuario
+        newMap.put(TimerDao.USER_, authentication.getName());//NOMBRE usuario
+        newMap.put(TimerDao.TM_START_TIME, LocalDateTime.now());
         return this.daoHelper.insert(this.timerDao, newMap);
     }
 
