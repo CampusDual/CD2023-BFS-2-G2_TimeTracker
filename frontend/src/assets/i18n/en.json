@@ -39,5 +39,7 @@
   "TS_NAME": "State",
   "P_TIME": "Time spent",
   "P_DATE": "Start date",
-  "TRACKING": "Tracking"
+  "TRACKING": "Tracking",
+  "START_TASK": "Start task",
+  "FINISH_TASK": "Finish task"
 }

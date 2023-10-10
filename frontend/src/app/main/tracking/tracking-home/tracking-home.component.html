@@ -2,19 +2,12 @@
 <div class="timer-control-btns">
   <button *ngIf="mostrarIniciarJornada" (click)="startTimer()" class="iniciar-jornada" [disabled]="jornadaIniciada">
     <i class="material-icons">play_arrow</i>
-    Iniciar Jornada
+    {{ "START_TASK" | oTranslate }}
   </button>
-  <!-- <button *ngIf="jornadaEstado === JornadaEstado.pausar" (click)="pausarJornada()" class="pausar-jornada">
-    <i class="material-icons">pause</i>
-    Pausar Jornada
-  </button>
-  <button *ngIf="jornadaEstado === JornadaEstado.reanudar" (click)="reanudarJornada()" class="reanudar-jornada">
-    <i class="material-icons">play_circle_outline</i>
-    Reanudar Jornada
-  </button> -->
-  <button *ngIf="jornadaEstado !== JornadaEstado.finalizar" (click)="stopTimer()" class="finalizar-jornada">
+
+  <button *ngIf="mostrarFinalizarJornada" (click)="stopTimer()" class="finalizar-jornada">
     <i class="material-icons">stop</i>
-    Finalizar Jornada
+    {{ "FINISH_TASK" | oTranslate }}
   </button>
 </div>
 

@@ -22,6 +22,8 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
 
   mostrarIniciarJornada: boolean = true;
 
+  mostrarFinalizarJornada: boolean = false;
+
   jornadaIniciada: boolean = false;
 
   protected service: OntimizeService;
@@ -98,7 +100,8 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
   iniciarJornada(): void {
     this.jornadaEstado = JornadaEstado.pausar;
     this.jornadaIniciada = true;
-    // this.mostrarIniciarJornada = false;
+    //this.mostrarIniciarJornada = false;
+    this.mostrarFinalizarJornada = true;
   }  
 
 
@@ -114,6 +117,7 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
     this.jornadaEstado = JornadaEstado.iniciar;
     this.jornadaIniciada = false;
     // this.mostrarIniciarJornada = true;
+    this.mostrarFinalizarJornada = false;
   }
   
 }
