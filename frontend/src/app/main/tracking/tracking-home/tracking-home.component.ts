@@ -31,14 +31,15 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
   constructor(protected injector: Injector) {
     this.service = this.injector.get(OntimizeService);
   }
-
+  
   ngAfterViewInit(): void {
     console.log(this.taskCombo.getValue());
   }
-
+  
   ngOnInit() {
-    console.log(this.taskCombo);
     this.configureService();
+    this.getLastOpen();
+    console.log(this.taskCombo);
   }
 
   protected configureService() {
@@ -51,13 +52,14 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
       const values = {T_ID: this.getComboValue()};
       this.service.insert(values, "timer").subscribe(resp => {
         if (resp.code === 0) {
-
+          this.iniciarJornada();
         } else {
+          //TODO: Mostrar error
         }
-        console.log(resp);
       });
     }
   }
+
 
   stopTimer(){
     if (this.service !== null) {
@@ -65,10 +67,26 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
       const filter = {};
       this.service.update(filter, values, "close").subscribe(resp => {
         if (resp.code === 0) {
-          
         } else {
+          //TODO: Mostrar error
         }
-        console.log(resp);
+      });
+      this.finalizarJornada();
+    }
+  }
+
+  getLastOpen() {
+    if (this.service !== null) {
+      const filter = {};
+      const columns = ['T_ID'];
+      this.service.query(filter, columns, 'openTimer').subscribe(resp => {
+        if (resp.code === 0) {
+          if (resp.data.length > 0) {
+            this.iniciarJornada();
+          }
+        } else {
+          //TODO: Mostrar error
+        }
       });
     }
   }

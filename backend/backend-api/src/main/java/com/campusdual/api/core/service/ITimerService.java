@@ -11,4 +11,6 @@ public interface ITimerService {
     public EntityResult timerInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
     public EntityResult timerUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
     public EntityResult timerDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+
+    public EntityResult openTimerQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }
