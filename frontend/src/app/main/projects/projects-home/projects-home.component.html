@@ -1,10 +1,10 @@
-<o-form-layout-manager mode="dialog" title="NEW_PROJECT" label-columns="P_NAME;P_DESCRIPTION;P_DATE;P_TIME" separator=""
+<o-form-layout-manager mode="dialog" title="NEW_PROJECT" label-columns="P_NAME;P_DESCRIPTION;P_DATE" separator=""
                        attr="o-form-layout-branches-home">
   <o-form-layout-dialog-options width="600px" height="400px" disable-close="false"></o-form-layout-dialog-options>
   <div fxFill fxLayout="column" fxLayoutAlign="start">
     <o-table attr="projectTable" service="projects" entity="project" keys="P_ID"
-             columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;P_TIME"
-             visible-columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;P_TIME" query-rows="20">
+             columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE"
+             visible-columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE" query-rows="20">
       <o-table-column attr="P_DATE" type="date" format="MM/DD/YYYY"></o-table-column>
     </o-table>
   </div>
