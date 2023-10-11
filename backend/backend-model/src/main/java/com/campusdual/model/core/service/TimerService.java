@@ -63,4 +63,9 @@ public class TimerService implements ITimerService {
         SQLStatementBuilder.BasicExpression userExp = new SQLStatementBuilder.BasicExpression(userField, SQLStatementBuilder.BasicOperator.EQUAL_OP, user);
         return new SQLStatementBuilder.BasicExpression(timeExp, SQLStatementBuilder.BasicOperator.AND_OP, userExp);
     }
+
+    @Override
+    public EntityResult recordQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(this.timerDao, keyMap, attrList,"record");
+    }
 }

@@ -12,7 +12,7 @@
         <Column>TM_ID</Column>
     </UpdateKeys>
     <Queries>
-        <Query id="recods">
+        <Query id="record">
             <Sentence>
                 <![CDATA[
                     WITH tabla AS (

@@ -46,7 +46,7 @@ public class TaskService implements ITaskService {
         return this.daoHelper.query(this.taskDao, keyMap, attrList,"taskTimer");
     }
     @Override
-    public EntityResult fullQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(this.taskDao, keyMap, attrList,"full");
+    public EntityResult projectTaskQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(this.taskDao, keyMap, attrList,"projectTask");
     }
 }

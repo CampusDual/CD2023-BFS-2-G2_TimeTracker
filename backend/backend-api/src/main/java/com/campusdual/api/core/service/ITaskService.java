@@ -14,6 +14,6 @@ public interface ITaskService {
 
     public EntityResult taskTimerQuery(Map<?, ?> keyMap, List<?> attrList);
 
-    public EntityResult fullQuery(Map<?, ?> keyMap, List<?> attrList);
+    public EntityResult projectTaskQuery(Map<?, ?> keyMap, List<?> attrList);
 
 }
