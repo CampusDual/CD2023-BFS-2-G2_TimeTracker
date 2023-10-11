@@ -41,5 +41,6 @@
   "P_DATE": "Start date",
   "TRACKING": "Tracking",
   "START_TASK": "Start task",
-  "FINISH_TASK": "Finish task"
+  "FINISH_TASK": "Finish task",
+  "RECORD": "Records"
 }

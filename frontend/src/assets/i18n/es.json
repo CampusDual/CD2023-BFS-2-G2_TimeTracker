@@ -41,5 +41,6 @@
   "P_DATE": "Fecha de creacion",
   "TRACKING": "Seguimiento",
   "START_TASK": "Iniciar tarea",
-  "FINISH_TASK": "Terminar tarea"
+  "FINISH_TASK": "Terminar tarea",
+  "RECORD": "Historial"
 }
