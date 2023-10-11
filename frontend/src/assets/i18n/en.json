@@ -50,5 +50,6 @@
   "FILTERS_TASK": "Filter",
   "STARTDATE": "Start date",
   "INIT": "Start time",
-  "END": "End time"
+  "END": "End time",
+  "CLEAR" : "Clear"
 }

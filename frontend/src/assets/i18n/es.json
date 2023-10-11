@@ -50,5 +50,6 @@
   "FILTERS_TASK": "Filtrar",
   "STARTDATE": "Fecha de inicio",
   "INIT": "Fecha de inicio",
-  "END": "Fecha de finalización"
+  "END": "Fecha de finalización",
+  "CLEAR" : "Limpiar"
 }
