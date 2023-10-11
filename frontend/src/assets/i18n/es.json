@@ -42,5 +42,13 @@
   "TRACKING": "Seguimiento",
   "START_TASK": "Iniciar tarea",
   "FINISH_TASK": "Terminar tarea",
-  "RECORD": "Historial"
+  "RECORD": "Historial",
+  "TM_START_TIME": "Fecha de inicio",	
+  "TM_END_TIME": "Fecha de finalización",
+  "TM_DURATION": "Tiempo empleado",
+  "SELECT_TASK": "Seleccionar tarea",
+  "FILTERS_TASK": "Filtrar",
+  "STARTDATE": "Fecha de inicio",
+  "INIT": "Fecha de inicio",
+  "END": "Fecha de finalización"
 }

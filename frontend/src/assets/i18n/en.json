@@ -42,5 +42,13 @@
   "TRACKING": "Tracking",
   "START_TASK": "Start task",
   "FINISH_TASK": "Finish task",
-  "RECORD": "Records"
+  "RECORD": "Records",
+  "TM_START_TIME": "Start time",	
+  "TM_END_TIME": "End time",
+  "TM_DURATION": "Time spent",
+  "SELECT_TASK": "Select task",
+  "FILTERS_TASK": "Filter",
+  "STARTDATE": "Start date",
+  "INIT": "Start time",
+  "END": "End time"
 }
