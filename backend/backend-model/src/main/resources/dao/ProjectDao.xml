@@ -11,4 +11,19 @@
     <UpdateKeys>
         <Column>P_ID</Column>
     </UpdateKeys>
+    <Queries>
+        <Query id="projectTotalTime">
+            <Sentence>
+                <![CDATA[
+             with tabla as(
+                select p.*, t.t_name, tm.*, (tm.tm_end_time - tm.tm_start_time) as tm_duration from tasks t
+                inner join timers tm on t.t_id = tm.t_id
+                inner join projects p on p.p_id = t.p_id
+                where not tm.tm_end_time is null)
+                select p_name, p_description, p_date, sum(tm_duration) as project_total_time from tabla
+                group by p_name, p_description, p_date
+                #WHERE#]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

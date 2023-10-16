@@ -40,4 +40,9 @@ public class ProjectService implements IProjectService {
     public EntityResult projectDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.projectDao, keyMap);
     }
+
+    @Override
+    public EntityResult projectTotalTimeQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(this.projectDao, keyMap, attrList, "projectTotalTime");
+    }
 }

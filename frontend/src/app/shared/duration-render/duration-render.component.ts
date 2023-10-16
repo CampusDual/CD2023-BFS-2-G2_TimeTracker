@@ -17,8 +17,7 @@ export class DurationRenderComponent extends OBaseTableCellRenderer {
   getCellData(cellvalue: any, rowvalue?: any): string{
     const hours = this.addZero(cellvalue["hours"]);
     const minutes = this.addZero(cellvalue["minutes"]);
-    const seconds = this.addZero(Math.round(cellvalue["seconds"]));
-    return `${hours}:${minutes}:${seconds}`;
+    return `${hours}:${minutes}`;
   }
 
   addZero(num){

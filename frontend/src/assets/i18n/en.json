@@ -22,14 +22,14 @@
   "USERS": "Users",
   "PROJECTS": "Projects",
   "P_ID": "Id project",
-  "P_NAME": "Name project",
+  "P_NAME": "Project",
   "P_DESCRIPTION": "Description",
   "RECENT_TASKS_TITLE": "Recent tasks",
   "RECENT_PROJECTS_TITLE": "Recent Projects",
   "START_BUTTON": "Start",
   "NEW_PROJECT": "New project",
   "TASKS": "Tasks",
-  "T_NAME":"Name",
+  "T_NAME":"Task",
   "T_DESCRIPTION":"Description",
   "NEW_TASK":"New task",
   "SELECT_PROJECT": "Select Project",
@@ -51,5 +51,6 @@
   "STARTDATE": "Start date",
   "INIT": "Start time",
   "END": "End time",
-  "CLEAR" : "Clear"
+  "CLEAR" : "Clear",
+  "PROJECT_TOTAL_TIME": "Time spent"
 }

@@ -3,8 +3,8 @@
   <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
   <div fxFill fxLayout="column" fxLayoutAlign="start">
     <o-table attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID"
-             columns="T_NAME;T_DESCRIPTION;P_NAME"
-             visible-columns="T_NAME;T_DESCRIPTION;P_NAME" query-rows="20">
+             columns="P_NAME;T_NAME;T_DESCRIPTION"
+             visible-columns="P_NAME;T_NAME;T_DESCRIPTION" query-rows="20">
     </o-table>
   </div>
 </o-form-layout-manager>
