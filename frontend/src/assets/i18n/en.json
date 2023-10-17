@@ -49,8 +49,9 @@
   "SELECT_TASK": "Select task",
   "FILTERS_TASK": "Filter",
   "STARTDATE": "Start date",
-  "INIT": "Start time",
-  "END": "End time",
+  "ENDDATE": "End date",
+  "INIT": "From",
+  "END": "To",
   "CLEAR" : "Clear",
   "PROJECT_TOTAL_TIME": "Time spent"
 }

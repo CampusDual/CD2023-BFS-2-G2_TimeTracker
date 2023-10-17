@@ -49,8 +49,9 @@
   "SELECT_TASK": "Seleccionar tarea",
   "FILTERS_TASK": "Filtrar",
   "STARTDATE": "Fecha de inicio",
-  "INIT": "Fecha de inicio",
-  "END": "Fecha de finalización",
+  "ENDDATE": "Fecha de finalización",
+  "INIT": "Desde",
+  "END": "Hasta",
   "CLEAR" : "Limpiar",
   "PROJECT_TOTAL_TIME": "Tiempo empleado"
 }

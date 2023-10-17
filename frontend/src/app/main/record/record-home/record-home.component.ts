@@ -4,7 +4,7 @@ import { Expression, FilterExpressionUtils } from 'ontimize-web-ngx';
 @Component({
   selector: 'app-record-home',
   templateUrl: './record-home.component.html',
-  styleUrls: ['./record-home.component.css']
+  styleUrls: ['./record-home.component.scss']
 })
 export class RecordHomeComponent implements OnInit {
 
@@ -22,6 +22,12 @@ export class RecordHomeComponent implements OnInit {
           }
           if (fil.attr === 'STARTDATE_E') {
              filters.push(FilterExpressionUtils.buildExpressionLessEqual('TM_START_TIME', fil.value));
+          }
+          if (fil.attr === 'ENDDATE_I') {
+            filters.push(FilterExpressionUtils.buildExpressionMoreEqual('TM_END_TIME', fil.value));
+          }
+          if (fil.attr === 'ENDDATE_E') {
+            filters.push(FilterExpressionUtils.buildExpressionLessEqual('TM_END_TIME', fil.value));
           }
        }
     });
