@@ -15,14 +15,16 @@
         <Query id="projectTotalTime">
             <Sentence>
                 <![CDATA[
-             with tabla as(
-                select p.*, t.t_name, tm.*, (tm.tm_end_time - tm.tm_start_time) as tm_duration from tasks t
-                inner join timers tm on t.t_id = tm.t_id
-                inner join projects p on p.p_id = t.p_id
-                where not tm.tm_end_time is null)
-                select p_id, p_name, p_description, p_date, sum(tm_duration) as project_total_time from tabla
-                group by p_id, p_name, p_description, p_date
-                #WHERE#]]>
+                    with tabla as(
+                    select p.*, t.t_id, t_name from tasks t
+                    inner join projects p on p.p_id = t.p_id
+                    )
+                    select p_id, p_name, p_description, p_date, sum(tm.tm_end_time - tm.tm_start_time) as project_total_time from tabla tb
+                    left join timers tm on tb.t_id = tm.t_id
+                    #WHERE#
+                    group by p_id, p_name, p_description, p_date
+                    order by p_id
+                ]]>
             </Sentence>
         </Query>
     </Queries>
