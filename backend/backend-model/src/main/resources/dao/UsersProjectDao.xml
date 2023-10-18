@@ -3,27 +3,24 @@
         xmlns="http://www.ontimize.com/schema/jdbc"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-        catalog="" schema="${mainschema}" table="PROJECTS"
+        catalog="" schema="${mainschema}" table="USERS_PROJECTS"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
-        <Column>P_ID</Column>
+        <Column>UP_ID</Column>
     </DeleteKeys>
     <UpdateKeys>
-        <Column>P_ID</Column>
+        <Column>UP_ID</Column>
     </UpdateKeys>
     <Queries>
-        <Query id="projectTotalTime">
+        <Query id="usersProjectsNames">
             <Sentence>
                 <![CDATA[
-                    with tabla as(
-                        select p.*, t.t_id, t_name from tasks t
-                        right join projects p on p.p_id = t.p_id
-                    )
                     select
-                        p_id, p_name, p_description, p_date, sum(tm.tm_end_time - tm.tm_start_time) as project_total_time from tabla tb
-                        left join timers tm on tb.t_id = tm.t_id
+                        #COLUMNS#
+                    from
+                        users_projects up
+                        inner join tuser u ON u.user_ = up.user_
                     #WHERE#
-                    group by p_id, p_name, p_description, p_date
                     #ORDER#
                 ]]>
             </Sentence>

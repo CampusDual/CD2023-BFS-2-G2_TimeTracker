@@ -24,7 +24,6 @@
                     SELECT t_name, tm_duration, tm_start_time, tm_end_time
                     FROM tabla
                     #WHERE#
-                    ;
                 ]]>
             </Sentence>
         </Query>

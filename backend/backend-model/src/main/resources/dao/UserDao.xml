@@ -12,7 +12,7 @@
         <Column>USER_</Column>
     </UpdateKeys>
     <Queries>
-        <Query id="default">
+        <Query id="login">
             <ValidColumns>
                 <Column>USER_</Column>
                 <Column>PASSWORD</Column>
@@ -29,28 +29,6 @@
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.TUSER
-                    #WHERE#
-                ]]>
-            </Sentence>
-        </Query>    
-        <Query id="login">
-            <ValidColumns>
-                <Column>USER_</Column>
-                <Column>PASSWORD</Column>
-                <Column>NAME</Column>
-                <Column>SURNAME</Column>
-                <Column>EMAIL</Column>
-                <Column>NIF</Column>
-                <Column>USERBLOCKED</Column>
-                <Column>LASTPASSWORDUPDATE</Column>
-                <Column>FIRSTLOGIN</Column>
-            </ValidColumns>
-            <Sentence>
-                <![CDATA[
-                    SELECT 
-                        #COLUMNS#
-                    FROM                        
                         ${mainschema}.TUSER
                     #WHERE#
                 ]]>

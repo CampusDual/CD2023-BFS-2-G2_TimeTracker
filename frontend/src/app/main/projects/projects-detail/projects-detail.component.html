@@ -1,4 +1,4 @@
-<o-form service="projects" entity="projectTotalTime" keys="P_ID" header-actions="R;U;D" show-header-navigation="no">
+<o-form service="projects" entity="project" keys="P_ID" header-actions="R;U;D" show-header-navigation="no">
     <o-text-input attr="P_ID" sql-type="INTEGER" hidden></o-text-input>
     <o-row>
         <o-column title-label="PROJECT_DETAILS" fxFlex>
@@ -10,8 +10,9 @@
             </o-row>
             <o-row>
                 <o-date-input attr="P_DATE" fxFlex="20"></o-date-input>
-                <o-text-input class="input-padding" attr="PROJECT_TOTAL_TIME" fxFlex="40" required="no"></o-text-input>
+                
             </o-row>
         </o-column>
     </o-row>
+
 </o-form>
