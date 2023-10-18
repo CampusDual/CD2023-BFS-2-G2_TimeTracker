@@ -10,5 +10,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'timers': {
     'path': '/timers'
+  },
+  'usersProjects': {
+    'path': '/usersProjects'
   }
 };

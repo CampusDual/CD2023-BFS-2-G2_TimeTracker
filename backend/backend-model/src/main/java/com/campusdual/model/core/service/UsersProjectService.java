@@ -42,6 +42,6 @@ public class UsersProjectService implements IUsersProjectService {
 
     @Override
     public EntityResult usersProjectsNamesQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(this.usersProjectDao, keyMap, attrList);
+        return this.daoHelper.query(this.usersProjectDao, keyMap, attrList, "usersProjectsNames");
     }
 }

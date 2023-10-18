@@ -13,15 +13,17 @@
     </UpdateKeys>
     <Queries>
         <Query id="usersProjectsNames">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="USER_" prefix="u" />
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
-                    select
+                    SELECT
                         #COLUMNS#
-                    from
-                        users_projects up
-                        inner join tuser u ON u.user_ = up.user_
+                    FROM
+                        ${mainschema}.USERS_PROJECTS up
+                        INNER JOIN ${mainschema}.TUSER u ON u.USER_ = up.USER_
                     #WHERE#
-                    #ORDER#
                 ]]>
             </Sentence>
         </Query>
