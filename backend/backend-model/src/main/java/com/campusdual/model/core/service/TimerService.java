@@ -84,4 +84,14 @@ public class TimerService implements ITimerService {
         newMap.put(TimerDao.USER_, authentication.getName());
         return this.daoHelper.insert(this.timerDao, newMap);
     }
+
+    @Override
+    public EntityResult recordUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        return this.daoHelper.update(this.timerDao, attrMap, keyMap);
+    }
+
+    @Override
+    public EntityResult recordDelete(Map<String, Object> keyMap) {
+        return this.daoHelper.delete(this.timerDao, keyMap);
+    }
 }

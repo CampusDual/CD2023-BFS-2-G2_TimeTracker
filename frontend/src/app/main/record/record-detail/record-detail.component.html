@@ -1,1 +1,18 @@
-<p>record-detail works!</p>
+<o-form service="timers" entity="record" keys="TM_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
+    <o-text-input attr="TM_ID" sql-type="INTEGER" hidden></o-text-input>
+    <o-row>
+        <o-column title-label="TIMER_TASK_DETAILS" fxFlex>
+            <o-row>
+                <o-combo fxFlex="80" attr="T_ID" label="SELECT_TASK" service="tasks" entity="projectTask"
+                    value-column="T_ID" columns="T_ID;T_NAME;P_NAME" visible-columns="T_NAME;P_NAME" separator=" >>> " keys="T_ID" required="yes">
+                </o-combo>
+            </o-row>
+            <o-row>
+                <o-time-input class="input-padding" attr="TM_START_TIME" required="yes"></o-time-input>
+            </o-row>
+            <o-row>
+                <o-time-input class="input-padding" attr="TM_END_TIME" required="yes"></o-time-input>
+            </o-row>
+        </o-column>
+    </o-row>
+</o-form>
