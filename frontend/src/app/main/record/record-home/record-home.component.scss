@@ -1,0 +1,10 @@
+.filter-button {
+    color: #1464a5;
+    background-color: #ffffff;
+
+    &:hover {
+        color: #0b488a;
+        background-color: #b9d1e4;
+        border-color: transparent;
+    }
+}

@@ -53,5 +53,7 @@
   "INIT": "Desde",
   "END": "Hasta",
   "CLEAR" : "Limpiar",
-  "PROJECT_TOTAL_TIME": "Tiempo empleado"
+  "PROJECT_TOTAL_TIME": "Tiempo empleado",
+  "SELECT_USER": "Seleccionar usuario",
+  "NEW_USER": "Añadir usuario"
 }

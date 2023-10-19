@@ -53,5 +53,7 @@
   "INIT": "From",
   "END": "To",
   "CLEAR" : "Clear",
-  "PROJECT_TOTAL_TIME": "Time spent"
+  "PROJECT_TOTAL_TIME": "Time spent",
+  "SELECT_USER": "Select user",
+  "NEW_USER": "Add user"
 }

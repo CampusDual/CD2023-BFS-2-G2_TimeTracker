@@ -6,7 +6,7 @@
                 <o-text-input class="input-padding" attr="P_NAME" fxFlex="40" required="no"></o-text-input>
             </o-row>
             <o-row>
-                <o-textarea-input attr="P_DESCRIPTION" fxFlex></o-textarea-input>
+                <o-textarea-input attr="P_DESCRIPTION" fxFlex fxFlex="40"></o-textarea-input>
             </o-row>
             <o-row>
                 <o-date-input attr="P_DATE" fxFlex="20"></o-date-input>
@@ -14,7 +14,7 @@
         </o-column>
     </o-row>
     <o-row>
-        <o-form-layout-manager mode="dialog" title="NEW_USER" separator="" attr="newUSer">
+        <o-form-layout-manager mode="dialog" title="NEW_USER" separator="" attr="newUser">
             <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
                 <o-table service="usersProjects" entity="usersProjectsNames" parent-keys="P_ID" keys="UP_ID"
                 columns="UP_ID;P_ID;USER_;NAME;SURNAME" visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none" 

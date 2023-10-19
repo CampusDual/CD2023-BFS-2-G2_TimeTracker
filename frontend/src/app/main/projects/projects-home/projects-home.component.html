@@ -7,7 +7,7 @@
              columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME"
              visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME" delete-button="no" query-rows="20">
       <o-table-column attr="P_DATE" type="date" format="MM/DD/YYYY"></o-table-column>
-      <o-table-column attr="PROJECT_TOTAL_TIME" title="PROJECT_TOTAL_TIME">
+      <o-table-column attr="PROJECT_TOTAL_TIME" title="PROJECT_TOTAL_TIME" class="text-center">
         <app-duration-render></app-duration-render>
        </o-table-column>
     </o-table>

@@ -1,38 +1,40 @@
 <o-form-layout-manager mode="tab" attr="recordForm">
    <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
-
-   <o-form show-header="no">
-   <o-column-collapsible title="{{ 'FILTERS_TASK' | oTranslate }}" appearance="outline">
-      <o-row layout-gap="18px">
-         <o-row fxFlex="initial" title="{{ 'STARTDATE' | oTranslate }}" layout-gap="25px">
+   
+<o-form show-header="no">
+      <o-row layout-gap="25px">
+         <o-row fxFlexAlign="center"  fxFlex="initial" title="{{ 'STARTDATE' | oTranslate }}" layout-gap="25px">
             <o-date-input attr="startInit" label="INIT" read-only="no" required="no"></o-date-input>
             <o-date-input attr="endInit" label="END" read-only="no" required="no"></o-date-input>
          </o-row>
-         <o-row fxFlex="initial" title="{{ 'ENDDATE' | oTranslate }}" layout-gap="25px">
+         <o-row fxFlexAlign="center"  fxFlex="initial" title="{{ 'ENDDATE' | oTranslate }}" layout-gap="25px">
             <o-date-input attr="startEnd" label="INIT" read-only="no" required="no"></o-date-input>
             <o-date-input attr="endEnd" label="END" read-only="no" required="no"></o-date-input>
          </o-row>
+         <o-column fxFlexAlign="center" layout-gap="18px">
+            <o-row>
+               <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" label="CLEAR" class="filter-button">
+               </o-button>
+            </o-row>
+            <o-row>
+               <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" label="FILTER" class="filter-button">
+               </o-button>
+            </o-row>
+         </o-column>
+        
       </o-row>
-      <o-row layout-align="end" layout-gap="18px">
-         <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="RAISED" label="FILTER"
-            class="filter-button">
-         </o-button>
-         <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="RAISED" label="CLEAR" class="filter-button">
-         </o-button>
-      </o-row>
-   </o-column-collapsible>
  
    <o-filter-builder #filterBuilder attr="thefilter"
       filters="STARTDATE_I:startInit;STARTDATE_E:endInit;ENDDATE_I:startEnd;ENDDATE_E:endEnd" [target]="recordTable"
       query-on-change="no" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
          
    <div fxFill fxLayout="column" fxLayoutAlign="start">
-      <o-table #recordTable fxFlex  attr="recordTable" service="timers" entity="record" keys="TM_ID"
-               columns="TM_ID;T_NAME;TM_DURATION;TM_START_TIME;TM_END_TIME" virtual-scroll="no" delete-button="no"
+      <o-table #recordTable fxFlex attr="recordTable" service="timers" entity="record" keys="TM_ID"
+               columns="TM_ID;T_NAME;TM_START_TIME;TM_END_TIME;TM_DURATION" virtual-scroll="no" delete-button="no" 
                visible-columns="T_NAME;TM_START_TIME;TM_END_TIME;TM_DURATION" query-rows="20">
                <o-table-column attr="TM_START_TIME" title="TM_START_TIME" type="date" format="DD/MM/YYYY"></o-table-column>
                <o-table-column attr="TM_END_TIME" title="TM_END_TIME" type="date" format="DD/MM/YYYY"></o-table-column>
-               <o-table-column attr="TM_DURATION" title="TM_DURATION">
+               <o-table-column attr="TM_DURATION" title="TM_DURATION" class="text-center">
                <app-duration-render></app-duration-render>
                </o-table-column>
       </o-table>
