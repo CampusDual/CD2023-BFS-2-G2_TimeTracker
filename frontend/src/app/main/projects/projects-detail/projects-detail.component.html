@@ -10,13 +10,13 @@
             </o-row>
             <o-row>
                 <o-date-input attr="P_DATE" fxFlex="20"></o-date-input>
-                
             </o-row>
         </o-column>
     </o-row>
     <o-row>
-        <o-table service="usersProjects" entity="usersProjectsNames" keys="UP_ID"
-        columns="UP_ID;P_ID;USER_;NAME;SURNAME" visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none">
-    </o-table>
+        <o-table service="usersProjects" entity="usersProjectsNames" parent-keys="P_ID" keys="UP_ID"
+        columns="UP_ID;P_ID;USER_;NAME;SURNAME" visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none" 
+        insert-button="yes" insert-form-route="adduserproject/new" filter="{ 'P_ID': P_ID }">
+        </o-table>
     </o-row>
 </o-form>

@@ -15,15 +15,16 @@
         <Query id="projectTotalTime">
             <Sentence>
                 <![CDATA[
-                    with tabla as(
-                        select p.*, t.t_id, t_name from tasks t
-                        right join projects p on p.p_id = t.p_id
+                    WITH tabla AS(
+                        SELECT p_id, sum(tm.tm_end_time - tm.tm_start_time) as project_total_time
+                        FROM tasks t
+                        LEFT JOIN timers tm on tm.t_id = t.t_id
+                        GROUP BY p_id
                     )
-                    select
-                        p_id, p_name, p_description, p_date, sum(tm.tm_end_time - tm.tm_start_time) as project_total_time from tabla tb
-                        left join timers tm on tb.t_id = tm.t_id
+                    SELECT #COLUMNS#
+                    FROM projects p
+                    LEFT JOIN tabla t on p.p_id = t.p_id
                     #WHERE#
-                    group by p_id, p_name, p_description, p_date
                     #ORDER#
                 ]]>
             </Sentence>
