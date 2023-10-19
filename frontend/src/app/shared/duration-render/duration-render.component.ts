@@ -17,11 +17,13 @@ export class DurationRenderComponent extends OBaseTableCellRenderer {
   getCellData(cellvalue: any, rowvalue?: any): string{
     let hours;
     let minutes;
+    let days;
     if(cellvalue == null){
       hours =  "00";
       minutes =  "00";
     }else{
-      hours = this.addZero(cellvalue["hours"]);
+      days = cellvalue["days"]*24;
+      hours = this.addZero(cellvalue["hours"]+days);
       minutes = this.addZero(cellvalue["minutes"]);
     }
     return `${hours}:${minutes}`;

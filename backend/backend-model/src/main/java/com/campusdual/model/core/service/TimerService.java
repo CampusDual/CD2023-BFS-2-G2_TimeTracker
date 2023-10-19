@@ -68,4 +68,12 @@ public class TimerService implements ITimerService {
     public EntityResult recordQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(this.timerDao, keyMap, attrList,"record");
     }
+
+    @Override
+    public EntityResult recordInsert(Map<String, Object> attrMap) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newMap = new HashMap<>(attrMap);
+        newMap.put(TimerDao.USER_, authentication.getName());
+        return this.daoHelper.insert(this.timerDao, newMap);
+    }
 }
