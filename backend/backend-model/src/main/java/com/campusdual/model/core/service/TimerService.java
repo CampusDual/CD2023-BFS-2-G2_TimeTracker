@@ -65,8 +65,16 @@ public class TimerService implements ITimerService {
     }
 
     @Override
-    public EntityResult recordQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(this.timerDao, keyMap, attrList,"record");
+    public EntityResult recordQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newKeyMap = new HashMap<>(keyMap);
+
+        SQLStatementBuilder.BasicField userField = new SQLStatementBuilder.BasicField(TimerDao.USER_);
+        SQLStatementBuilder.BasicExpression userExp = new SQLStatementBuilder.BasicExpression(userField, SQLStatementBuilder.BasicOperator.EQUAL_OP, authentication.getName());
+
+        newKeyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
+
+        return this.daoHelper.query(this.timerDao, newKeyMap, attrList,"record");
     }
 
     @Override

@@ -21,7 +21,7 @@
                         INNER JOIN tasks t2 on t.t_id = t2.t_id
                         WHERE not tm_end_time is null
                     )
-                    SELECT t_name, tm_duration, tm_start_time, tm_end_time
+                    SELECT #COLUMNS#
                     FROM tabla
                     #WHERE#
                 ]]>
