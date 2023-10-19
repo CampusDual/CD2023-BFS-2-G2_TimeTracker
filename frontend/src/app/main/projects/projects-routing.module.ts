@@ -20,7 +20,7 @@ const routes: Routes = [
   component: ProjectsDetailComponent
 },
 {
-  path: ":P_ID/adduserproject/new",
+  path: ":P_ID/new",
   component: AddUserprojectComponent
 }
 ];

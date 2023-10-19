@@ -14,9 +14,12 @@
         </o-column>
     </o-row>
     <o-row>
-        <o-table service="usersProjects" entity="usersProjectsNames" parent-keys="P_ID" keys="UP_ID"
-        columns="UP_ID;P_ID;USER_;NAME;SURNAME" visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none" 
-        insert-button="yes" insert-form-route="adduserproject/new" filter="{ 'P_ID': P_ID }">
-        </o-table>
+        <o-form-layout-manager mode="dialog" title="NEW_USER" separator="" attr="newUSer">
+            <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
+                <o-table service="usersProjects" entity="usersProjectsNames" parent-keys="P_ID" keys="UP_ID"
+                columns="UP_ID;P_ID;USER_;NAME;SURNAME" visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none" 
+                insert-button="yes" filter="{ 'P_ID': P_ID }">
+                </o-table>
+            </o-form-layout-manager>
     </o-row>
 </o-form>
