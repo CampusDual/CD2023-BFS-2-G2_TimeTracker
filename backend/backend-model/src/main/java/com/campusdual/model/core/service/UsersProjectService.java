@@ -44,4 +44,10 @@ public class UsersProjectService implements IUsersProjectService {
     public EntityResult usersProjectsNamesQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(this.usersProjectDao, keyMap, attrList, "usersProjectsNames");
     }
+
+    @Override
+    public EntityResult usersProjectsNamesDelete(Map<?, ?> keyMap) {
+        return this.daoHelper.delete(this.usersProjectDao, keyMap);
+    }
+
 }

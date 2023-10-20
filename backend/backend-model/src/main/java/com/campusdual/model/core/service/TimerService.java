@@ -33,7 +33,7 @@ public class TimerService implements ITimerService {
     public EntityResult timerInsert(Map<String, Object> attrMap) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newMap = new HashMap<>(attrMap);
-        newMap.put(TimerDao.USER_, authentication.getName());//NOMBRE usuario
+        newMap.put(TimerDao.USER_, authentication.getName());
         newMap.put(TimerDao.TM_START_TIME, LocalDateTime.now());
         return this.daoHelper.insert(this.timerDao, newMap);
     }

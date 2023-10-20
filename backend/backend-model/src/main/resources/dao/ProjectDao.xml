@@ -11,6 +11,7 @@
     <UpdateKeys>
         <Column>P_ID</Column>
     </UpdateKeys>
+    <GeneratedKey>p_id</GeneratedKey>
     <Queries>
         <Query id="projectTotalTime">
             <AmbiguousColumns>

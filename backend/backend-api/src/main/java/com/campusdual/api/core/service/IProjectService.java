@@ -7,11 +7,11 @@ import java.util.Map;
 
 public interface IProjectService {
 
-    public EntityResult projectQuery(Map<?, ?> keyMap, List<?> attrList);
-    public EntityResult projectInsert(Map<?, ?> attrMap);
-    public EntityResult projectUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
-    public EntityResult projectDelete(Map<?, ?> keyMap);
+    public EntityResult projectQuery(Map<String, Object> keyMap, List<?> attrList);
+    public EntityResult projectInsert(Map<String, Object> attrMap);
+    public EntityResult projectUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
+    public EntityResult projectDelete(Map<String, Object> keyMap);
     public EntityResult projectTotalTimeQuery(Map<String, Object> keyMap, List<String> attrList);
-    public EntityResult projectTotalTimeDelete(Map<?, ?> keyMap);
-    public EntityResult projectTotalTimeUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
+    public EntityResult projectTotalTimeDelete(Map<String, Object> keyMap);
+    public EntityResult projectTotalTimeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
 }
