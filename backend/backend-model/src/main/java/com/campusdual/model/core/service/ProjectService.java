@@ -2,12 +2,17 @@ package com.campusdual.model.core.service;
 
 import com.campusdual.api.core.service.IProjectService;
 import com.campusdual.model.core.dao.ProjectDao;
+import com.campusdual.model.core.dao.TimerDao;
+import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,8 +47,18 @@ public class ProjectService implements IProjectService {
     }
 
     @Override
-    public EntityResult projectTotalTimeQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(this.projectDao, keyMap, attrList, "projectTotalTime");
+    public EntityResult projectTotalTimeQuery(Map<String, Object> keyMap, List<String> attrList) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newKeyMap = new HashMap<>(keyMap);
+
+        SQLStatementBuilder.BasicField userField = new SQLStatementBuilder.BasicField(TimerDao.USER_);
+        SQLStatementBuilder.BasicExpression userExp = new SQLStatementBuilder.BasicExpression(userField, SQLStatementBuilder.BasicOperator.EQUAL_OP, authentication.getName());
+
+        newKeyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
+
+
+        return this.daoHelper.query(this.projectDao, newKeyMap, attrList, "projectTotalTime");
     }
 
     @Override
