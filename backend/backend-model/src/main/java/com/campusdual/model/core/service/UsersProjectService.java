@@ -3,9 +3,11 @@ package com.campusdual.model.core.service;
 import com.campusdual.api.core.service.IUsersProjectService;
 import com.campusdual.model.core.dao.UsersProjectDao;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +29,16 @@ public class UsersProjectService implements IUsersProjectService {
 
     @Override
     public EntityResult usersProjectInsert(Map<?, ?> attrMap) {
-        return this.daoHelper.insert(this.usersProjectDao, attrMap);
+        EntityResult res;
+        try {
+            res = this.daoHelper.insert(this.usersProjectDao, attrMap);
+        } catch (DuplicateKeyException ex) {
+            ex.printStackTrace();
+            res = new EntityResultMapImpl();
+            res.setCode(EntityResult.OPERATION_WRONG);
+            res.setMessage("ERROR_USER_INSERT_MSG");
+        }
+        return res;
     }
 
     @Override

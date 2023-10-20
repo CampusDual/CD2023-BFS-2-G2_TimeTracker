@@ -55,5 +55,6 @@
   "CLEAR" : "Limpiar",
   "PROJECT_TOTAL_TIME": "Tiempo empleado",
   "SELECT_USER": "Seleccionar usuario",
-  "NEW_USER": "Añadir usuario"
+  "NEW_USER": "Añadir usuario",
+  "ERROR_USER_INSERT_MSG": "El usuario ya se encuentra en el projecto"
 }

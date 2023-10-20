@@ -20,14 +20,17 @@
             <Sentence>
                 <![CDATA[
                     WITH tabla AS(
-                        SELECT p_id, sum(tm.tm_end_time - tm.tm_start_time) as project_total_time
-                        FROM tasks t
-                        LEFT JOIN timers tm on tm.t_id = t.t_id
-                        GROUP BY p_id
-                    )
-                    SELECT #COLUMNS#
-                    FROM projects p
-                    LEFT JOIN tabla t on p.p_id = t.p_id
+                            SELECT p_id, sum(tm.tm_end_time - tm.tm_start_time) AS project_total_time
+                            FROM
+                                tasks t
+                            LEFT JOIN timers tm ON tm.t_id = t.t_id
+                            group by p_id)
+                    SELECT
+                          #COLUMNS#
+                    FROM
+                          projects p
+                    LEFT JOIN tabla t ON p.p_id = t.p_id
+                    LEFT JOIN users_projects up ON up.p_id = p.p_id
                     #WHERE#
                     #ORDER#
                 ]]>
