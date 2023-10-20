@@ -18,12 +18,18 @@
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT
-                        #COLUMNS#
-                    FROM
-                        ${mainschema}.TASKS t
-                        JOIN ${mainschema}.PROJECTS p ON t.P_ID = p.P_ID
+                    WITH tabla AS(
+                        SELECT t.*,p.*,up.user_,sum(tm.tm_end_time - tm.tm_start_time) as task_total_time
+                        FROM tasks t
+                        INNER JOIN projects p ON t.P_ID = p.P_ID
+                        INNER JOIN users_projects up on up.p_id = t.p_id
+		                LEFT JOIN timers tm on tm.t_id = t.t_id
+			            GROUP BY t.t_id, p_name, p.p_id, up.user_
+                    )
+                    SELECT #COLUMNS#
+                    FROM tabla
                     #WHERE#
+                    #ORDER#
                 ]]>
             </Sentence>
         </Query>

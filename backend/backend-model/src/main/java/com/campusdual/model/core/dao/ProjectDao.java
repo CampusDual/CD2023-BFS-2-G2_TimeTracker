@@ -17,7 +17,7 @@ public class ProjectDao extends OntimizeJdbcDaoSupport {
         public static final String P_ID = "P_ID";
         public static final String P_NAME = "P_NAME";
         public static final String P_DESCRIPTION = "P_DESCRIPTION";
-        public static final String P_USER_ = "P_USER_";
+        public static final String USER_ = "USER_";
         public static final String P_TIME = "P_TIME";
         public static final String P_DATE = "P_DATE";
 }

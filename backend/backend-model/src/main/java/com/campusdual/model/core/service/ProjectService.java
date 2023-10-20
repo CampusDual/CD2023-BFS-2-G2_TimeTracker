@@ -64,7 +64,7 @@ public class ProjectService implements IProjectService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
 
-        SQLStatementBuilder.BasicField userField = new SQLStatementBuilder.BasicField(TimerDao.USER_);
+        SQLStatementBuilder.BasicField userField = new SQLStatementBuilder.BasicField(ProjectDao.USER_);
         SQLStatementBuilder.BasicExpression userExp = new SQLStatementBuilder.BasicExpression(userField, SQLStatementBuilder.BasicOperator.EQUAL_OP, authentication.getName());
 
         newKeyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);

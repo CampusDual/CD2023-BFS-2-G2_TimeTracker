@@ -54,6 +54,7 @@
   "END": "To",
   "CLEAR" : "Clear",
   "PROJECT_TOTAL_TIME": "Time spent",
+  "TASK_TOTAL_TIME": "Time spent",
   "SELECT_USER": "Select user",
   "NEW_USER": "Add user",
   "ERROR_USER_INSERT_MSG": "This user is already added on the project"
