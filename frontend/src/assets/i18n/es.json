@@ -39,7 +39,6 @@
   "TS_NAME": "Estado",
   "P_TIME": "Tiempo empleado",
   "P_DATE": "Fecha de creacion",
-  "TRACKING": "Seguimiento",
   "START_TASK": "Iniciar tarea",
   "FINISH_TASK": "Terminar tarea",
   "RECORD": "Historial",

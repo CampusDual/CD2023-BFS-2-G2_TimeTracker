@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
-import { Injectable, Injector } from "@angular/core";
-import { OComboComponent, OntimizeService } from "ontimize-web-ngx";
+import { Component, OnInit } from '@angular/core';
+import { Injector, ViewChild } from '@angular/core';
+import { OComboComponent, OntimizeService } from 'ontimize-web-ngx';
 
 enum JornadaEstado {
   iniciar = "iniciar",
@@ -10,11 +10,11 @@ enum JornadaEstado {
 }
 
 @Component({
-  selector: "app-tracking-home",
-  templateUrl: "./tracking-home.component.html",
-  styleUrls: ["./tracking-home.component.scss"],
+  selector: 'app-timer-controls',
+  templateUrl: './timer-controls.component.html',
+  styleUrls: ['./timer-controls.component.scss']
 })
-export class TrackingHomeComponent implements OnInit, AfterViewInit {
+export class TimerControlsComponent implements OnInit {
 
   JornadaEstado = JornadaEstado; 
 
@@ -23,8 +23,6 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
   mostrarIniciarJornada: boolean = true;
 
   mostrarFinalizarJornada: boolean = false;
-
-  jornadaIniciada: boolean = false;
 
   protected service: OntimizeService;
 
@@ -99,8 +97,7 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
 
   iniciarJornada(): void {
     this.jornadaEstado = JornadaEstado.pausar;
-    this.jornadaIniciada = true;
-    //this.mostrarIniciarJornada = false;
+    this.mostrarIniciarJornada = false;
     this.mostrarFinalizarJornada = true;
   }  
 
@@ -115,9 +112,7 @@ export class TrackingHomeComponent implements OnInit, AfterViewInit {
 
   finalizarJornada(): void {
     this.jornadaEstado = JornadaEstado.iniciar;
-    this.jornadaIniciada = false;
-    // this.mostrarIniciarJornada = true;
+    this.mostrarIniciarJornada = true;
     this.mostrarFinalizarJornada = false;
   }
-  
 }

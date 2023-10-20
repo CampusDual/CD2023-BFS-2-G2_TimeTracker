@@ -1,8 +1,8 @@
 .timer-control-btns {
     display: flex;
-    gap: 2rem;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
     
     button {
         padding: 8px 16px;
@@ -47,10 +47,15 @@
     }
 }
 
-.tracking-content {
-    o-list {
-      max-width: 800px !important;
-      width: 100% !important;
-  
+
+.header-timer-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.tracking-form {
+    o-combo {
+        width: 300px;
     }
 }
