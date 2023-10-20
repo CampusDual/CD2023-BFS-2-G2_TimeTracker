@@ -1,40 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
-.input-padding{
-    padding-right: 6px;
+// Layout
+.application-layout-content-wrapper {
+  position: unset !important;
+}
+
+// Navbar
+.o-app-header {
+  nav {
+    padding-left: 16px;
+
+    & > div {
+      flex-direction: row-reverse !important;
+    }
   }
-
-mat-toolbar {
-  display: grid !important;
-}
-
-.tracking-content o-table-buttons {
-  display: none !important;
-}
-
-.tracking-form {
-  o-form-toolbar {
-    display: none !important;
-  }
-}
-
-.text-center {
-  text-align: center;
-}
-
-app-timer-controls {
-  display: flex;
 }
 
 .o-app-header.o-app-header-medium {
   height: auto !important;
 }
 
-.o-app-header {
-  nav {
-    padding-left: 16px;
-  }
+.o-app-header-default-actions {
+  margin-right: auto !important;
+  margin-left: 0 !important;
 }
 
-.application-layout-content-wrapper {
-  position: unset !important;
+// General classes
+.input-padding {
+  padding-right: 6px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// Toolbar
+mat-toolbar {
+  display: grid !important;
+}
+
+// Timer Controls
+.tracking-form {
+  o-form-toolbar {
+    display: none !important;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-underline {
+    display: none !important;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0.75rem !important;
+  } 
+}
+
+// Search
+#cdk-overlay-1 > div > div > o-combo-search > mat-form-field > div > div.mat-form-field-underline.ng-tns-c16-22.ng-star-inserted {
+  display: none !important;
 }
