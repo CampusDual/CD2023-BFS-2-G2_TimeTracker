@@ -1,26 +1,7 @@
 // Layout
 .application-layout-content-wrapper {
   position: unset !important;
-}
-
-// Navbar
-.o-app-header {
-  nav {
-    padding-left: 16px;
-
-    & > div {
-      flex-direction: row-reverse !important;
-    }
-  }
-}
-
-.o-app-header.o-app-header-medium {
-  height: auto !important;
-}
-
-.o-app-header-default-actions {
-  margin-right: auto !important;
-  margin-left: 0 !important;
+  padding: 0 !important;
 }
 
 // General classes

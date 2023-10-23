@@ -1,11 +1,17 @@
 .header-timer-controls {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  background-color: #fff;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
 
-  .timer-control-btns {
+  .container {
     display: flex;
     align-items: center;
+    gap: 2rem;
+  }
+  
+  .timer-control-btns {
     gap: 1rem;
     padding: 0.5rem;
 

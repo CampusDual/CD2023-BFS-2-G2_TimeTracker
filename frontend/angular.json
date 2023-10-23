@@ -37,7 +37,8 @@
             "styles": [
               "node_modules/ontimize-web-ngx/ontimize.scss",
               "src/assets/css/app.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/flag-icon-css/css/flag-icons.css"
             ],
             "scripts": [
               "src/assets/js/domchange.js",
