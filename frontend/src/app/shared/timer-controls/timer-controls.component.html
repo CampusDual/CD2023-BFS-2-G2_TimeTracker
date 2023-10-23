@@ -5,11 +5,11 @@
         </o-combo>
     </o-form>
     <div class="timer-control-btns">
-        <button *ngIf="mostrarIniciarJornada" (click)="startTimer()" class="iniciar-jornada mat-mini-fab mat-button-base mat-primary ng-star-inserted" [disabled]="jornadaIniciada">
+        <button *ngIf="isStarted == false" (click)="startTimer()" class="iniciar-jornada mat-mini-fab mat-button-base mat-primary ng-star-inserted">
             <i class="material-icons">play_arrow</i>
         </button>
     
-        <button *ngIf="mostrarFinalizarJornada" (click)="stopTimer()" class="finalizar-jornada mat-mini-fab mat-button-base mat-primary ng-star-inserted">
+        <button *ngIf="isStarted == true" (click)="stopTimer()" class="finalizar-jornada mat-mini-fab mat-button-base mat-primary ng-star-inserted">
             <i class="material-icons">stop</i>
         </button>
     </div>

@@ -2,13 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Injector, ViewChild } from '@angular/core';
 import { OComboComponent, OntimizeService } from 'ontimize-web-ngx';
 
-enum JornadaEstado {
-  iniciar = "iniciar",
-  pausar = "pausar",
-  reanudar = "reanudar",
-  finalizar = "finalizar"
-}
-
 @Component({
   selector: 'app-timer-controls',
   templateUrl: './timer-controls.component.html',
@@ -16,13 +9,8 @@ enum JornadaEstado {
 })
 export class TimerControlsComponent implements OnInit {
 
-  JornadaEstado = JornadaEstado; 
-
-  protected jornadaEstado: JornadaEstado = JornadaEstado.iniciar;
-
-  mostrarIniciarJornada: boolean = true;
-
-  mostrarFinalizarJornada: boolean = false;
+  isStarted: boolean = false;
+  selectedTaskValue: any;
 
   protected service: OntimizeService;
 
@@ -33,13 +21,22 @@ export class TimerControlsComponent implements OnInit {
   }
   
   ngAfterViewInit(): void {
-    console.log(this.taskCombo.getValue());
   }
   
   ngOnInit() {
     this.configureService();
     this.getLastOpen();
-    console.log(this.taskCombo);
+
+    const timerStatus = localStorage.getItem('timerStatus');
+    if (timerStatus === 'true') {
+      const storedValue = localStorage.getItem('selectedTaskValue');
+      if (storedValue) {
+        this.selectedTaskValue = JSON.parse(storedValue);
+        this.taskCombo.setValue(this.selectedTaskValue);
+      }
+    }
+    this.isStarted = timerStatus === 'true';
+    console.log(this.isStarted)
   }
 
   protected configureService() {
@@ -52,6 +49,9 @@ export class TimerControlsComponent implements OnInit {
       const values = {T_ID: this.getComboValue()};
       this.service.insert(values, "timer").subscribe(resp => {
         if (resp.code === 0) {
+          this.selectedTaskValue = this.getComboValue();
+          localStorage.setItem('timerStatus', 'true');
+          localStorage.setItem('selectedTaskValue', JSON.stringify(this.selectedTaskValue));
           this.iniciarJornada();
         } else {
           //TODO: Mostrar error
@@ -71,6 +71,7 @@ export class TimerControlsComponent implements OnInit {
           //TODO: Mostrar error
         }
       });
+      localStorage.setItem('timerStatus', 'false');
       this.finalizarJornada();
     }
   }
@@ -96,23 +97,10 @@ export class TimerControlsComponent implements OnInit {
   }
 
   iniciarJornada(): void {
-    this.jornadaEstado = JornadaEstado.pausar;
-    this.mostrarIniciarJornada = false;
-    this.mostrarFinalizarJornada = true;
+    this.isStarted = true;
   }  
 
-
-  // pausarJornada(): void {
-  //   this.jornadaEstado = JornadaEstado.reanudar;
-  // }
-
-  // reanudarJornada(): void {
-  //   this.jornadaEstado = JornadaEstado.pausar;
-  // }
-
   finalizarJornada(): void {
-    this.jornadaEstado = JornadaEstado.iniciar;
-    this.mostrarIniciarJornada = true;
-    this.mostrarFinalizarJornada = false;
+    this.isStarted = false;
   }
 }
