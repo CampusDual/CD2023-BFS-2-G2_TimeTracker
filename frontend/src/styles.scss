@@ -1,10 +1,6 @@
-// Layout
-.application-layout-content-wrapper {
-  position: unset !important;
-  padding: 0 !important;
-}
+@import "src/assets/css/colors.scss";
 
-// General classes
+// General
 .input-padding {
   padding-right: 6px;
 }
@@ -13,22 +9,197 @@
   text-align: center;
 }
 
+// Layout
+.navMenu {
+  nav.ng-star-inserted:first-of-type {
+    order: 999 !important;
+    margin-top: 1rem;
+  }
+}
+
+.o-app-sidenav-image-container {
+  .o-app-sidenav-image {
+    width: 200px;
+    text-align: center;
+  }
+}
+
+.application-layout-content-wrapper {
+  position: unset !important;
+  padding: 0 !important;
+  display: flex ;
+  flex-direction: column;
+}
+
+.o-user-info-image {
+  display: none !important;
+}
+
+nav:nth-child(1) > o-app-sidenav-menu-group > a {
+  display: none !important;
+}
+
+.o-user-info-item {
+  background: $primary-color;
+  color: $white;
+
+  .o-user-info-name {
+    font-weight: 500 !important;
+  }
+}
+
+.o-app-sidenav-sidenav {
+  background: $primary-color;
+
+  .o-app-sidenav-menu-group-level-1
+    .o-app-sidenav-menugroup.opened
+    + .o-app-sidenav-menugroup-items-container
+    ul {
+    background: $primary-color;
+  }
+}
+
+.o-app-sidenav-menu-item {
+  a:hover {
+    color: $white;
+    background-color: $secondary-color;
+  }
+
+  a.o-app-sidenav-viewer-sidenav-item-selected {
+    color: $white;
+    background-color: $secondary-color;
+  }
+}
+.mat-dialog-title {
+  border-bottom: 1px solid $primary-color;
+
+  .mat-icon {
+    color: $primary-color;
+  }
+}
+
 // Toolbar
 mat-toolbar {
   display: grid !important;
 }
 
-// Timer Controls
-.tracking-form {
-  o-form-toolbar {
-    display: none !important;
+// Buttons
+.mat-stroked-button.mat-button-base {
+  color: $primary-color;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $white;
   }
 
+  &.mat-primary {
+    background-color: $secondary-color;
+    color: $white;
+  }
+}
+
+.o-button-primary.mat-stroked-button.mat-button-base {
+  background-color: $primary-color;
+  color: $white;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $white;
+  }
+}
+
+.mat-dialog-actions .mat-raised-button.mat-primary {
+  background-color: $primary-color;
+  color: $white;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $white;
+  }
+}
+
+.mat-icon-button.mat-button-base {
+  &:hover {
+    background-color: none !important;
+  }
+}
+// Inputs
+.mat-option.mat-selected {
+  color: $primary-color;
+}
+
+.mat-form-field.mat-focused {
+  .mat-form-field-ripple {
+    background-color: $primary-color;
+  }
+
+  .mat-form-field-label {
+    color: $primary-color;
+  }
+
+  .mat-select-arrow {
+    color: $primary-color;
+  }
+}
+.mat-input-element {
+  caret-color: $primary-color;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background: $primary-color;
+}
+
+o-table-quickfilter mat-form-field.mat-focused {
+  border: none !important;
+}
+
+// ScrollBar
+::-webkit-scrollbar-thumb {
+  background-color: $secondary-color;
+}
+
+// Timer Controls
+.tracking-form {
   .mat-form-field-appearance-legacy .mat-form-field-underline {
     display: none !important;
   }
 
   .mat-form-field-appearance-legacy .mat-form-field-wrapper {
     padding-bottom: 0.75rem !important;
-  } 
+  }
+}
+
+// Time Picker
+ngx-material-timepicker-container ngx-material-timepicker-content {
+  .timepicker__header {
+    background-color: $primary-color;
+  }
+
+  .clock-face {
+    .clock-face__number > span.active {
+      background-color: $secondary-color;
+    }
+
+    .clock-face__clock-hand {
+      background-color: $secondary-color;
+
+      &:after {
+        background-color: $secondary-color;
+      }
+    }
+
+    .clock-face__clock-hand_minute:before {
+      border: 4px solid $secondary-color;
+    }
+  }
+}
+
+// Calendar
+.mat-calendar-body-selected {
+  background-color: $secondary-color;
+}
+
+// Footer
+.footer-container {
+  background: $primary-color;
 }

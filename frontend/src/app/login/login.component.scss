@@ -1,3 +1,5 @@
+@import 'src/assets/css/colors.scss';
+
 .m-top-24 {
   margin-top: 24px;
 }
@@ -80,6 +82,12 @@
           margin: 32px 0 0;
           height: 42px;
           font-size: 16px;
+          background-color: $primary-color;
+          color: $white;
+
+          &:hover {
+            background-color: $secondary-color;
+          }
         }
 
         .dark_text {
@@ -153,3 +161,4 @@
     }
   }
 }
+

@@ -58,5 +58,7 @@
   "NEW_USER": "Add user",
   "ERROR_USER_INSERT_MSG": "This user is already added on the project",
   "NAME": "Name",
-  "SURNAME": "Surname"
+  "SURNAME": "Surname",
+  "PROJECT_DETAILS": "Project Details",
+  "PROJECT_USERS": "Project Users"
 }

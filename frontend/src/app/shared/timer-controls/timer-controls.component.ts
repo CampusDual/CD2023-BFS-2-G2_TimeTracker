@@ -80,7 +80,6 @@ export class TimerControlsComponent implements OnInit {
       localStorage.setItem('timerStatus', 'false');
       this.finalizarJornada();
       clearInterval(this.temporizadorInterval);
-
     }
   }
 
@@ -119,9 +118,10 @@ export class TimerControlsComponent implements OnInit {
     
       const tiempoFormateado = `${String(minutos).padStart(2, "0")}:${String(segundos).padStart(2, "0")}`;
 
+      self.crono.nativeElement.style.border = '2px solid #676bd2';
       self.crono.nativeElement.innerHTML = `${tiempoFormateado}`;
     }
-
+    
     this.temporizadorInterval = setInterval(actualizarTiempo, 1000);
   }
 

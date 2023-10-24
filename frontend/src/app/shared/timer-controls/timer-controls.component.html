@@ -1,19 +1,19 @@
 <div class="header-timer-controls">
-    <o-form class="tracking-form">
-        <o-combo #taskCombo attr="T_ID" label="SELECT_TASK" service="tasks" entity="projectTask"
-                value-column="T_ID" columns="T_ID;T_NAME;P_NAME" visible-columns="T_NAME;P_NAME" separator=" - " keys="T_ID" searchable="yes">
-        </o-combo>
-    </o-form>
-    <div class="timer-control-btns">
-        <button *ngIf="isStarted == false" (click)="startTimer()" class="iniciar-jornada mat-mini-fab mat-button-base mat-primary ng-star-inserted">
-            <i class="material-icons">play_arrow</i>
-        </button>
-    
-        <button *ngIf="isStarted == true" (click)="stopTimer()" class="finalizar-jornada mat-mini-fab mat-button-base mat-primary ng-star-inserted">
-            <i class="material-icons">stop</i>
-        </button>
+    <div class="container">
+        <o-form class="tracking-form" show-header="no">
+            <o-combo #taskCombo attr="T_ID" label="SELECT_TASK" service="tasks" entity="projectTask"
+                    value-column="T_ID" columns="T_ID;T_NAME;P_NAME" visible-columns="T_NAME;P_NAME" separator=" > " keys="T_ID" searchable="yes">
+            </o-combo>
+        </o-form>
+        <div class="timer-control-btns">
+            <button *ngIf="isStarted == false" (click)="startTimer()" class="iniciar-jornada mat-mini-fab mat-button-base mat-primary ng-star-inserted">
+                <i class="material-icons">play_arrow</i>
+            </button>
+        
+            <button *ngIf="isStarted == true" (click)="stopTimer()" class="finalizar-jornada mat-mini-fab mat-button-base mat-primary ng-star-inserted">
+                <i class="material-icons">stop</i>
+            </button>
+        </div>
+        <div #crono class="timer" [ngStyle]="{'display' : isStarted ? 'block' : 'none'}"></div>
     </div>
-    <div #crono></div>
-
-
 </div>

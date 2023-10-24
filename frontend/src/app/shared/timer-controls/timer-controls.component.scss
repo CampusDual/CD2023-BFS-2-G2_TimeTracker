@@ -1,9 +1,12 @@
+@import 'src/assets/css/colors.scss';
+
 .header-timer-controls {
   display: flex;
   justify-content: center;
   background-color: #fff;
   padding: 0 1rem;
   margin-bottom: 1rem;
+  position: relative;
 
   .container {
     display: flex;
@@ -20,13 +23,17 @@
       align-items: center;
       justify-content: center;
 
+      i {
+        color: #fff !important;
+      }
+
       &:hover {
         filter: brightness(1.2);
         cursor: pointer;
       }
 
       &.iniciar-jornada {
-        background-color: #3366cc !important;
+        background-color: $primary-color;
       }
 
       &.finalizar-jornada {
@@ -49,5 +56,15 @@
     o-combo {
       width: 400px;
     }
+  }
+
+  .timer {
+    position: absolute;
+    right: 50px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    width: 50px;
+    text-align: center;
+    color: #676bd2;
   }
 }
