@@ -5,9 +5,10 @@
         </o-combo>
     </o-row>
     <o-row>
-        <o-time-input class="input-padding" attr="TM_START_TIME" required="yes"></o-time-input>
+        <o-time-input #startInput class="input-padding" attr="TM_START_TIME" required="yes" [validators]="validatorsArray"></o-time-input>
     </o-row>
     <o-row>
-        <o-time-input class="input-padding" attr="TM_END_TIME" required="yes"></o-time-input>
+        <o-time-input #endInput class="input-padding" attr="TM_END_TIME" required="yes" [validators]="validatorsArray"> 
+        </o-time-input>
     </o-row>
 </o-form>

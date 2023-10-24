@@ -19,6 +19,8 @@
                 <o-table service="usersProjects" entity="usersProjectsNames" parent-keys="P_ID" keys="UP_ID"
                 columns="UP_ID;P_ID;USER_;NAME;SURNAME" visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none" 
                 insert-button="yes" filter="{ 'P_ID': P_ID }">
+                <o-table-column attr="NAME" class="text-center"></o-table-column>
+                <o-table-column attr="SURNAME" class="text-center"></o-table-column>
                 </o-table>
             </o-form-layout-manager>
     </o-row>

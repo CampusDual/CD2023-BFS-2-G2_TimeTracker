@@ -1,7 +1,7 @@
 <o-form-layout-manager mode="dialog" title="NEW_TASK" label-columns="T_NAME;T_DESCRIPTION;P_NAME" separator="" attr="taskDetails">
   <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
   <div fxFill fxLayout="column" fxLayoutAlign="start">
-    <o-table attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID"
+    <o-table attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID" virtual-scroll="no"
              columns="T_ID;P_NAME;T_NAME;T_DESCRIPTION;TASK_TOTAL_TIME"
              visible-columns="P_NAME;T_NAME;T_DESCRIPTION;TASK_TOTAL_TIME" delete-button="no" query-rows="20">
              <o-table-column attr="TASK_TOTAL_TIME" title="TASK_TOTAL_TIME" class="text-center">

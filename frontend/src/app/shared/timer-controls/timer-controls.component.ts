@@ -41,7 +41,6 @@ export class TimerControlsComponent implements OnInit {
       }
     }
     this.isStarted = timerStatus === 'true';
-    console.log(this.isStarted)
   }
 
   protected configureService() {

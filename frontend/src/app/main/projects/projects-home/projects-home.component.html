@@ -3,7 +3,7 @@
   
   <div fxFill fxLayout="column" fxLayoutAlign="start">
     
-    <o-table attr="projectTable" service="projects" entity="projectTotalTime" keys="P_ID"
+    <o-table attr="projectTable" service="projects" entity="projectTotalTime" keys="P_ID" virtual-scroll="no"
              columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME"
              visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME" delete-button="no" query-rows="20">
       <o-table-column attr="P_DATE" type="date" format="MM/DD/YYYY"></o-table-column>
