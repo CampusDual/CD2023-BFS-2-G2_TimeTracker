@@ -32,8 +32,8 @@
       <o-table #recordTable fxFlex attr="recordTable" service="timers" entity="record" keys="TM_ID"
                columns="TM_ID;T_NAME;TM_START_TIME;TM_END_TIME;TM_DURATION" virtual-scroll="no" delete-button="no" 
                visible-columns="T_NAME;TM_START_TIME;TM_END_TIME;TM_DURATION" query-rows="20">
-               <o-table-column attr="TM_START_TIME" title="STARTDATE" type="date" format="DD/MM/YYYY"></o-table-column>
-               <o-table-column attr="TM_END_TIME" title="ENDDATE" type="date" format="DD/MM/YYYY"></o-table-column>
+               <o-table-column attr="TM_START_TIME" title="STARTDATE" type="date" format="DD/MM/YYYY HH:mm"></o-table-column>
+               <o-table-column attr="TM_END_TIME" title="ENDDATE" type="date" format="DD/MM/YYYY HH:mm"></o-table-column>
                <o-table-column attr="TM_DURATION" title="TM_DURATION" class="text-center">
                <app-duration-render></app-duration-render>
                </o-table-column>
