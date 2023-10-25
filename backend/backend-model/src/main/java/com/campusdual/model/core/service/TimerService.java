@@ -2,9 +2,11 @@ package com.campusdual.model.core.service;
 
 import com.campusdual.api.core.service.ITimerService;
 import com.campusdual.model.core.dao.TimerDao;
-import com.ontimize.jee.common.db.SQLStatementBuilder;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicOperator;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicField;
+import com.ontimize.jee.common.db.SQLStatementBuilder.ExtendedSQLConditionValuesProcessor;
 import com.ontimize.jee.common.dto.EntityResult;
-import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -53,16 +55,16 @@ public class TimerService implements ITimerService {
     public EntityResult openTimerQuery(Map<String, Object> keyMap, List<String> attrList) {
         Map<String, Object> key = new HashMap<>();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        key.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, searchLatestNULL(authentication.getName()));
+        key.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, searchLatestNULL(authentication.getName()));
         return this.timerQuery(key, attrList);
     }
 
-    private SQLStatementBuilder.BasicExpression searchLatestNULL(String user) {
-        SQLStatementBuilder.BasicField timeField = new SQLStatementBuilder.BasicField(TimerDao.TM_END_TIME);
-        SQLStatementBuilder.BasicField userField = new SQLStatementBuilder.BasicField(TimerDao.USER_);
-        SQLStatementBuilder.BasicExpression timeExp = new SQLStatementBuilder.BasicExpression(timeField, SQLStatementBuilder.BasicOperator.NULL_OP, null);
-        SQLStatementBuilder.BasicExpression userExp = new SQLStatementBuilder.BasicExpression(userField, SQLStatementBuilder.BasicOperator.EQUAL_OP, user);
-        return new SQLStatementBuilder.BasicExpression(timeExp, SQLStatementBuilder.BasicOperator.AND_OP, userExp);
+    private BasicExpression searchLatestNULL(String user) {
+        BasicField timeField = new BasicField(TimerDao.TM_END_TIME);
+        BasicField userField = new BasicField(TimerDao.USER_);
+        BasicExpression timeExp = new BasicExpression(timeField, BasicOperator.NULL_OP, null);
+        BasicExpression userExp = new BasicExpression(userField, BasicOperator.EQUAL_OP, user);
+        return new BasicExpression(timeExp, BasicOperator.AND_OP, userExp);
     }
 
     @Override
@@ -70,10 +72,15 @@ public class TimerService implements ITimerService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
 
-        SQLStatementBuilder.BasicField userField = new SQLStatementBuilder.BasicField(TimerDao.USER_);
-        SQLStatementBuilder.BasicExpression userExp = new SQLStatementBuilder.BasicExpression(userField, SQLStatementBuilder.BasicOperator.EQUAL_OP, authentication.getName());
+        BasicField userField = new BasicField(TimerDao.USER_);
+        BasicExpression userExp = new BasicExpression(userField, BasicOperator.EQUAL_OP, authentication.getName());
 
-        newKeyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
+        if (keyMap.containsKey(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY)) {
+            newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, new BasicExpression(keyMap.get(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY), BasicOperator.AND_OP, userExp));
+        } else {
+            newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
+        }
+
 
         return this.daoHelper.query(this.timerDao, newKeyMap, attrList,"record");
     }
