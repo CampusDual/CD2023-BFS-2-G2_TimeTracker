@@ -2,7 +2,7 @@
   <o-form-layout-dialog-options width="800px" height="650px" disable-close="false"></o-form-layout-dialog-options>
     <div fxFill fxLayout="column" fxLayoutAlign="start">
       <o-table attr="projectTable" service="projects" entity="projectTotalTime" keys="P_ID"
-              columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME"
+              columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME" virtual-scroll="no"
               visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME" delete-button="no" query-rows="20">
         <o-table-column attr="P_DATE" type="date" format="MM/DD/YYYY"></o-table-column>
         <o-table-column attr="PROJECT_TOTAL_TIME" title="PROJECT_TOTAL_TIME" class="text-center">

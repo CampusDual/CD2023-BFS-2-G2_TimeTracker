@@ -141,16 +141,13 @@ mat-toolbar {
     color: $primary-color;
   }
 }
+
 .mat-input-element {
   caret-color: $primary-color;
 }
 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background: $primary-color;
-}
-
-o-table-quickfilter mat-form-field.mat-focused {
-  border: none !important;
 }
 
 // ScrollBar
