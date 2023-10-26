@@ -2,8 +2,11 @@
   <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
     <div fxFill fxLayout="column" fxLayoutAlign="start">
       <o-table attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID"
-              columns="T_ID;P_NAME;T_NAME;T_DESCRIPTION;TASK_TOTAL_TIME" virtual-scroll="no"
+              columns="T_ID;P_NAME;T_NAME;T_DESCRIPTION;TASK_TOTAL_TIME" virtual-scroll="no" 
               visible-columns="P_NAME;T_NAME;T_DESCRIPTION;TASK_TOTAL_TIME" delete-button="no" query-rows="20">
+              <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
+              <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
+              <o-table-column attr="T_DESCRIPTION" title="T_DESCRIPTION" multiline="no" max-width="250px"></o-table-column>
               <o-table-column attr="TASK_TOTAL_TIME" title="TASK_TOTAL_TIME" class="text-center">
                 <app-duration-render></app-duration-render>
               </o-table-column>
