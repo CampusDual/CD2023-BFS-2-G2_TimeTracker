@@ -1,1 +1,15 @@
-<p>tasks-detail works!</p>
+<o-form service="tasks" entity="task" keys="T_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
+    <o-text-input attr="T_ID" sql-type="INTEGER" hidden></o-text-input>
+    <o-row>
+        <o-column title-label="TASK_DETAILS" fxFlex>
+            <o-row><p>{{ 'TASK_DETAILS' | oTranslate }}</p></o-row>
+            <o-row>
+                <o-text-input class="input-padding" attr="T_NAME" fxFlex="60" required="no">
+                </o-text-input><o-date-input attr="T_DATE" fxFlex="40"></o-date-input>
+            </o-row>
+            <o-row>
+                <o-textarea-input attr="T_DESCRIPTION" fxFlex fxFlex="100"></o-textarea-input>
+            </o-row>
+        </o-column>
+    </o-row>
+</o-form>

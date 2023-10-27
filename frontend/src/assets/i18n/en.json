@@ -60,5 +60,10 @@
   "NAME": "Name",
   "SURNAME": "Surname",
   "PROJECT_DETAILS": "Project Details",
-  "PROJECT_USERS": "Project Users"
+  "PROJECT_USERS": "Project Users",
+  "TASK_DETAILS": "Task Details",
+  "TASK_USERS": "Task Users",
+  "DELETE_TASK_ERROR": "",
+  "DELETE_PROJECT_ERROR": "This project can't be deleted if it has associated tasks",
+  "DELETE_TASK_ERROR": "This task can't be deleted if it contains time records"
 }

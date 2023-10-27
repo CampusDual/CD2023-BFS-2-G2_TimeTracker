@@ -6,6 +6,7 @@ import com.campusdual.model.core.dao.TimerDao;
 import com.campusdual.model.core.dao.UsersProjectDao;
 import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -55,7 +56,16 @@ public class ProjectService implements IProjectService {
 
     @Override
     public EntityResult projectDelete(Map<String, Object> keyMap) {
-        return this.daoHelper.delete(this.projectDao, keyMap);
+        EntityResult err;
+        try{
+            err = this.daoHelper.delete(this.projectDao, keyMap);
+
+        }catch (Exception e){
+            err = new EntityResultMapImpl();
+            err.setCode(EntityResult.OPERATION_WRONG);
+            err.setMessage("DELETE_PROJECT_ERROR");
+        }
+        return err;
     }
 
     @Override

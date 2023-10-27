@@ -14,10 +14,10 @@ const routes: Routes = [
     path:"new",
     component: TasksNewComponent
   },
-  // {
-  //   path:":T_ID",
-  //   component: TasksDetailComponent
-  // }
+  {
+   path:":T_ID",
+    component: TasksDetailComponent
+   }
 
 ];
 

@@ -60,5 +60,9 @@
   "NAME": "Nombre",
   "SURNAME": "Apellido",
   "PROJECT_DETAILS": "Detalles del proyecto",
-  "PROJECT_USERS": "Usuarios del proyecto"
+  "PROJECT_USERS": "Usuarios del proyecto",
+  "TASK_DETAILS": "Detalles de la tarea",
+  "TASK_USERS": "Usuarios de la tarea",
+  "DELETE_PROJECT_ERROR": "No se puede eliminar el proyecto si contiene tareas asociadas",
+  "DELETE_TASK_ERROR": "No se puede eliminar la tarea si contiene tiempos registrados"
 }
