@@ -30,7 +30,6 @@ export class TimerControlsComponent implements OnInit {
   ngOnInit() {
     this.configureService();
     this.getLastOpen();
-    this.startCrono();
 
     const timerStatus = localStorage.getItem('timerStatus');
     if (timerStatus === 'true') {
@@ -41,12 +40,23 @@ export class TimerControlsComponent implements OnInit {
       }
     }
     this.isStarted = timerStatus === 'true';
+    this.taskCombo.onValueChange.subscribe(() => {
+      if(this.isStarted){
+         this.changeTask()}
+    })
+
   }
 
   protected configureService() {
     const conf = this.service.getDefaultServiceConfiguration("timers");
     this.service.configureService(conf);
   }
+
+  changeTask(){
+    this.stopTimer();
+    this.startTimer();
+  }
+
 
   startTimer() {
     if (this.service !== null) {
@@ -57,15 +67,14 @@ export class TimerControlsComponent implements OnInit {
           localStorage.setItem('timerStatus', 'true');
           localStorage.setItem('selectedTaskValue', JSON.stringify(this.selectedTaskValue));
           this.iniciarJornada();
-          this.startCrono();
+          this.getLastOpen();
         } else {
           //TODO: Mostrar error
         }
       });
     }
   }
-
-
+  
   stopTimer() {
     if (this.service !== null) {
       const values = {};
@@ -83,25 +92,6 @@ export class TimerControlsComponent implements OnInit {
     }
   }
 
-  //meter en el otro método
-  startCrono() { 
-    
-    if (this.service != null) {
-      const filter = {};
-      const columns = ['TM_START_TIME'];
-      this.service.query(filter, columns, 'openTimer').subscribe(resp => {
-        if (resp.code === 0) {
-          if (resp.data.length>0){
-          this.startTime = resp.data[0].TM_START_TIME;
-          this.iniciarContador();
-          }
-          
-        } else {
-
-        }
-      });
-    }
-  }
 
   iniciarContador() {
 
@@ -128,10 +118,12 @@ export class TimerControlsComponent implements OnInit {
   getLastOpen() {
     if (this.service !== null) {
       const filter = {};
-      const columns = ['T_ID'];
+      const columns = ['T_ID','TM_START_TIME'];
       this.service.query(filter, columns, 'openTimer').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
+            this.startTime = resp.data[0].TM_START_TIME;
+            this.iniciarContador();
             this.iniciarJornada();
           }
         } else {
