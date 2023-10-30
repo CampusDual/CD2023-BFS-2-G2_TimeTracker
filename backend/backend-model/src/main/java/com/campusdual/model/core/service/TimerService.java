@@ -7,6 +7,7 @@ import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicField;
 import com.ontimize.jee.common.db.SQLStatementBuilder.ExtendedSQLConditionValuesProcessor;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -102,4 +103,14 @@ public class TimerService implements ITimerService {
     public EntityResult recordDelete(Map<String, Object> keyMap) {
         return this.daoHelper.delete(this.timerDao, keyMap);
     }
+
+    @Override
+    public EntityResult startEndDateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newMap = new HashMap<>(keyMap);
+        newMap.put(TimerDao.USER_, authentication.getName());
+        return this.timerQuery(newMap, attrList);
+    }
+
+
 }

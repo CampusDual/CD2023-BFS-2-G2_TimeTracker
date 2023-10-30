@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Injector, ViewChild } from '@angular/core';
-import { OComboComponent, OntimizeService } from 'ontimize-web-ngx';
+import { DialogService, OComboComponent, OntimizeService } from 'ontimize-web-ngx';
 
 
 @Component({
@@ -14,13 +14,17 @@ export class TimerControlsComponent implements OnInit {
   selectedTaskValue: any;
   startTime: number;
   temporizadorInterval: any;
+  isFirstTask: boolean = false;
+  cancelTaskCountdown: any;
+  isCancelled: boolean = false;
 
   protected service: OntimizeService;
 
   @ViewChild('taskCombo', { static: true }) taskCombo: OComboComponent;
   @ViewChild('crono', { static: true }) crono: ElementRef;
+  @ViewChild('countdown', { static: true }) countdown: ElementRef;
 
-  constructor(protected injector: Injector) {
+  constructor(protected injector: Injector, protected dialogService: DialogService) {
     this.service = this.injector.get(OntimizeService);
   }
 
@@ -41,8 +45,12 @@ export class TimerControlsComponent implements OnInit {
     }
     this.isStarted = timerStatus === 'true';
     this.taskCombo.onValueChange.subscribe(() => {
-      if(this.isStarted){
-         this.changeTask()}
+      if(this.isStarted && !this.isCancelled){
+         this.changeTask();
+         this.isFirstTask = true;
+      } else {
+        this.isCancelled = false;
+      }
     })
 
   }
@@ -53,8 +61,35 @@ export class TimerControlsComponent implements OnInit {
   }
 
   changeTask(){
-    this.stopTimer();
-    this.startTimer();
+      this.taskCombo.elementRef.nativeElement.style.enabled = true;
+      this.cancelTaskCountdown = setTimeout(() => {
+      this.stopTimer();
+      this.startTimer();
+    }, 5000)
+
+    let i = 5;
+
+    const printCountdown = () => {
+      this.countdown.nativeElement.innerHTML = `${i}`;
+      i--;
+
+      if (i >= 0 && this.cancelTaskCountdown !== 0) {
+        this.countdown.nativeElement.style.visibility = 'visible';
+        setTimeout(printCountdown, 1000);
+      }
+    }
+    printCountdown();
+  }
+
+  cancelTaskChange() {
+    if (this.cancelTaskCountdown) {
+      clearTimeout(this.cancelTaskCountdown);
+      this.cancelTaskCountdown = 0;
+      this.isFirstTask = false;
+      this.isCancelled = true;
+      this.countdown.nativeElement.style.visibility = 'hidden';
+      this.taskCombo.setValue(this.selectedTaskValue);
+    }
   }
 
 
@@ -88,6 +123,7 @@ export class TimerControlsComponent implements OnInit {
       });
       localStorage.setItem('timerStatus', 'false');
       this.finalizarJornada();
+      this.isFirstTask = false;
       clearInterval(this.temporizadorInterval);
     }
   }
@@ -101,7 +137,6 @@ export class TimerControlsComponent implements OnInit {
 
       let currentDate = new Date().getTime();
       let diff = currentDate - self.startTime;
-      console.log(diff);
       let segundos = Math.floor(diff / 1000) % 60;
       let minutos = Math.floor((diff/1000)/ 60);
 
@@ -136,8 +171,6 @@ export class TimerControlsComponent implements OnInit {
   getComboValue() {
     return this.taskCombo.getValue();
   }
-
-
 
   iniciarJornada(): void {
     this.isStarted = true;
