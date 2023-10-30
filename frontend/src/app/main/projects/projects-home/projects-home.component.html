@@ -1,6 +1,9 @@
 <o-form-layout-manager mode="tab" label-columns="P_NAME" separator="" attr="projectsDetails">
   <o-form-layout-dialog-options width="800px" height="650px" disable-close="false"></o-form-layout-dialog-options>
     <div fxFill fxLayout="column" fxLayoutAlign="start">
+      <label for="radioProject">{{ 'PROJECT_STATE' | oTranslate }}</label>
+      <o-radio #radioProject [static-data]="getDataArray()" [data]="getValeu()" layout="row" 
+      value-column="key" columns="key;value" visible-columns="value" read-only="no" required="no" ></o-radio>
       <o-table attr="projectTable" service="projects" entity="projectTotalTime" keys="P_ID"
         columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME" virtual-scroll="no"
         visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME" delete-button="no" query-rows="20">

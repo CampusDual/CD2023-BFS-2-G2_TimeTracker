@@ -16,14 +16,15 @@
             <Sentence>
                 <![CDATA[
                     WITH tabla AS (
-                        SELECT t.*, t2.t_name , (tm_end_time - tm_start_time) AS tm_duration
+                        SELECT t.*, p.p_name, t2.t_name , (tm_end_time - tm_start_time) AS tm_duration
                         FROM timers t
                         INNER JOIN tasks t2 on t.t_id = t2.t_id
-                        WHERE not tm_end_time is null
+                        INNER JOIN projects p on t2.p_id = p.p_id
                     )
                     SELECT #COLUMNS#
                     FROM tabla
                     #WHERE#
+                    ORDER BY tm_start_time DESC
                 ]]>
             </Sentence>
         </Query>

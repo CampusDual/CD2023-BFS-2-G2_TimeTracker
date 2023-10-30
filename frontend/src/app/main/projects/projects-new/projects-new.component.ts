@@ -11,5 +11,4 @@ export class ProjectsNewComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

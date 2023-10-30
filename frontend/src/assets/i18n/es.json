@@ -64,5 +64,6 @@
   "TASK_DETAILS": "Detalles de la tarea",
   "TASK_USERS": "Usuarios de la tarea",
   "DELETE_PROJECT_ERROR": "No se puede eliminar el proyecto si contiene tareas asociadas",
-  "DELETE_TASK_ERROR": "No se puede eliminar la tarea si contiene tiempos registrados"
+  "DELETE_TASK_ERROR": "No se puede eliminar la tarea si contiene tiempos registrados",
+  "PROJECT_STATE": "Estado del projecto"
 }
