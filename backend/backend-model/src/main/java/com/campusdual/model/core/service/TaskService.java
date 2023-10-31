@@ -5,7 +5,10 @@ import com.campusdual.model.core.dao.ProjectDao;
 import com.campusdual.model.core.dao.TaskDao;
 import com.campusdual.model.core.dao.TimerDao;
 import com.campusdual.model.core.dao.UsersProjectDao;
-import com.ontimize.jee.common.db.SQLStatementBuilder;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicOperator;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicField;
+import com.ontimize.jee.common.db.SQLStatementBuilder.ExtendedSQLConditionValuesProcessor;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -67,11 +70,14 @@ public class TaskService implements ITaskService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
 
-        SQLStatementBuilder.BasicField userField = new SQLStatementBuilder.BasicField(UsersProjectDao.USER_);
-        SQLStatementBuilder.BasicExpression userExp = new SQLStatementBuilder.BasicExpression(userField, SQLStatementBuilder.BasicOperator.EQUAL_OP, authentication.getName());
+        BasicField userField = new BasicField(UsersProjectDao.USER_);
+        BasicExpression userExp = new BasicExpression(userField, BasicOperator.EQUAL_OP, authentication.getName());
 
-        newKeyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
-
+        if (keyMap.containsKey(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY)) {
+            newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, new BasicExpression(keyMap.get(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY), BasicOperator.AND_OP, userExp));
+        } else {
+            newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
+        }
 
         return this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectTask");
     }

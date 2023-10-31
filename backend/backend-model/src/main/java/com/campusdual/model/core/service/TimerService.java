@@ -82,7 +82,6 @@ public class TimerService implements ITimerService {
             newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
         }
 
-
         return this.daoHelper.query(this.timerDao, newKeyMap, attrList,"record");
     }
 
@@ -111,6 +110,4 @@ public class TimerService implements ITimerService {
         newMap.put(TimerDao.USER_, authentication.getName());
         return this.timerQuery(newMap, attrList);
     }
-
-
 }
