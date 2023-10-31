@@ -67,5 +67,8 @@
   "DELETE_PROJECT_ERROR": "This project can't be deleted if it has associated tasks",
   "DELETE_TASK_ERROR": "This task can't be deleted if it contains time records",
   "PROJECT_STATE": "Project State",
-  "UNDO_TASK_SELECTION": "Undo task selection"
+  "UNDO_TASK_SELECTION": "Undo task selection",
+  "TM_DURATION_DECIMAL": "Total time decimal (hh.mm)",
+  "PROJECT_TOTAL_TIME_DECIMAL": "Total time decimal (hh.mm)",
+  "TASK_TOTAL_TIME_DECIMAL": "Total time decimal (hh.mm)"
 }

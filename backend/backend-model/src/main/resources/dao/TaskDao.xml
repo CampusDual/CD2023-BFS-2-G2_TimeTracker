@@ -19,7 +19,7 @@
             <Sentence>
                 <![CDATA[
                     WITH tabla AS(
-                        SELECT t.*,p.*,up.user_,sum(tm.tm_end_time - tm.tm_start_time) as task_total_time
+                        SELECT t.*,p.*,up.user_,sum(tm.tm_end_time - tm.tm_start_time) as task_total_time, sum(tm.tm_end_time - tm.tm_start_time) as task_total_time_decimal
                         FROM tasks t
                         INNER JOIN projects p ON t.P_ID = p.P_ID
                         INNER JOIN users_projects up on up.p_id = t.p_id

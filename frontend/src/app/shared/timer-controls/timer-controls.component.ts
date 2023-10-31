@@ -65,9 +65,9 @@ export class TimerControlsComponent implements OnInit {
       this.cancelTaskCountdown = setTimeout(() => {
       this.stopTimer();
       this.startTimer();
-    }, 5000)
+    }, 15000)
 
-    let i = 5;
+    let i = 15;
 
     const printCountdown = () => {
       this.countdown.nativeElement.innerHTML = `${i}`;

@@ -66,5 +66,8 @@
   "DELETE_PROJECT_ERROR": "No se puede eliminar el proyecto si contiene tareas asociadas",
   "DELETE_TASK_ERROR": "No se puede eliminar la tarea si contiene tiempos registrados",
   "PROJECT_STATE": "Estado del projecto",
-  "UNDO_TASK_SELECTION": "Cancelar cambio de tarea"
+  "UNDO_TASK_SELECTION": "Cancelar cambio de tarea",
+  "TM_DURATION_DECIMAL": "Tiempo total decimal (hh.mm)",
+  "PROJECT_TOTAL_TIME_DECIMAL": "Tiempo total decimal (hh.mm)",
+  "TASK_TOTAL_TIME_DECIMAL": "Tiempo total decimal (hh.mm)"
 }

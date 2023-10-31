@@ -20,7 +20,7 @@
             <Sentence>
                 <![CDATA[
                     WITH tabla AS(
-                            SELECT p_id, sum(tm.tm_end_time - tm.tm_start_time) AS project_total_time
+                            SELECT p_id, sum(tm.tm_end_time - tm.tm_start_time) AS project_total_time, sum(tm.tm_end_time - tm.tm_start_time) AS project_total_time_decimal
                             FROM
                                 tasks t
                             LEFT JOIN timers tm ON tm.t_id = t.t_id
