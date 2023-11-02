@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Expression, FilterExpressionUtils, ORadioComponent } from 'ontimize-web-ngx';
+import { Expression, FilterExpressionUtils, OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-projects-home',
@@ -9,10 +9,10 @@ import { Expression, FilterExpressionUtils, ORadioComponent } from 'ontimize-web
 export class ProjectsHomeComponent implements OnInit {
   arrayData: Array<any> = [];
 
-  constructor() {
+  constructor(private translator: OTranslateService) {
     this.arrayData = [
-      { value: true, key: "FINISHED" },
-      { value: false, key: "UNFINISHED" },
+      { value: true, key: this.translator.get("ARCHIVED") },
+      { value: false, key: this.translator.get("ACTIVE") },
     ];
   }
 

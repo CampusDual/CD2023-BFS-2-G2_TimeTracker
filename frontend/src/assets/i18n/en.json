@@ -17,7 +17,7 @@
   "ERROR_USER_PASS_INCORRECT": "Invalid username or password",
   "REMEMBER_ME": "Remember me",
   "FORGOT_PWD": "Forgot your password?",
-  "FOOTER_CREATED_BY": "Created by Imatia Innovation",
+  "FOOTER_CREATED_BY": "Created by Xabier, Sebas, Gabriel, Ángel",
   "FOOTER_RIGHTS": "All rights reserved",
   "USERS": "Users",
   "PROJECTS": "Projects",
@@ -74,5 +74,9 @@
   "FINISHED_TASK_COMBO": "Show finished/unfinished tasks",
   "FINISHED_TASK": "Finished task",
   "ARCHIVED_PROJECTS_COMBO": "Show archived/active projects",
-  "ARCHIVE_PORJECT": "Archive project"
+  "ARCHIVE_PORJECT": "Archive project",
+  "FINISHED": "Finished",
+  "UNFINISHED": "Unfinished",
+  "ARCHIVED": "Archived",
+  "ACTIVE": "Active"
 }

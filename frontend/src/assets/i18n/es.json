@@ -17,7 +17,7 @@
   "ERROR_USER_PASS_INCORRECT": "Usuario o contraseña incorrecta",
   "REMEMBER_ME": "Recuérdame",
   "FORGOT_PWD": "¿Has olvidado tu contraseña?",
-  "FOOTER_CREATED_BY": "Creado por Imatia Innovation",
+  "FOOTER_CREATED_BY": "Creado por Xabier, Sebas, Gabriel, Ángel",
   "FOOTER_RIGHTS": "Todos los derechos reservados",
   "USERS": "Usuarios",
   "PROJECTS": "Proyectos",
@@ -72,6 +72,10 @@
   "TASK_TOTAL_TIME_DECIMAL": "Tiempo total decimal (hh.mm)",
   "FINISHED_TASK_COMBO": "Mostrar tareas finalizadas/sin finalizar",
   "FINISHED_TASK": "Tarea terminada",
-  "ARCHIVED_PROJECTS_COMBO": "Mostrar proyectos archivados/activos",
-  "ARCHIVE_PROJECT": "Archivar proyecto"
+  "ARCHIVED_PROJECTS_COMBO": "Mostrar proyectos archivados/en activo",
+  "ARCHIVE_PROJECT": "Archivar proyecto",
+  "FINISHED": "Finalizadas",
+  "UNFINISHED": "Sin finalizadar",
+  "ARCHIVED": "Archivados",
+  "ACTIVE": "En activo"
 }

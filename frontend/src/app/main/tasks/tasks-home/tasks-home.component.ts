@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Expression, FilterExpressionUtils } from "ontimize-web-ngx";
+import { Expression, FilterExpressionUtils, OTranslateService } from "ontimize-web-ngx";
 
 @Component({
   selector: "app-tasks-home",
@@ -9,10 +9,10 @@ import { Expression, FilterExpressionUtils } from "ontimize-web-ngx";
 export class TasksHomeComponent implements OnInit {
   arrayData: Array<any> = [];
 
-  constructor() {
+  constructor(private translator : OTranslateService) {
     this.arrayData = [
-      { value: true, key: "FINISHED" },
-      { value: false, key: "UNFINISHED" },
+      { value: true, key: this.translator.get("FINISHED") },
+      { value: false, key: this.translator.get("UNFINISHED") },
     ];
   }
 

@@ -11,14 +11,14 @@
                 <o-textarea-input attr="P_DESCRIPTION" fxFlex fxFlex="90"></o-textarea-input>
             </o-row>
             <o-row>
-                <o-checkbox attr="P_FINISHED" label="ARCHIVE_PROJECT" read-only="no"></o-checkbox>
+                <o-checkbox class="archiveProjectCheckbox" attr="P_FINISHED" label="ARCHIVE_PROJECT" read-only="no"></o-checkbox>
             </o-row>
         </o-column>
         <o-column fxFlex="55">
             <o-row><p>{{ 'PROJECT_USERS' | oTranslate }}</p></o-row>
         <o-form-layout-manager mode="dialog" title="NEW_USER" separator="" attr="newUser">
             <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
-                <o-table service="usersProjects" entity="usersProjectsNames" parent-keys="P_ID" keys="UP_ID"
+                <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectsNames" parent-keys="P_ID" keys="UP_ID"
                 columns="UP_ID;P_ID;USER_;NAME;SURNAME" visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none"
                 insert-button="yes" filter="{ 'P_ID': P_ID }">
                 <o-table-column attr="NAME" class="text-center"></o-table-column>
