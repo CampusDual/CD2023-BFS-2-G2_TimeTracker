@@ -29,7 +29,7 @@
                     SELECT #COLUMNS#
                     FROM tabla
                     #WHERE#
-                    ORDER BY t_date desc
+                    ORDER BY t_date asc
                 ]]>
             </Sentence>
         </Query>
