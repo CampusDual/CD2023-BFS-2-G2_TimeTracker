@@ -15,25 +15,4 @@ export class ProjectsHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  getValeu(){
-    return 1;
-  }
-
-  getDataArray() {
-    const array: Array<Object> = [];
-    array.push({
-      'key': 1,
-      'value': 'Todos'
-    });
-    array.push({
-      'key': 2,
-      'value': 'Finalizados'
-    });
-    array.push({
-      'key': 3,
-      'value': 'Activos'
-    });
-    return array;
-  }
-
 }

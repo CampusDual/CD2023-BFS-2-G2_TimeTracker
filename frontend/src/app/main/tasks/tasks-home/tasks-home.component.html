@@ -1,15 +1,15 @@
 <o-form-layout-manager mode="dialog" label-columns="T_NAME" separator="" attr="taskDetails">
-  <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
+  <o-form-layout-dialog-options width="600px" height="482px" disable-close="false"></o-form-layout-dialog-options>
   <o-form show-header="no">
     <o-combo #finishedTasksCombo attr="finishedTasksCombo" label="FINISHED_TASK_COMBO" [static-data]="arrayData"
-      value-column="value" columns="key;value" visible-columns="key" width="100"></o-combo>
+      value-column="value" columns="key;value" visible-columns="key" width="370px"></o-combo>
 
     <o-filter-builder #filterBuilder attr="filter" filters="finishedTasksCombo:finishedTasksCombo" [target]="tasksTable"
       query-on-change="yes" [expression-builder]="createFilter"></o-filter-builder>
 
     <div fxFill fxLayout="column" fxLayoutAlign="start">
       <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID"
-        columns="T_ID;P_NAME;T_NAME;T_DATE;TASK_TOTAL_TIME;TASK_TOTAL_TIME_DECIMAL" virtual-scroll="no"
+        columns="T_ID;P_NAME;T_NAME;T_DATE;TASK_TOTAL_TIME;TASK_TOTAL_TIME_DECIMAL;T_FINISHED" virtual-scroll="no"
         visible-columns="P_NAME;T_NAME;T_DATE;TASK_TOTAL_TIME;TASK_TOTAL_TIME_DECIMAL"
         default-visible-columns="P_NAME;T_NAME;T_DATE;TASK_TOTAL_TIME" delete-button="no" query-rows="20">
         <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>

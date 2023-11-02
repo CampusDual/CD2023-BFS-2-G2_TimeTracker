@@ -25,7 +25,7 @@ export class TasksHomeComponent implements OnInit {
   createFilter(values: Array<{ attr, value }>): Expression {
     let filters: Array<Expression> = [];
     values.forEach((fil) => {
-      if (fil.value == false || fil.value === false) {
+      if (fil.value != false || fil.value === false) {
         if (fil.attr === "finishedTasksCombo") {
 
           filters.push(

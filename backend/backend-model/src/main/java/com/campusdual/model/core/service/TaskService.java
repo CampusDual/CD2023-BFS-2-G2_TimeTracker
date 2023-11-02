@@ -5,6 +5,7 @@ import com.campusdual.model.core.dao.ProjectDao;
 import com.campusdual.model.core.dao.TaskDao;
 import com.campusdual.model.core.dao.TimerDao;
 import com.campusdual.model.core.dao.UsersProjectDao;
+import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicOperator;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicField;

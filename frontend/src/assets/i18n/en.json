@@ -70,5 +70,7 @@
   "UNDO_TASK_SELECTION": "Undo task selection",
   "TM_DURATION_DECIMAL": "Total time decimal (hh.mm)",
   "PROJECT_TOTAL_TIME_DECIMAL": "Total time decimal (hh.mm)",
-  "TASK_TOTAL_TIME_DECIMAL": "Total time decimal (hh.mm)"
+  "TASK_TOTAL_TIME_DECIMAL": "Total time decimal (hh.mm)",
+  "FINISHED_TASK_COMBO": "Show finished/unfinished tasks",
+  "FINISHED_TASK": "Finished task"
 }

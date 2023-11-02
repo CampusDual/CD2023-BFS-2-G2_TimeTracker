@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Injector, ViewChild } from '@angular/core';
-import { DialogService, OComboComponent, OntimizeService } from 'ontimize-web-ngx';
+import { DialogService, OComboComponent, OntimizeService, Expression, FilterExpressionUtils } from 'ontimize-web-ngx';
 
 
 @Component({
@@ -179,4 +179,5 @@ export class TimerControlsComponent implements OnInit {
   finalizarJornada(): void {
     this.isStarted = false;
   }
+
 }
