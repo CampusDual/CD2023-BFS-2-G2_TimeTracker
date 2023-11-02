@@ -68,6 +68,7 @@ public class TaskService implements ITaskService {
     }
     @Override
     public EntityResult projectTaskQuery(Map<String, Object> keyMap, List<String> attrList) {
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
 

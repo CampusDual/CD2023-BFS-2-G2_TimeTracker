@@ -19,7 +19,6 @@ public class TaskDao extends OntimizeJdbcDaoSupport {
     public static final String T_DATE = "T_DATE";
     public static final String T_TIME = "T_TIME";
     public static final String TS_ID = "TS_ID";
-
-
+    public static final String T_FINISHED = "T_FINISHED";
 
 }

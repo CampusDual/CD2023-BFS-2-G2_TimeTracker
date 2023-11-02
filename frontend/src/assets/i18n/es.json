@@ -71,5 +71,7 @@
   "PROJECT_TOTAL_TIME_DECIMAL": "Tiempo total decimal (hh.mm)",
   "TASK_TOTAL_TIME_DECIMAL": "Tiempo total decimal (hh.mm)",
   "FINISHED_TASK_COMBO": "Mostrar tareas finalizadas/sin finalizar",
-  "FINISHED_TASK": "Tarea terminada"
+  "FINISHED_TASK": "Tarea terminada",
+  "ARCHIVED_PROJECTS_COMBO": "Mostrar proyectos archivados/activos",
+  "ARCHIVE_PROJECT": "Archivar proyecto"
 }
