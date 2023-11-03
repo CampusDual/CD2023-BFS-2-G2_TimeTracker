@@ -7,6 +7,7 @@ import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicField;
 import com.ontimize.jee.common.db.SQLStatementBuilder.ExtendedSQLConditionValuesProcessor;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,11 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Lazy
 @Service("TimerService")
@@ -88,6 +90,26 @@ public class TimerService implements ITimerService {
     @Override
     public EntityResult recordInsert(Map<String, Object> attrMap) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> kMapQuery = new HashMap<>();
+        List<String> aListQuery = new ArrayList<>();
+
+        kMapQuery.put(TimerDao.USER_, authentication.getName());
+        aListQuery.add(TimerDao.TM_START_TIME);
+        aListQuery.add(TimerDao.TM_END_TIME);
+
+        EntityResult queryRes = this.timerQuery(kMapQuery, aListQuery);
+        ArrayList<Timestamp> startTime = (ArrayList<Timestamp>) queryRes.get(TimerDao.TM_START_TIME);
+        ArrayList<Timestamp> endTime = (ArrayList<Timestamp>) queryRes.get(TimerDao.TM_END_TIME);
+
+        for (int i = 0; i < startTime.size(); i++) {
+            if (((Date) attrMap.get(TimerDao.TM_START_TIME)).before(endTime.get(i)) && ((Date) attrMap.get(TimerDao.TM_END_TIME)).after(startTime.get(i))) {
+                EntityResult err = new EntityResultMapImpl();
+                err.setCode(EntityResult.OPERATION_WRONG);
+                err.setMessage("OVERLAPPING_TASK_MSG");
+                return err;
+            }
+        }
+
         Map<String, Object> newMap = new HashMap<>(attrMap);
         newMap.put(TimerDao.USER_, authentication.getName());
         return this.daoHelper.insert(this.timerDao, newMap);
@@ -95,6 +117,54 @@ public class TimerService implements ITimerService {
 
     @Override
     public EntityResult recordUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        if (attrMap.containsKey(TimerDao.TM_START_TIME) || attrMap.containsKey(TimerDao.TM_END_TIME)) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            Map<String, Object> kMapQuery = new HashMap<>();
+            List<String> aListQuery = new ArrayList<>();
+
+            kMapQuery.put(TimerDao.USER_, authentication.getName());
+            aListQuery.add(TimerDao.TM_START_TIME);
+            aListQuery.add(TimerDao.TM_END_TIME);
+            aListQuery.add(TimerDao.TM_ID);
+
+            EntityResult queryRes = this.timerQuery(kMapQuery, aListQuery);
+            ArrayList<Timestamp> startTime = (ArrayList<Timestamp>) queryRes.get(TimerDao.TM_START_TIME);
+            ArrayList<Timestamp> endTime = (ArrayList<Timestamp>) queryRes.get(TimerDao.TM_END_TIME);
+            ArrayList<Integer> id = (ArrayList<Integer>) queryRes.get(TimerDao.TM_ID);
+
+            Date newStartTime;
+            Date newEndTime;
+            List<String> newAttrList = new ArrayList<>();
+
+            if (attrMap.containsKey(TimerDao.TM_START_TIME)) {
+                if (attrMap.containsKey(TimerDao.TM_END_TIME)) {
+                    newStartTime = (Date) attrMap.get(TimerDao.TM_START_TIME);
+                    newEndTime = (Date) attrMap.get(TimerDao.TM_END_TIME);
+                } else {
+                    newStartTime = (Date) attrMap.get(TimerDao.TM_START_TIME);
+                    newAttrList.add(TimerDao.TM_END_TIME);
+                    EntityResult res = this.timerQuery(keyMap, newAttrList);
+                    newEndTime = ((ArrayList<Date>) res.get(TimerDao.TM_END_TIME)).get(0);
+                }
+            } else {
+                newEndTime = (Date) attrMap.get(TimerDao.TM_END_TIME);
+                newAttrList.add(TimerDao.TM_START_TIME);
+                EntityResult res = this.timerQuery(keyMap, newAttrList);
+                newStartTime = ((ArrayList<Date>) res.get(TimerDao.TM_START_TIME)).get(0);
+            }
+
+            for (int i = 0; i < startTime.size(); i++) {
+                if (id.get(i).compareTo((Integer) keyMap.get(TimerDao.TM_ID)) != 0) {
+                    if (newStartTime.before(endTime.get(i)) &&
+                            newEndTime.after(startTime.get(i))) {
+                        EntityResult err = new EntityResultMapImpl();
+                        err.setCode(EntityResult.OPERATION_WRONG);
+                        err.setMessage("OVERLAPPING_TASK_MSG");
+                        return err;
+                    }
+                }
+            }
+        }
         return this.daoHelper.update(this.timerDao, attrMap, keyMap);
     }
 

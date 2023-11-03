@@ -3,7 +3,6 @@ package com.campusdual.model.core.service;
 import com.campusdual.api.core.service.ITaskService;
 import com.campusdual.model.core.dao.ProjectDao;
 import com.campusdual.model.core.dao.TaskDao;
-import com.campusdual.model.core.dao.TimerDao;
 import com.campusdual.model.core.dao.UsersProjectDao;
 import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicOperator;
