@@ -10,7 +10,7 @@
     <div fxFill fxLayout="column" fxLayoutAlign="start">
       <o-table #projectsTable attr="projectTable" service="projects" entity="projectTotalTime" keys="P_ID"
         columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME;PROJECT_TOTAL_TIME_DECIMAL;P_FINISHED" virtual-scroll="no"
-        visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME;PROJECT_TOTAL_TIME_DECIMAL"
+        visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME;PROJECT_TOTAL_TIME_DECIMAL;P_FINISHED"
         default-visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME;P_FINISHED" delete-button="no" query-rows="20">
         <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
         <o-table-column attr="P_DESCRIPTION" title="P_DESCRIPTION" multiline="no" max-width="250px"></o-table-column>
@@ -21,7 +21,7 @@
         <o-table-column attr="PROJECT_TOTAL_TIME_DECIMAL" title="PROJECT_TOTAL_TIME_DECIMAL" class="text-center">
           <app-duration-decimal-render></app-duration-decimal-render>
         </o-table-column>
-        <o-table-column attr="P_FINISHED" title="Activo">
+        <o-table-column attr="P_FINISHED" class="text-center">
           <app-boolean-active-render></app-boolean-active-render>
         </o-table-column>
       </o-table>

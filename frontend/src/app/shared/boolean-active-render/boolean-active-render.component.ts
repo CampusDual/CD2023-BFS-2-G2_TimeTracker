@@ -1,5 +1,5 @@
 import { Component, Injector, TemplateRef, ViewChild } from '@angular/core';
-import { OBaseTableCellRenderer } from 'ontimize-web-ngx';
+import { OBaseTableCellRenderer, OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-boolean-active-render',
@@ -10,7 +10,7 @@ export class BooleanActiveRenderComponent extends OBaseTableCellRenderer {
 
   @ViewChild('templateref', { read: TemplateRef, static: false }) public templateref: TemplateRef<any>;
 
-  constructor(protected injector: Injector) {
+  constructor(protected injector: Injector, private translator : OTranslateService) {
     super(injector);
     }
 
@@ -19,9 +19,9 @@ export class BooleanActiveRenderComponent extends OBaseTableCellRenderer {
     let active;
 
     if (cellvalue == false) {
-      return active = "activo";
+      return active = this.translator.get("ACTIVE");
     } else {
-      return active = "archivado";
+      return active = this.translator.get("ARCHIVED_P");
     }
   }
 }

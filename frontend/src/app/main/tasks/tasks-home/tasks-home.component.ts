@@ -18,6 +18,10 @@ export class TasksHomeComponent implements OnInit {
 
   ngOnInit() { }
 
+  intialComboSelection(){
+    return false;
+  }
+
   getDataArray() {
     return this.arrayData;
   }

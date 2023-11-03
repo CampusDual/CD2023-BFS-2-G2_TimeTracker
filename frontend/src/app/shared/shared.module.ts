@@ -5,6 +5,7 @@ import { DurationRenderComponent } from './duration-render/duration-render.compo
 import { TimerControlsComponent } from './timer-controls/timer-controls.component';
 import { DurationDecimalRenderComponent } from './duration-decimal-render/duration-decimal-render.component';
 import { BooleanActiveRenderComponent } from './boolean-active-render/boolean-active-render.component';
+import { BooleanFinishedRenderComponent } from './boolean-finished-render/boolean-finished-render.component';
 
 @NgModule({
   imports: [
@@ -14,14 +15,16 @@ import { BooleanActiveRenderComponent } from './boolean-active-render/boolean-ac
   DurationRenderComponent,
   TimerControlsComponent,
   DurationDecimalRenderComponent,
-  BooleanActiveRenderComponent
+  BooleanActiveRenderComponent,
+  BooleanFinishedRenderComponent
   ],
   exports: [
     CommonModule,
     DurationRenderComponent,
     TimerControlsComponent,
     DurationDecimalRenderComponent,
-    BooleanActiveRenderComponent
+    BooleanActiveRenderComponent,
+    BooleanFinishedRenderComponent
   ]
 })
 export class SharedModule { }

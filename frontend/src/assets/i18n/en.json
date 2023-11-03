@@ -73,10 +73,14 @@
   "FINISHED_TASK_COMBO": "Show finished/unfinished tasks",
   "FINISHED_TASK": "Finished task",
   "ARCHIVED_PROJECTS_COMBO": "Show archived/active projects",
-  "ARCHIVE_PORJECT": "Archive project",
+  "ARCHIVE_PROJECT": "Archive project",
   "FINISHED": "Finished",
   "UNFINISHED": "Unfinished",
   "ARCHIVED": "Archived",
   "ACTIVE": "Active",
-  "OVERLAPPING_TASK_MSG": "There is a task in this time span"
+  "OVERLAPPING_TASK_MSG": "There is a task in this time span",
+  "P_FINISHED": "Status",
+  "T_FINISHED": "Status",
+  "FINISHED_T": "Finished",
+  "ARCHIVED_P": "Archived"
 }
