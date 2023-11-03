@@ -77,5 +77,6 @@
   "FINISHED": "Finalizadas",
   "UNFINISHED": "Sin finalizadar",
   "ARCHIVED": "Archivados",
-  "ACTIVE": "En activo"
+  "ACTIVE": "En activo",
+  "OVERLAPPING_TASK_MSG": "Hay una tarea en este lapso de tiempo"
 }

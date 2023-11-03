@@ -19,7 +19,6 @@ export class RecordNewComponent implements OnInit {
     const dateValidator = (control: FormControl): ValidationErrors => {
       let result = {};
   
-      console.log(self.endInput.getValue() < self.startInput.getValue());
       if(self.endInput.getValue() < self.startInput.getValue()) {
         result['required'] = 'true';
       }

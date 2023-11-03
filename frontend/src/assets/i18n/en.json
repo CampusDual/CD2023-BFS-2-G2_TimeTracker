@@ -63,7 +63,6 @@
   "PROJECT_USERS": "Project Users",
   "TASK_DETAILS": "Task Details",
   "TASK_USERS": "Task Users",
-  "DELETE_TASK_ERROR": "",
   "DELETE_PROJECT_ERROR": "This project can't be deleted if it has associated tasks",
   "DELETE_TASK_ERROR": "This task can't be deleted if it contains time records",
   "PROJECT_STATE": "Project State",
@@ -78,5 +77,6 @@
   "FINISHED": "Finished",
   "UNFINISHED": "Unfinished",
   "ARCHIVED": "Archived",
-  "ACTIVE": "Active"
+  "ACTIVE": "Active",
+  "OVERLAPPING_TASK_MSG": "There is a task in this time span"
 }
