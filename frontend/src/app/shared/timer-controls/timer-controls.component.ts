@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Injector, ViewChild } from '@angular/core';
-import { DialogService, OComboComponent, OntimizeService, Expression, FilterExpressionUtils } from 'ontimize-web-ngx';
-
+import { OComboComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-timer-controls',
@@ -24,7 +23,7 @@ export class TimerControlsComponent implements OnInit {
   @ViewChild('crono', { static: true }) crono: ElementRef;
   @ViewChild('countdown', { static: true }) countdown: ElementRef;
 
-  constructor(protected injector: Injector, protected dialogService: DialogService) {
+  constructor(protected injector: Injector) {
     this.service = this.injector.get(OntimizeService);
   }
 
@@ -52,12 +51,15 @@ export class TimerControlsComponent implements OnInit {
         this.isCancelled = false;
       }
     })
-
   }
 
   protected configureService() {
     const conf = this.service.getDefaultServiceConfiguration("timers");
     this.service.configureService(conf);
+  }
+
+  refreshCombo() {
+    this.taskCombo.refresh();
   }
 
   changeTask(){
@@ -91,7 +93,6 @@ export class TimerControlsComponent implements OnInit {
       this.taskCombo.setValue(this.selectedTaskValue);
     }
   }
-
 
   startTimer() {
     if (this.service !== null) {
@@ -127,7 +128,6 @@ export class TimerControlsComponent implements OnInit {
       clearInterval(this.temporizadorInterval);
     }
   }
-
 
   iniciarContador() {
 
