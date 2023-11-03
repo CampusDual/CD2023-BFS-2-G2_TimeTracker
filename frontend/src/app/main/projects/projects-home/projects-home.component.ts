@@ -22,6 +22,10 @@ export class ProjectsHomeComponent implements OnInit {
     return this.arrayData;
   }
 
+  initialComboSelection(){
+    return false;
+  }
+
   createFilter(values: Array<{ attr, value }>): Expression {
     let filters: Array<Expression> = [];
     values.forEach((fil) => {
