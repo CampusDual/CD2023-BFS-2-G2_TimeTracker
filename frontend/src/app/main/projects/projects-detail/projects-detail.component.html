@@ -1,30 +1,66 @@
-<o-form service="projects" entity="project" keys="P_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
+<o-form service="projects" entity="project" keys="P_ID" header-actions="R;U;D" show-header-navigation="no"
+    undo-button="no">
     <o-text-input attr="P_ID" sql-type="INTEGER" hidden></o-text-input>
-    <o-row>
-        <o-column title-label="PROJECT_DETAILS" fxFlex="45">
-            <o-row><p>{{ 'PROJECT_DETAILS' | oTranslate }}</p></o-row>
-            <o-row>
-                <o-text-input class="input-padding" attr="P_NAME" fxFlex="50" required="no">
-                </o-text-input><o-date-input attr="P_DATE" fxFlex="40"></o-date-input>
-            </o-row>
-            <o-row>
-                <o-textarea-input attr="P_DESCRIPTION" fxFlex fxFlex="90"></o-textarea-input>
-            </o-row>
-            <o-row>
-                <o-checkbox class="archiveProjectCheckbox" attr="P_FINISHED" label="ARCHIVE_PROJECT" read-only="no"></o-checkbox>
-            </o-row>
-        </o-column>
-        <o-column fxFlex="55">
-            <o-row><p>{{ 'PROJECT_USERS' | oTranslate }}</p></o-row>
-        <o-form-layout-manager mode="dialog" title="NEW_USER" separator="" attr="newUser">
-            <o-form-layout-dialog-options width="600px" height="450px" disable-close="false"></o-form-layout-dialog-options>
-                <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectsNames" parent-keys="P_ID" keys="UP_ID"
-                columns="UP_ID;P_ID;USER_;NAME;SURNAME" visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none"
-                insert-button="yes" filter="{ 'P_ID': P_ID }">
-                <o-table-column attr="NAME" class="text-center"></o-table-column>
-                <o-table-column attr="SURNAME" class="text-center"></o-table-column>
-                </o-table>
-            </o-form-layout-manager>
-        </o-column>
-    </o-row>
+    <mat-tab-group oTabGroup="ontimize">
+        <mat-tab label="{{ 'PROJECT_DETAILS' | oTranslate }}">
+            <o-column title-label="PROJECT_DETAILS" fxFlex="100">
+                <o-row>
+                    <o-text-input class="input-padding" attr="P_NAME" fxFlex="80" required="no"></o-text-input>
+                    <o-date-input attr="P_DATE" fxFlex="20"></o-date-input>
+                </o-row>
+                <o-row>
+                    <o-textarea-input attr="P_DESCRIPTION" fxFlex="100"></o-textarea-input>
+                </o-row>
+                <o-row>
+                    <o-checkbox class="archiveProjectCheckbox" fxFlex="30" attr="P_FINISHED" label="ARCHIVE_PROJECT"
+                        read-only="no"></o-checkbox>
+                </o-row>
+            </o-column>
+        </mat-tab>
+        <mat-tab label="{{ 'PROJECT_USERS' | oTranslate }}">
+            <o-column fxFlex="100">
+                <o-form-layout-manager mode="dialog" title="NEW_USER" separator="" attr="newUser">
+                    <o-form-layout-dialog-options width="600px" height="450px"
+                        disable-close="false"></o-form-layout-dialog-options>
+                    <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectsNames"
+                        parent-keys="P_ID" keys="UP_ID" columns="UP_ID;P_ID;USER_;NAME;SURNAME"
+                        visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none" insert-button="yes">
+                        <o-table-column attr="NAME" class="text-center"></o-table-column>
+                        <o-table-column attr="SURNAME" class="text-center"></o-table-column>
+                    </o-table>
+                </o-form-layout-manager>
+            </o-column>
+        </mat-tab>
+        <mat-tab label="{{ 'PROJECT_TASKS' | oTranslate }}">
+            <o-column fxFlex="100">
+                <o-form-layout-manager mode="dialog" title="NEW_TASK" separator="" attr="newTask">
+                    <o-form-layout-dialog-options width="600px" height="450px"
+                        disable-close="false"></o-form-layout-dialog-options>
+                    <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID" parent-keys="P_ID"
+                        columns="T_ID;P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
+                        virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes" detail-mode="none"
+                        visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
+                        default-visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED">
+                        <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
+                        <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
+                        <o-table-column attr="T_DATE" title="T_DATE" type="date"
+                            format="DD/MM/YYYY HH:mm"></o-table-column>
+                        <o-table-column attr="USER_TASK_TIME" title="USER_TASK_TIME" class="text-center">
+                            <app-duration-render></app-duration-render>
+                        </o-table-column>
+                        <o-table-column attr="TOTAL_TASK_TIME" title="TOTAL_TASK_TIME" class="text-center">
+                            <app-duration-render></app-duration-render>
+                        </o-table-column>
+                        <o-table-column attr="TOTAL_TASK_TIME_DECIMAL" title="TOTAL_TASK_TIME_DECIMAL"
+                            class="text-center">
+                            <app-duration-decimal-render></app-duration-decimal-render>
+                        </o-table-column>
+                        <o-table-column attr="T_FINISHED" class="text-center">
+                            <app-boolean-finished-render></app-boolean-finished-render>
+                        </o-table-column>
+                    </o-table>
+                </o-form-layout-manager>
+            </o-column>
+        </mat-tab>
+    </mat-tab-group>
 </o-form>
