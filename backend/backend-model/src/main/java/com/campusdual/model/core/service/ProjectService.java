@@ -61,7 +61,7 @@ public class ProjectService implements IProjectService {
     @Override
     public EntityResult projectUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
 
-        if(attrMap.containsKey(ProjectDao.P_FINISHED)){
+        if(attrMap.containsKey(ProjectDao.P_FINISHED) && ((boolean) attrMap.get(ProjectDao.P_FINISHED))){
             Map<String, Object> kTaskQueryMap = new HashMap<>();
             List<String> aTaskQueryList = new ArrayList<>();
 
