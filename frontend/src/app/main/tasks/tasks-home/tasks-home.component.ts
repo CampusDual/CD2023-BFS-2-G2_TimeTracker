@@ -11,8 +11,8 @@ export class TasksHomeComponent implements OnInit {
 
   constructor(private translator : OTranslateService) {
     this.arrayData = [
-      { value: true, key: this.translator.get("FINISHED") },
-      { value: false, key: this.translator.get("UNFINISHED") },
+      { value: true, key: this.translator.get("FILTER_FINISHED") },
+      { value: false, key: this.translator.get("FILTER_PENDING") },
     ];
   }
 

@@ -11,8 +11,8 @@ export class ProjectsHomeComponent implements OnInit {
 
   constructor(private translator: OTranslateService) {
     this.arrayData = [
-      { value: true, key: this.translator.get("ARCHIVED") },
-      { value: false, key: this.translator.get("ACTIVE") },
+      { value: true, key: this.translator.get("FILTER_ARCHIVED") },
+      { value: false, key: this.translator.get("FILTER_ACTIVE") },
     ];
   }
 
