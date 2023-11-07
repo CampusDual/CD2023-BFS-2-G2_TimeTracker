@@ -1,8 +1,5 @@
 <o-form service="projects" entity="projectTotalTime" keys="P_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
     <o-text-input attr="P_ID" sql-type="INTEGER" hidden></o-text-input>
-    <o-row>
-        <o-text-input attr="P_NAME_TITLE" fxFlex="30" enabled="no"></o-text-input>
-    </o-row>
     <mat-tab-group oTabGroup="ontimize">
         <mat-tab label="{{ 'PROJECT_DETAILS' | oTranslate }}">
             <o-column title-label="PROJECT_DETAILS" class="project-detail-form">
@@ -12,9 +9,6 @@
                 </o-row>
                 <o-row>
                     <o-textarea-input attr="P_DESCRIPTION" fxFlex="100"></o-textarea-input>
-                </o-row>
-                <o-row>
-                    <o-date-input #totalTime attr="PROJECT_TOTAL_TIME" fxFlex="100" enabled="no"></o-date-input>
                 </o-row>
                 <o-row>
                     <o-checkbox class="archiveProjectCheckbox" fxFlex="30" attr="P_FINISHED" label="ARCHIVE_PROJECT"

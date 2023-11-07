@@ -15,26 +15,22 @@
     <Queries>
         <Query id="projectTotalTime">
             <AmbiguousColumns>
-                <AmbiguousColumn name="P_ID" prefix="pt" />
+                <AmbiguousColumn name="P_ID" prefix="p" />
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
-                    WITH task_timer AS(
+                    WITH tabla AS(
                             SELECT p_id, sum(tm.tm_end_time - tm.tm_start_time) AS project_total_time, sum(tm.tm_end_time - tm.tm_start_time) AS project_total_time_decimal
                             FROM
                                 tasks t
                             LEFT JOIN timers tm ON tm.t_id = t.t_id
-                            group by p_id
-                    ), project_table AS(
-                            SELECT p_id , p_name , (p_name) AS p_name_title, p_description , p_date , p_finished
-                            FROM projects p
-                    )
+                            group by p_id)
                     SELECT
                           #COLUMNS#
                     FROM
-                         users_projects up
-                    INNER JOIN project_table pt ON up.p_id = pt.p_id
-                    LEFT JOIN task_timer tt ON pt.p_id = tt.p_id
+                          projects p
+                    LEFT JOIN tabla t ON p.p_id = t.p_id
+                    LEFT JOIN users_projects up ON up.p_id = p.p_id
                     #WHERE#
                     #ORDER#
                 ]]>
