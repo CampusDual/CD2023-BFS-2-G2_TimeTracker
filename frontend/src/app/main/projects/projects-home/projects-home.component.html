@@ -7,7 +7,7 @@
 
   <div fxFill fxLayout="column" fxLayoutAlign="start">
     <o-table #projectsTable attr="projectTable" service="projects" entity="projectTotalTime" keys="P_ID"
-      columns="P_ID;P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME;PROJECT_TOTAL_TIME_DECIMAL;P_FINISHED" virtual-scroll="no"
+      columns="P_ID;P_NAME;P_NAME_TITLE;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME;PROJECT_TOTAL_TIME_DECIMAL;P_FINISHED" virtual-scroll="no"
       visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME;PROJECT_TOTAL_TIME_DECIMAL;P_FINISHED"
       default-visible-columns="P_NAME;P_DESCRIPTION;P_DATE;PROJECT_TOTAL_TIME;P_FINISHED" delete-button="no" query-rows="20">
       <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>

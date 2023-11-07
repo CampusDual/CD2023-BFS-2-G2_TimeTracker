@@ -1,12 +1,16 @@
-<o-form service="projects" entity="project" keys="P_ID" header-actions="R;U;D" show-header-navigation="no"
+<o-form service="projects" entity="projectTotalTime" keys="P_ID" header-actions="R;U;D" show-header-navigation="no"
     undo-button="no">
     <o-text-input attr="P_ID" sql-type="INTEGER" hidden></o-text-input>
+    <o-row>
+        <o-text-input attr="P_NAME_TITLE" fxFlex enabled="no"></o-text-input>
+    </o-row>
     <mat-tab-group oTabGroup="ontimize">
         <mat-tab label="{{ 'PROJECT_DETAILS' | oTranslate }}">
             <o-column title-label="PROJECT_DETAILS" fxFlex="100">
                 <o-row>
-                    <o-text-input class="input-padding" attr="P_NAME" fxFlex="80" required="no"></o-text-input>
+                    <o-text-input class="input-padding" attr="P_NAME" fxFlex="30" required="no"></o-text-input>
                     <o-date-input attr="P_DATE" fxFlex="20"></o-date-input>
+                    <o-text-input #totalTime attr="PROJECT_TOTAL_TIME" fxFlex="20"></o-text-input>
                 </o-row>
                 <o-row>
                     <o-textarea-input attr="P_DESCRIPTION" fxFlex="100"></o-textarea-input>
@@ -23,7 +27,7 @@
                     <o-form-layout-dialog-options width="600px" height="450px"
                         disable-close="false"></o-form-layout-dialog-options>
                     <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectsNames"
-                        parent-keys="P_ID" keys="UP_ID" columns="UP_ID;P_ID;USER_;NAME;SURNAME"
+                        parent-keys="P_ID" keys="UP_ID" columns="UP_ID;P_ID;USER_;NAME;SURNAME" insert-form-route="addUserProject/new"
                         visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none" insert-button="yes">
                         <o-table-column attr="NAME" class="text-center"></o-table-column>
                         <o-table-column attr="SURNAME" class="text-center"></o-table-column>
@@ -38,7 +42,7 @@
                         disable-close="false"></o-form-layout-dialog-options>
                     <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID" parent-keys="P_ID"
                         columns="T_ID;P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-                        virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes" detail-mode="none"
+                        virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes" detail-mode="none" insert-form-route="addTaskProject/new"
                         visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
                         default-visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED">
                         <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>

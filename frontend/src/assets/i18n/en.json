@@ -59,8 +59,8 @@
   "ERROR_USER_INSERT_MSG": "This user is already added on the project",
   "NAME": "Name",
   "SURNAME": "Surname",
-  "PROJECT_DETAILS": "Project Details",
-  "PROJECT_USERS": "Project Users",
+  "PROJECT_DETAILS": "Details",
+  "PROJECT_USERS": "Users",
   "TASK_DETAILS": "Task Details",
   "TASK_USERS": "Task Users",
   "DELETE_PROJECT_ERROR": "This project can't be deleted if it has associated tasks",
@@ -75,7 +75,7 @@
   "ARCHIVED_PROJECTS_COMBO": "Show archived/active projects",
   "ARCHIVE_PROJECT": "Archive project",
   "FINISHED": "Finished",
-  "UNFINISHED": "Unfinished",
+  "UNFINISHED": "Pending",
   "ARCHIVED": "Archived",
   "ACTIVE": "Active",
   "OVERLAPPING_TASK_MSG": "There is a task in this time span",
@@ -84,5 +84,6 @@
   "FINISHED_T": "Finished",
   "ARCHIVED_P": "Archived",
   "USER_TASK_TIME" : "Personal time (hh:mm)",
-  "PROJECT_TASKS" : "Project tasks"
+  "PROJECT_TASKS" : "Tasks",
+  "P_NAME_TITLE" : "Project"
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { OTextInputComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-projects-detail',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsDetailComponent implements OnInit {
 
+  @ViewChild('totalTime', {static: true})totalTime : OTextInputComponent;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.totalTime.getValue());
   }
 
 }

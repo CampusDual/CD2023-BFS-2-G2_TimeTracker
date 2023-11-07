@@ -7,6 +7,7 @@ import { ProjectsDetailComponent } from './projects-detail/projects-detail.compo
 import { ProjectsNewComponent } from './projects-new/projects-new.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddUserprojectComponent } from './add-userproject/add-userproject.component';
+import { AddTaskprojectComponent } from './add-taskproject/add-taskproject.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AddUserprojectComponent } from './add-userproject/add-userproject.compo
     ProjectsHomeComponent,
     ProjectsDetailComponent,
     ProjectsNewComponent,
-    AddUserprojectComponent
+    AddUserprojectComponent,
+    AddTaskprojectComponent
   ],
   imports: [
     CommonModule,
