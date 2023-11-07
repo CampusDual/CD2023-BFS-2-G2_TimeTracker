@@ -96,4 +96,9 @@ public class TaskService implements ITaskService {
 
         return this.daoHelper.query(this.taskDao, newKeyMap, attrList, "unfinishedTasks");
     }
+
+    @Override
+    public EntityResult projectTaskUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+        return this.daoHelper.update(this.taskDao, attrMap, keyMap);
+    }
 }

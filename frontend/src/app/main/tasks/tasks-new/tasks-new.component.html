@@ -1,13 +1,15 @@
 <o-form service="tasks" entity="task" keys="T_ID" header-actions="R;I;U;D" show-header-navigation="no">
-    <o-row>
-        <o-text-input class="input-padding" attr="T_NAME" required="yes"></o-text-input>
-    </o-row>
-    <o-row>
-        <o-textarea-input class="input-padding" attr="T_DESCRIPTION" required="no" resizable="no"></o-textarea-input>
-    </o-row>
-    <o-row>
-        <o-combo attr="P_ID" label="SELECT_PROJECT" service="projects" entity="projectTotalTime" searchable="yes"
-            value-column="P_ID" columns="P_ID;P_NAME" visible-columns="P_NAME" keys="P_ID" required="yes">
-        </o-combo>
-    </o-row>
+    <o-column class="new-task">
+        <o-row>
+            <o-text-input class="input-padding" attr="T_NAME" required="yes"></o-text-input>
+        </o-row>
+        <o-row>
+            <o-textarea-input class="input-padding" attr="T_DESCRIPTION" required="no" resizable="no"></o-textarea-input>
+        </o-row>
+        <o-row>
+            <o-combo attr="P_ID" label="SELECT_PROJECT" service="projects" entity="projectTotalTime" searchable="yes"
+                value-column="P_ID" columns="P_ID;P_NAME" visible-columns="P_NAME" keys="P_ID" required="yes">
+            </o-combo>
+        </o-row>
+    </o-column>
 </o-form>

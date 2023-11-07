@@ -13,6 +13,9 @@
     </UpdateKeys>
     <Queries>
         <Query id="record">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="P_ID" prefix="p" />
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     WITH tabla AS (

@@ -1,33 +1,33 @@
-<o-form-layout-manager mode="dialog" label-columns="T_NAME" separator="" attr="taskDetails">
-  <o-form-layout-dialog-options width="600px" height="482px" disable-close="false"></o-form-layout-dialog-options>
-  <o-form show-header="no">
-    <o-combo #finishedTasksCombo attr="finishedTasksCombo" label="FINISHED_TASK_COMBO" [static-data]="arrayData" [data]="intialComboSelection()"
-      value-column="value" columns="key;value" visible-columns="key" width="370px"></o-combo>
+<o-form show-header="no">
+  <o-combo #finishedTasksCombo attr="finishedTasksCombo" label="FINISHED_TASK_COMBO" [static-data]="arrayData"
+    [data]="intialComboSelection()" value-column="value" columns="key;value" visible-columns="key"
+    width="370px"></o-combo>
 
-    <o-filter-builder #filterBuilder attr="filter" filters="finishedTasksCombo:finishedTasksCombo" [target]="tasksTable"
-      query-on-change="yes" [expression-builder]="createFilter"></o-filter-builder>
+  <o-filter-builder #filterBuilder attr="filter" filters="finishedTasksCombo:finishedTasksCombo" [target]="tasksTable"
+    query-on-change="yes" [expression-builder]="createFilter"></o-filter-builder>
 
-    <div fxFill fxLayout="column" fxLayoutAlign="start">
-      <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID"
-        columns="T_ID;P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED" virtual-scroll="no"
-        visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-        default-visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED" delete-button="no" query-rows="20">
-        <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
-        <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
-        <o-table-column attr="T_DATE" title="T_DATE" type="date" format="DD/MM/YYYY HH:mm"></o-table-column>
-        <o-table-column attr="USER_TASK_TIME" title="USER_TASK_TIME" class="text-center">
-          <app-duration-render></app-duration-render>
-        </o-table-column>
-        <o-table-column attr="TOTAL_TASK_TIME" title="TOTAL_TASK_TIME" class="text-center">
-          <app-duration-render></app-duration-render>
-        </o-table-column>
-        <o-table-column attr="TOTAL_TASK_TIME_DECIMAL" title="TOTAL_TASK_TIME_DECIMAL" class="text-center">
-          <app-duration-decimal-render></app-duration-decimal-render>
-        </o-table-column>
-        <o-table-column attr="T_FINISHED" class="text-center">
-          <app-boolean-finished-render></app-boolean-finished-render>
-        </o-table-column>  
-      </o-table>
-    </div>
-  </o-form>
-</o-form-layout-manager>
+  <div fxFill fxLayout="column" fxLayoutAlign="start">
+    <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID"
+      columns="T_ID;P_NAME;T_NAME;T_NAME_TITLE;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
+      virtual-scroll="no"
+      visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
+      default-visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED" delete-button="no"
+      query-rows="20">
+      <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
+      <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
+      <o-table-column attr="T_DATE" title="T_DATE" type="date" format="DD/MM/YYYY HH:mm"></o-table-column>
+      <o-table-column attr="USER_TASK_TIME" title="USER_TASK_TIME" class="text-center">
+        <app-duration-render></app-duration-render>
+      </o-table-column>
+      <o-table-column attr="TOTAL_TASK_TIME" title="TOTAL_TASK_TIME" class="text-center">
+        <app-duration-render></app-duration-render>
+      </o-table-column>
+      <o-table-column attr="TOTAL_TASK_TIME_DECIMAL" title="TOTAL_TASK_TIME_DECIMAL" class="text-center">
+        <app-duration-decimal-render></app-duration-decimal-render>
+      </o-table-column>
+      <o-table-column attr="T_FINISHED" class="text-center">
+        <app-boolean-finished-render></app-boolean-finished-render>
+      </o-table-column>
+    </o-table>
+  </div>
+</o-form>
