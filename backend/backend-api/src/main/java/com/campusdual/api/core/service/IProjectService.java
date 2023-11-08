@@ -14,4 +14,5 @@ public interface IProjectService {
     public EntityResult projectTotalTimeQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult projectTotalTimeDelete(Map<String, Object> keyMap);
     public EntityResult projectTotalTimeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
+
 }

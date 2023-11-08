@@ -59,7 +59,7 @@
                     SELECT #COLUMNS#
                     FROM tabla
                     #WHERE#
-                    ORDER BY t_date desc
+                    ORDER BY p_name asc, t_name asc
                 ]]>
             </Sentence>
         </Query>

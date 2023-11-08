@@ -14,6 +14,7 @@ import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -53,7 +54,7 @@ public class TaskService implements ITaskService {
         try{
             err = this.daoHelper.delete(this.taskDao, keyMap);
 
-        }catch (Exception e){
+        }catch (DataIntegrityViolationException e){
             err = new EntityResultMapImpl();
             err.setCode(EntityResult.OPERATION_WRONG);
             err.setMessage("DELETE_TASK_ERROR");
@@ -100,5 +101,19 @@ public class TaskService implements ITaskService {
     @Override
     public EntityResult projectTaskUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
         return this.daoHelper.update(this.taskDao, attrMap, keyMap);
+    }
+
+    @Override
+    public EntityResult projectTaskDelete(Map<?, ?> keyMap) {
+        EntityResult err;
+        try{
+            err = this.daoHelper.delete(this.taskDao, keyMap);
+
+        }catch (DataIntegrityViolationException e){
+            err = new EntityResultMapImpl();
+            err.setCode(EntityResult.OPERATION_WRONG);
+            err.setMessage("DELETE_TASK_ERROR");
+        }
+        return err;
     }
 }

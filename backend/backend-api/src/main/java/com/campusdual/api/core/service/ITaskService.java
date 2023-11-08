@@ -11,11 +11,9 @@ public interface ITaskService {
     public EntityResult taskInsert(Map<?, ?> attrMap);
     public EntityResult taskUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
     public EntityResult taskDelete(Map<?, ?> keyMap);
-
     public EntityResult taskTimerQuery(Map<?, ?> keyMap, List<?> attrList);
-
     public EntityResult projectTaskQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult unfinishedTasksQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult projectTaskUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
-
+    public EntityResult projectTaskDelete(Map<?, ?> keyMap);
 }

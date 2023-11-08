@@ -15,6 +15,7 @@ import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -91,7 +92,7 @@ public class ProjectService implements IProjectService {
         try{
             err = this.daoHelper.delete(this.projectDao, keyMap);
 
-        }catch (Exception e){
+        }catch (DataIntegrityViolationException e){
             err = new EntityResultMapImpl();
             err.setCode(EntityResult.OPERATION_WRONG);
             err.setMessage("DELETE_PROJECT_ERROR");
@@ -119,7 +120,16 @@ public class ProjectService implements IProjectService {
 
     @Override
     public EntityResult projectTotalTimeDelete(Map<String, Object> keyMap) {
-        return this.daoHelper.delete(this.projectDao, keyMap);
+        EntityResult err;
+        try{
+            err = this.daoHelper.delete(this.projectDao, keyMap);
+
+        }catch (DataIntegrityViolationException e){
+            err = new EntityResultMapImpl();
+            err.setCode(EntityResult.OPERATION_WRONG);
+            err.setMessage("DELETE_PROJECT_ERROR");
+        }
+        return err;
     }
 
     @Override
