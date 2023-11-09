@@ -61,28 +61,6 @@ public class ProjectService implements IProjectService {
 
     @Override
     public EntityResult projectUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
-
-        if(attrMap.containsKey(ProjectDao.P_FINISHED) && ((boolean) attrMap.get(ProjectDao.P_FINISHED))){
-            Map<String, Object> kTaskQueryMap = new HashMap<>();
-            List<String> aTaskQueryList = new ArrayList<>();
-
-            kTaskQueryMap.put(TaskDao.P_ID, keyMap.get(ProjectDao.P_ID));
-            aTaskQueryList.add(TaskDao.T_ID);
-            aTaskQueryList.add(TaskDao.T_FINISHED);
-            EntityResult queryRes = taskService.taskQuery(kTaskQueryMap, aTaskQueryList);
-
-            ArrayList<Integer> tId = (ArrayList<Integer>) queryRes.get(TaskDao.T_ID);
-
-            for (int i = 0; i < tId.size(); i++) {
-
-                Map<String, Object> updateKeyMap = new HashMap<>();
-                Map<String, Object> updateAttrMap = new HashMap<>();
-
-                updateKeyMap.put(TaskDao.T_ID, tId.get(i));
-                updateAttrMap.put(TaskDao.T_FINISHED, attrMap.get(ProjectDao.P_FINISHED));
-                taskService.taskUpdate(updateAttrMap, updateKeyMap);
-            }
-        }
         return this.daoHelper.update(this.projectDao, attrMap, keyMap);
     }
 
@@ -134,6 +112,27 @@ public class ProjectService implements IProjectService {
 
     @Override
     public EntityResult projectTotalTimeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        if(attrMap.containsKey(ProjectDao.P_FINISHED) && ((boolean) attrMap.get(ProjectDao.P_FINISHED))){
+            Map<String, Object> kTaskQueryMap = new HashMap<>();
+            List<String> aTaskQueryList = new ArrayList<>();
+
+            kTaskQueryMap.put(TaskDao.P_ID, keyMap.get(ProjectDao.P_ID));
+            aTaskQueryList.add(TaskDao.T_ID);
+            aTaskQueryList.add(TaskDao.T_FINISHED);
+            EntityResult queryRes = taskService.taskQuery(kTaskQueryMap, aTaskQueryList);
+
+            ArrayList<Integer> tId = (ArrayList<Integer>) queryRes.get(TaskDao.T_ID);
+
+            for (int i = 0; i < tId.size(); i++) {
+
+                Map<String, Object> updateKeyMap = new HashMap<>();
+                Map<String, Object> updateAttrMap = new HashMap<>();
+
+                updateKeyMap.put(TaskDao.T_ID, tId.get(i));
+                updateAttrMap.put(TaskDao.T_FINISHED, attrMap.get(ProjectDao.P_FINISHED));
+                taskService.taskUpdate(updateAttrMap, updateKeyMap);
+            }
+        }
         return this.daoHelper.update(this.projectDao, attrMap, keyMap);
     }
 }

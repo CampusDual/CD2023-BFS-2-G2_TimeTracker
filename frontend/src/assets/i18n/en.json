@@ -85,5 +85,9 @@
   "ARCHIVED_P": "Archived",
   "USER_TASK_TIME" : "Personal time (hh:mm)",
   "PROJECT_TASKS" : "Tasks",
-  "P_NAME_TITLE" : "Project"
+  "P_NAME_TITLE" : "Project",
+  "FILTER_ACTIVE": "Active",
+  "FILTER_ARCHIVED": "Archived",
+  "FILTER_FINISHED": "Finished",
+  "FILTER_PENDING": "Pending"
 }
