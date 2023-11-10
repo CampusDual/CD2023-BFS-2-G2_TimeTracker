@@ -67,9 +67,9 @@
   "DELETE_TASK_ERROR": "No se puede eliminar la tarea si contiene tiempos registrados",
   "PROJECT_STATE": "Estado del proyecto",
   "UNDO_TASK_SELECTION": "Cancelar cambio de tarea",
-  "TM_DURATION_DECIMAL": "Tiempo total decimal",
-  "PROJECT_TOTAL_TIME_DECIMAL": "Tiempo total decimal",
-  "TOTAL_TASK_TIME_DECIMAL": "Tiempo total decimal",
+  "TM_DURATION_DECIMAL": "Tiempo total (h)",
+  "PROJECT_TOTAL_TIME_DECIMAL": "Tiempo total (h)",
+  "TOTAL_TASK_TIME_DECIMAL": "Tiempo total (h)",
   "FINISHED_TASK_COMBO": "Mostrar tareas finalizadas/sin finalizar",
   "FINISHED_TASK": "Tarea finalizada",
   "ARCHIVED_PROJECTS_COMBO": "Mostrar proyectos archivados/en activo",
@@ -87,7 +87,7 @@
   "T_FINISHED": "Estado",
   "FINISHED_T": "Finalizada",
   "P_ARCHIVED": "Archivado",
-  "USER_TASK_TIME" : "Tiempo Personal (hh:mm)",
+  "USER_TASK_TIME" : "Tiempo personal (hh:mm)",
   "PROJECT_TASKS" : "Tareas",
   "P_NAME_TITLE" : "Proyecto"
 }

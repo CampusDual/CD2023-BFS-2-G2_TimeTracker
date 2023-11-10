@@ -21,7 +21,7 @@ export class BooleanActiveRenderComponent extends OBaseTableCellRenderer {
     if (cellvalue == false) {
       return active = this.translator.get("ACTIVE");
     } else {
-      return active = this.translator.get("ARCHIVED_P");
+      return active = this.translator.get("P_ARCHIVED");
     }
   }
 }
