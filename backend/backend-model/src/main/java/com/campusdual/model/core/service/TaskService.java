@@ -19,6 +19,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,8 @@ public class TaskService implements ITaskService {
    private TaskDao taskDao;
    @Autowired
    private DefaultOntimizeDaoHelper daoHelper;
+    @Autowired
+   private ProjectService projectService;
 
 
     @Override
@@ -118,6 +121,38 @@ public class TaskService implements ITaskService {
 
     @Override
     public EntityResult projectTaskUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+
+        Map<String, Object> ptQueryMap = new HashMap<>();
+        List<String> ptQueryList = new ArrayList<>();
+
+        ptQueryMap.put(TaskDao.T_ID, keyMap.get(TaskDao.T_ID));
+        ptQueryList.add(TaskDao.P_ID);
+
+        EntityResult queryRes = taskQuery(ptQueryMap,ptQueryList);
+
+        int pId;
+
+        if(queryRes.calculateRecordNumber()>0){
+            pId = (int)queryRes.getRecordValues(0).get(TaskDao.P_ID);
+
+            ptQueryMap.clear();
+            ptQueryList.clear();
+
+            ptQueryMap.put(TaskDao.P_ID, pId);
+            ptQueryList.add(ProjectDao.P_FINISHED);
+
+            EntityResult pQueryRes = projectService.projectQuery(ptQueryMap,ptQueryList);
+
+            if((boolean)pQueryRes.getRecordValues(0).get(ProjectDao.P_FINISHED)){
+                EntityResult err;
+
+                err = new EntityResultMapImpl();
+                err.setCode(EntityResult.OPERATION_WRONG);
+                err.setMessage("UPDATE_TASK_ERROR");
+
+                return err;
+            }
+        }
         return this.daoHelper.update(this.taskDao, attrMap, keyMap);
     }
 

@@ -24,13 +24,18 @@
                             FROM
                                 tasks t
                             LEFT JOIN timers tm ON tm.t_id = t.t_id
+                            group by p_id),
+                    tablap AS(
+                            SELECT *, (p_name) AS p_name_title
+                            FROM
+                                projects
                             group by p_id)
                     SELECT
                           #COLUMNS#
                     FROM
-                          projects p
+                          users_projects up
+                    LEFT JOIN tablap p ON up.p_id = p.p_id
                     LEFT JOIN tabla t ON p.p_id = t.p_id
-                    LEFT JOIN users_projects up ON up.p_id = p.p_id
                     #WHERE#
                     #ORDER#
                 ]]>

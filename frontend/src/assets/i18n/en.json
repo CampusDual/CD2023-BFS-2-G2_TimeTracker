@@ -93,5 +93,6 @@
   "PROJECT_SUMMARY": "Summary",
   "ACTIVE_AND_ARCHIVED": "Active and archived",
   "PENDING_AND_FINISHED": "Pending and finished",
-  "PROJECT_SUMMARY": "Summary"
+  "PROJECT_SUMMARY": "Summary",
+  "UPDATE_TASK_ERROR": "Archived project. Unarchive project before trying again"
 }
