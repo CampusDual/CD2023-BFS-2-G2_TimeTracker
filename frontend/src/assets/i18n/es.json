@@ -91,5 +91,6 @@
   "PROJECT_TASKS" : "Tareas",
   "P_NAME_TITLE" : "Proyecto",
   "ACTIVE_AND_ARCHIVED": "Activos y archivados",
-  "PENDING_AND_FINISHED": "Pendientes y finalizados"
+  "PENDING_AND_FINISHED": "Pendientes y finalizados",
+  "UPDATE_TASK_ERROR": "Proyecto archivado. Desarchivar el proyecto antes de intentarlo de nuevo"
 }

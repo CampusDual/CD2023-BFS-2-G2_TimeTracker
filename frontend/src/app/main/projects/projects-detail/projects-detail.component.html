@@ -1,5 +1,8 @@
 <o-form service="projects" entity="projectTotalTime" keys="P_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
     <o-text-input attr="P_ID" sql-type="INTEGER" hidden></o-text-input>
+    <o-row>
+        <o-text-input class="input-padding" attr="P_NAME_TITLE" fxFlex="60" enabled="no"></o-text-input>
+    </o-row>
     <mat-tab-group oTabGroup="ontimize">
         <mat-tab label="{{ 'PROJECT_DETAILS' | oTranslate }}">
             <o-column title-label="PROJECT_DETAILS" class="project-detail-form">

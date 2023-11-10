@@ -91,5 +91,6 @@
   "FILTER_FINISHED": "Finished",
   "FILTER_PENDING": "Pending",
   "ACTIVE_AND_ARCHIVED": "Active and archived",
-  "PENDING_AND_FINISHED": "Pending and finished"
+  "PENDING_AND_FINISHED": "Pending and finished",
+  "UPDATE_TASK_ERROR": "Archived project. Unarchive project before trying again"
 }
