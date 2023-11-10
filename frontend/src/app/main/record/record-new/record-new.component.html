@@ -1,7 +1,7 @@
 <o-form service="timers" entity="record" keys="TM_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
     <o-row>
         <o-combo fxFlex attr="T_ID" label="SELECT_TASK" service="tasks" entity="unfinishedTasks" searchable="yes"
-            value-column="T_ID" columns="T_ID;T_NAME;P_NAME" visible-columns="T_NAME;P_NAME" separator=" > " keys="T_ID" required="yes">
+            value-column="T_ID" columns="T_ID;P_NAME;T_NAME" visible-columns="P_NAME;T_NAME" separator=" > " keys="T_ID" required="yes">
         </o-combo>
     </o-row>
     <o-row>
