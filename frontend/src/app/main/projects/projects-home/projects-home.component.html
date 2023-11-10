@@ -1,6 +1,6 @@
 <o-form show-header="no">
   <o-combo #finishedProjetcsCombo attr="finishedProjetcsCombo" label="ARCHIVED_PROJECTS_COMBO" [static-data]="arrayData" [data]="initialComboSelection()"
-    value-column="value" columns="key;value" visible-columns="key" width="370px"></o-combo>
+    value-column="value" columns="key;value" visible-columns="key" width="370px" null-selection-label="{{ 'ACTIVE_AND_ARCHIVED' | oTranslate }}"></o-combo>
 
   <o-filter-builder #filterBuilder attr="filter" filters="finishedProjetcsCombo:finishedProjetcsCombo" [target]="projectsTable"
     query-on-change="yes" [expression-builder]="createFilter"></o-filter-builder>

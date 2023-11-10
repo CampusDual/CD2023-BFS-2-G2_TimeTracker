@@ -1,7 +1,7 @@
 <o-form show-header="no">
   <o-combo #finishedTasksCombo attr="finishedTasksCombo" label="FINISHED_TASK_COMBO" [static-data]="arrayData"
     [data]="intialComboSelection()" value-column="value" columns="key;value" visible-columns="key"
-    width="370px"></o-combo>
+    width="370px" null-selection-label="{{ 'PENDING_AND_FINISHED' | oTranslate }}"></o-combo>
 
   <o-filter-builder #filterBuilder attr="filter" filters="finishedTasksCombo:finishedTasksCombo" [target]="tasksTable"
     query-on-change="yes" [expression-builder]="createFilter"></o-filter-builder>

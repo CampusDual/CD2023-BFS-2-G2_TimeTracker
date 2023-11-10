@@ -17,7 +17,7 @@ const routes: Routes = [
   {
    path:":T_ID",
     component: TasksDetailComponent
-   }
+  }
 
 ];
 

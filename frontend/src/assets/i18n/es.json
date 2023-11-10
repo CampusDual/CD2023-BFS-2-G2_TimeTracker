@@ -89,5 +89,7 @@
   "P_ARCHIVED": "Archivado",
   "USER_TASK_TIME" : "Tiempo personal (hh:mm)",
   "PROJECT_TASKS" : "Tareas",
-  "P_NAME_TITLE" : "Proyecto"
+  "P_NAME_TITLE" : "Proyecto",
+  "ACTIVE_AND_ARCHIVED": "Activos y archivados",
+  "PENDING_AND_FINISHED": "Pendientes y finalizados"
 }

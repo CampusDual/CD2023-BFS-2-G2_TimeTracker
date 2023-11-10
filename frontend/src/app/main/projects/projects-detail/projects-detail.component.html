@@ -39,7 +39,7 @@
                         columns="T_ID;P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
                         virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes" detail-mode="none" insert-form-route="addTaskProject/new"
                         visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-                        default-visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED">
+                        default-visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED" (onClick)="openTasksDetailsSelected()">
                         <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
                         <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
                         <o-table-column attr="T_DATE" title="T_DATE" type="date"

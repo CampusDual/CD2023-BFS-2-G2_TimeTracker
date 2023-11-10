@@ -89,5 +89,7 @@
   "FILTER_ACTIVE": "Active",
   "FILTER_ARCHIVED": "Archived",
   "FILTER_FINISHED": "Finished",
-  "FILTER_PENDING": "Pending"
+  "FILTER_PENDING": "Pending",
+  "ACTIVE_AND_ARCHIVED": "Active and archived",
+  "PENDING_AND_FINISHED": "Pending and finished"
 }
