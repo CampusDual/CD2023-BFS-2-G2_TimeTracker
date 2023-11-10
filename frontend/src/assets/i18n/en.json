@@ -90,6 +90,8 @@
   "FILTER_ARCHIVED": "Archived",
   "FILTER_FINISHED": "Finished",
   "FILTER_PENDING": "Pending",
+  "PROJECT_SUMMARY": "Summary",
   "ACTIVE_AND_ARCHIVED": "Active and archived",
-  "PENDING_AND_FINISHED": "Pending and finished"
+  "PENDING_AND_FINISHED": "Pending and finished",
+  "PROJECT_SUMMARY": "Summary"
 }

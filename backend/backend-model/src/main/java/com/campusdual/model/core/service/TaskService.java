@@ -84,6 +84,24 @@ public class TaskService implements ITaskService {
         return this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectTask");
 
     }
+    @Override
+    public EntityResult projectSummaryTasksQuery(Map<String, Object> keyMap, List<String> attrList) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newKeyMap = new HashMap<>(keyMap);
+
+        BasicField userField = new BasicField(UsersProjectDao.USER_);
+        BasicExpression userExp = new BasicExpression(userField, BasicOperator.EQUAL_OP, authentication.getName());
+
+        if (keyMap.containsKey(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY)) {
+            newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, new BasicExpression(keyMap.get(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY), BasicOperator.AND_OP, userExp));
+        } else {
+            newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
+        }
+
+        return this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectSummaryTasks");
+
+    }
 
     @Override
     public EntityResult unfinishedTasksQuery(Map<String, Object> keyMap, List<String> attrList) {

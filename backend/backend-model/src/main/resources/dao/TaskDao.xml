@@ -63,5 +63,35 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="projectSummaryTasks">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="T_ID" prefix="t" />
+                <AmbiguousColumn name="P_ID" prefix="p" />
+                <AmbiguousColumn name="USER_" prefix="up" />
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    WITH total_times AS(
+                        SELECT t_id, sum(tm.tm_end_time - tm.tm_start_time) AS total_task_time, sum(tm.tm_end_time - tm.tm_start_time) AS total_task_time_decimal
+                        FROM timers tm
+                        GROUP BY t_id
+                    ),
+                    user_times AS(
+                        SELECT t_id, user_, sum(tm.tm_end_time - tm.tm_start_time) AS user_task_time
+                        FROM timers tm
+                        GROUP BY t_id, user_
+                    )
+                    SELECT
+                    #COLUMNS#
+                    FROM tasks t
+                    INNER JOIN projects p ON p.P_ID = t.P_ID
+                    INNER JOIN users_projects up ON up.p_id = p.p_id
+                    LEFT JOIN total_times tt ON tt.t_id = t.t_id
+                    LEFT JOIN user_times ut ON ut.t_id = t.t_id AND ut.user_ = up.user_
+                    #WHERE#
+                    ORDER BY total_task_time desc
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

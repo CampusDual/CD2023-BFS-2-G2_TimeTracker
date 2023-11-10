@@ -8,6 +8,7 @@ import { ProjectsNewComponent } from './projects-new/projects-new.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddUserprojectComponent } from './add-userproject/add-userproject.component';
 import { AddTaskprojectComponent } from './add-taskproject/add-taskproject.component';
+import { OChartModule } from 'ontimize-web-ngx-charts';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AddTaskprojectComponent } from './add-taskproject/add-taskproject.compo
     CommonModule,
     SharedModule,
     OntimizeWebModule,
-    ProjectsRoutingModule
+    ProjectsRoutingModule,
+    OChartModule
   ]
 })
 export class ProjectsModule { }
