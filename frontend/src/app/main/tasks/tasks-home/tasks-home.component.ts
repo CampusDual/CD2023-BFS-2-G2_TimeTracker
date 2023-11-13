@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { Expression, FilterExpressionUtils, OTranslateService } from "ontimize-web-ngx";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { Expression, FilterExpressionUtils, OTextInputComponent, OTranslateService } from "ontimize-web-ngx";
+import { Key } from "protractor";
 
 @Component({
   selector: "app-tasks-home",
@@ -9,7 +10,7 @@ import { Expression, FilterExpressionUtils, OTranslateService } from "ontimize-w
 export class TasksHomeComponent implements OnInit {
   arrayData: Array<any> = [];
 
-  constructor(private translator : OTranslateService) {
+  constructor(private translator: OTranslateService) {
     this.arrayData = [
       { value: true, key: this.translator.get("FILTER_FINISHED") },
       { value: false, key: this.translator.get("FILTER_PENDING") },
@@ -18,7 +19,7 @@ export class TasksHomeComponent implements OnInit {
 
   ngOnInit() { }
 
-  intialComboSelection(){
+  intialComboSelection() {
     return false;
   }
 

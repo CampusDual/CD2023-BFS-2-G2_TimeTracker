@@ -1,7 +1,7 @@
-<o-form service="tasks" entity="projectTask" keys="T_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
+<o-form service="tasks" entity="projectTask" (onDataLoaded)="print($event)" keys="T_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
     <o-text-input attr="T_ID" sql-type="INTEGER" hidden></o-text-input>
     <o-row fxFlex="50">
-            <o-text-input class="input-padding" attr="P_NAME" fxFlex="40" required="no" enabled="no"></o-text-input>
+            <o-text-input class="input-padding" attr="P_NAME" fxFlex="40" required="no" read-only="yes"></o-text-input>
     </o-row>
     <mat-tab-group oTabGroup="ontimize">
         <mat-tab label="{{'TASK_DETAILS' | oTranslate}}">
@@ -11,12 +11,12 @@
                     <o-date-input attr="T_DATE" fxFlex="40" enabled="no"></o-date-input>
                 </o-row>
                 <o-row>
-                    <o-textarea-input attr="T_DESCRIPTION" fxFlex fxFlex="100"></o-textarea-input>
+                    <o-textarea-input attr="T_DESCRIPTION" fxFlex="100"></o-textarea-input>
                 </o-row>
-                <!-- <o-row>
-                    <o-date-input attr="USER_TASK_TIME" fxFlex="50" enabled="no"></o-date-input>
-                    <o-date-input attr="TOTAL_TASK_TIME" fxFlex="50" enabled="no"></o-date-input>
-                </o-row> -->
+                <o-row>
+                    <o-text-input #userTime attr="USER_TASK_TIME" fxFlex="100" read-only="yes" enabled="no"></o-text-input>
+                    <o-text-input #userTotal attr="TOTAL_TASK_TIME" fxFlex="100" read-only="yes"></o-text-input>
+                </o-row>
                 <o-row>
                     <o-checkbox class="finishTaskCheckbox" attr="T_FINISHED" label="FINISHED_TASK"
                         read-only="no"></o-checkbox>
