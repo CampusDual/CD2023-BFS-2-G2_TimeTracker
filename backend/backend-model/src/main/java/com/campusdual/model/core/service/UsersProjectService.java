@@ -61,4 +61,9 @@ public class UsersProjectService implements IUsersProjectService {
         return this.daoHelper.delete(this.usersProjectDao, keyMap);
     }
 
+    @Override
+    public EntityResult usersProjectTimeQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(this.usersProjectDao, keyMap, attrList, "usersProjectTime");
+    }
+
 }

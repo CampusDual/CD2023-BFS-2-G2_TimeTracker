@@ -12,4 +12,5 @@ public interface IUsersProjectService {
     public EntityResult usersProjectDelete(Map<?, ?> keyMap);
     public EntityResult usersProjectsNamesQuery(Map<?, ?> keyMap, List<?> attrList);
     public EntityResult usersProjectsNamesDelete(Map<?, ?> keyMap);
+    public EntityResult usersProjectTimeQuery(Map<?, ?> keyMap, List<?> attrList);
 }

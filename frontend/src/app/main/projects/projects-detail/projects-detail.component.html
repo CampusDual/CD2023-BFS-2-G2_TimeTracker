@@ -26,11 +26,10 @@
                     <o-form-layout-dialog-options width="600px" height="450px"
                         disable-close="false"></o-form-layout-dialog-options>
                     <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectsNames"
-                        parent-keys="P_ID" keys="UP_ID" columns="UP_ID;P_ID;USER_;NAME;SURNAME"
-                        insert-form-route="addUserProject/new" visible-columns="NAME;SURNAME" query-rows="5"
+                        parent-keys="P_ID" keys="UP_ID" columns="UP_ID;P_ID;NAME"
+                        insert-form-route="addUserProject/new" visible-columns="NAME" query-rows="5"
                         detail-mode="none" insert-button="yes">
                         <o-table-column attr="NAME" class="text-center"></o-table-column>
-                        <o-table-column attr="SURNAME" class="text-center"></o-table-column>
                     </o-table>
                 </o-form-layout-manager>
             </o-column>
@@ -76,12 +75,12 @@
                     <o-row fxFlex>
                         <o-column>
                             <o-column title="{{ 'TASKS' |oTranslate}}"></o-column>
-                            <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectSummaryTasks"
+                            <o-table attr="projectSummaryTasksTable" service="tasks" entity="projectSummaryTasks"
                                 keys="T_ID" parent-keys="P_ID"
-                                columns="T_ID;T_NAME;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-                                virtual-scroll="no" controls="no" query-rows="5" insert-button="yes" detail-mode="none"
-                                visible-columns="T_NAME;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-                                default-visible-columns="T_NAME;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED" pagination-controls="hidden">
+                                columns="T_ID;T_NAME;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;T_FINISHED"
+                                virtual-scroll="no" controls="no" insert-button="yes" detail-mode="none"
+                                visible-columns="T_NAME;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;T_FINISHED"
+                                default-visible-columns="T_NAME;TOTAL_TASK_TIME;T_FINISHED" pagination-controls="yes" (onDataLoaded)="print($event)">
                                 <o-table-column attr="T_DATE" title="T_DATE" type="date"
                                     format="DD/MM/YYYY HH:mm"></o-table-column>
                                 <o-table-column attr="USER_TASK_TIME" title="USER_TASK_TIME" class="text-center">
@@ -99,24 +98,25 @@
                                 </o-table-column>
                             </o-table>
                         </o-column>
-                        <o-column class="users-table-column">
+                        <o-column>
                             <o-column title="{{ 'USERS' |oTranslate}}"></o-column>
-                            <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectsNames"
-                                parent-keys="P_ID" keys="UP_ID" columns="UP_ID;P_ID;USER_;NAME;SURNAME"
-                                visible-columns="NAME;SURNAME" query-rows="5" detail-mode="none" controls="no"
-                                fxFlex="90">
-                                <o-table-column attr="NAME" class="text-center"></o-table-column>
-                                <o-table-column attr="SURNAME" class="text-center"></o-table-column>
+                            <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectTime"
+                                parent-keys="P_ID" keys="P_ID" columns="P_ID;USER_;USER_PROJECT_TIME"
+                                visible-columns="USER_;USER_PROJECT_TIME" detail-mode="none" controls="no" virtual-scroll="no">
+                                <o-table-column title="NAME" attr="USER_" class="text-center"></o-table-column>
+                                <o-table-column title="PROJECT_TOTAL_TIME" attr="USER_PROJECT_TIME" class="text-center">
+                                    <app-duration-render></app-duration-render>
+                                </o-table-column>
                             </o-table>
                         </o-column>
                     </o-row>
 
-                    <o-row>
+                    <!-- <o-row>
                         <o-column>
-                            <o-chart fxFlex type="pie" [data]="data" layout-fill></o-chart>
+                            <o-chart fxFlex type="pie" service="tasks" entity="projectSummaryTasks" x-axis="T_NAME" y-axis="getTaskTotalTimeValue()"></o-chart>
                         </o-column>
-                    </o-row>
-                </o-form-layout-manager>
+                    </o-row> <!-->
+                </o-form-layout-manager> 
             </o-column>
         </mat-tab>
     </mat-tab-group>

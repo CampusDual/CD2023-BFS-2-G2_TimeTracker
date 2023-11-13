@@ -27,5 +27,27 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="usersProjectTime">
+            <Sentence>
+                <![CDATA[
+                    WITH tabla AS(
+                        WITH user_times AS(
+                            SELECT  sum(tm.tm_end_time - tm.tm_start_time) AS user_task_time, tm.*, p.p_id
+                            FROM timers tm
+                            INNER JOIN tasks t on tm.t_id = t.t_id
+                            INNER JOIN projects p on t.p_id = p.p_id
+                            GROUP BY tm.tm_id, user_,  p.p_id
+                        )
+                        SELECT user_, sum(user_task_time) as user_project_time, p_id
+                        FROM user_times
+                        GROUP BY user_, p_id
+                    )
+                    SELECT #COLUMNS#
+                    FROM tabla
+                    #WHERE#
+                    ORDER BY user_project_time desc
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
