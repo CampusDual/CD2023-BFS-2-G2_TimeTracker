@@ -12,6 +12,7 @@ import com.ontimize.jee.common.db.SQLStatementBuilder.ExtendedSQLConditionValues
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
+import org.postgresql.util.PGInterval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -19,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,12 +30,12 @@ import java.util.Map;
 @Service("TaskService")
 public class TaskService implements ITaskService {
 
-   @Autowired
-   private TaskDao taskDao;
-   @Autowired
-   private DefaultOntimizeDaoHelper daoHelper;
     @Autowired
-   private ProjectService projectService;
+    private TaskDao taskDao;
+    @Autowired
+    private DefaultOntimizeDaoHelper daoHelper;
+    @Autowired
+    private ProjectService projectService;
 
 
     @Override
@@ -88,7 +90,8 @@ public class TaskService implements ITaskService {
 
     }
     @Override
-    public EntityResult projectSummaryTasksQuery(Map<String, Object> keyMap, List<String> attrList) {
+    public EntityResult projectSummaryTasksGraphQuery(Map<String, Object> keyMap, List<String> attrList) {
+        List<Long> minuteTimes = new ArrayList<>();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
@@ -102,8 +105,51 @@ public class TaskService implements ITaskService {
             newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
         }
 
-        return this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectSummaryTasks");
+        EntityResult res= this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectSummaryTasks");
 
+        if (res.containsKey(TaskDao.TOTAL_TASK_TIME)) {
+            for (int i = 0; i < res.calculateRecordNumber(); i++) {
+                Map<String, Object> recValues = res.getRecordValues(i);
+                if (recValues.containsKey(TaskDao.TOTAL_TASK_TIME)) {
+                    PGInterval value = (PGInterval) recValues.get(TaskDao.TOTAL_TASK_TIME);
+                    int hours = value.getHours();
+                    int mins = value.getMinutes();
+                    int days = value.getDays();
+                    int months = value.getMonths();
+                    int years = value.getYears();
+
+                    long totalSeconds = years * 365 * 24 * 60 * 60 +
+                            months * 30 * 24 * 60 * 60 +
+                            days * 24 * 60 * 60 +
+                            hours * 60 * 60 +
+                            mins * 60;
+
+
+                    minuteTimes.add(totalSeconds);
+                }else{
+                    minuteTimes.add(Long.valueOf(0));
+                }
+            }
+            res.put(TaskDao.TOTAL_TASK_TIME, minuteTimes);
+        }
+        return res;
+    }
+
+    @Override
+    public EntityResult projectSummaryTasksTableQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newKeyMap = new HashMap<>(keyMap);
+
+        BasicField userField = new BasicField(UsersProjectDao.USER_);
+        BasicExpression userExp = new BasicExpression(userField, BasicOperator.EQUAL_OP, authentication.getName());
+
+        if (keyMap.containsKey(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY)) {
+            newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, new BasicExpression(keyMap.get(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY), BasicOperator.AND_OP, userExp));
+        } else {
+            newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
+        }
+
+        return this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectSummaryTasks");
     }
 
     @Override
@@ -170,3 +216,4 @@ public class TaskService implements ITaskService {
         return err;
     }
 }
+

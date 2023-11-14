@@ -44,7 +44,7 @@ export class ProjectsDetailComponent implements OnInit {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
             for (let i=0; i<resp.data.length; i++){
-              this.hours.push(resp.data[i])
+             
             }
             return this.hours;
           }

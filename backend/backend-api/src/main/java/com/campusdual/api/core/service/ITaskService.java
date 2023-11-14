@@ -16,5 +16,6 @@ public interface ITaskService {
     public EntityResult unfinishedTasksQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult projectTaskUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
     public EntityResult projectTaskDelete(Map<?, ?> keyMap);
-    public EntityResult projectSummaryTasksQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult projectSummaryTasksGraphQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult projectSummaryTasksTableQuery(Map<String, Object> keyMap, List<String> attrList);
 }
