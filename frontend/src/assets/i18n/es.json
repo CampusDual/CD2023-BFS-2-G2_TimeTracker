@@ -93,5 +93,6 @@
   "ACTIVE_AND_ARCHIVED": "Activos y archivados",
   "PENDING_AND_FINISHED": "Pendientes y finalizados",
   "PROJECT_SUMMARY": "Resumen",
-  "UPDATE_TASK_ERROR": "Proyecto archivado. Desarchivar el proyecto antes de intentarlo de nuevo"
+  "UPDATE_TASK_ERROR": "Proyecto archivado. Desarchivar el proyecto antes de intentarlo de nuevo",
+  "T_OWNER": "Creador"
 }

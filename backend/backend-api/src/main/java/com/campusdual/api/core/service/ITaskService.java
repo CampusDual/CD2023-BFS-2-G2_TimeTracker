@@ -8,7 +8,7 @@ import java.util.Map;
 public interface ITaskService {
 
     public EntityResult taskQuery(Map<?, ?> keyMap, List<?> attrList);
-    public EntityResult taskInsert(Map<?, ?> attrMap);
+    public EntityResult taskInsert(Map<String, Object> attrMap);
     public EntityResult taskUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
     public EntityResult taskDelete(Map<?, ?> keyMap);
     public EntityResult taskTimerQuery(Map<?, ?> keyMap, List<?> attrList);

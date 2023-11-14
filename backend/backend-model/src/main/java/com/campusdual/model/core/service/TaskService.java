@@ -44,8 +44,11 @@ public class TaskService implements ITaskService {
     }
 
     @Override
-    public EntityResult taskInsert(Map<?, ?> attrMap) {
-        return this.daoHelper.insert(this.taskDao, attrMap);
+    public EntityResult taskInsert(Map<String, Object> attrMap) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newAttrMap = new HashMap<>(attrMap);
+        newAttrMap.put(TaskDao.T_OWNER, authentication.getName());
+        return this.daoHelper.insert(this.taskDao, newAttrMap);
     }
 
     @Override

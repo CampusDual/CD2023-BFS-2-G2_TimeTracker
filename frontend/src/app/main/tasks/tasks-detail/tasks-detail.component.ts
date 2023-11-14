@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { OTextInputComponent } from 'ontimize-web-ngx';
+import { OCheckboxComponent, OFormComponent, OTextInputComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-tasks-detail',
@@ -11,8 +11,19 @@ export class TasksDetailComponent implements OnInit {
 
   @ViewChild ('userTime' , {static : true}) userTime : OTextInputComponent;
   @ViewChild ('userTotal' , {static : true}) userTotal : OTextInputComponent;
+  @ViewChild ('taskCheckbox' , {static : true}) taskCheckbox : OCheckboxComponent;
+  @ViewChild ('taskForm' , {static : true}) taskForm : OFormComponent;
   
   ngOnInit() {
+  }
+
+  UpdateChange(){
+    this.taskForm.reload();
+    console.log("update");
+  }
+
+  prueba(cosa){
+    console.log(cosa);
   }
 
   print(data) {
@@ -20,34 +31,24 @@ export class TasksDetailComponent implements OnInit {
     let userTaskTime = data.USER_TASK_TIME;
     let userTotalTime = data.TOTAL_TASK_TIME;
 
-    let hoursUT;
-    let minutesUT;
-    let daysUT;
+    this.userTime.setValue(this.formatTime(userTaskTime));
+    this.userTotal.setValue(this.formatTime(userTotalTime));
+  }
 
-    let hoursTT;
-    let minutesTT;
-    let daysTT;
+  formatTime(TimeBD){
+    let hours;
+    let minutes;
+    let days;
 
-    if (userTaskTime == null) {
-      hoursUT = "00";
-      minutesUT = "00";
+    if (TimeBD == null) {
+      hours = "00";
+      minutes = "00";
     } else {
-      daysUT = userTaskTime["days"] * 24;
-      hoursUT = this.addZero(userTaskTime["hours"] + daysUT);
-      minutesUT = this.addZero(userTaskTime["minutes"]);
+      days = TimeBD["days"] * 24;
+      hours = this.addZero(TimeBD["hours"] + days);
+      minutes = this.addZero(TimeBD["minutes"]);
     }
-
-    if (userTotalTime == null) {
-      hoursTT = "00";
-      minutesTT = "00";
-    } else {
-      daysTT = userTotalTime["days"] * 24;
-      hoursTT = this.addZero(userTotalTime["hours"] + daysTT);
-      minutesTT = this.addZero(userTotalTime["minutes"]);
-    }
-
-    this.userTime.setValue(`${hoursUT}:${minutesUT}`);
-    this.userTotal.setValue(`${hoursTT}:${minutesTT}`);
+    return `${hours}:${minutes}`;
   }
 
   addZero(num) {

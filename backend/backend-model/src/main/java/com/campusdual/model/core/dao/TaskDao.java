@@ -22,6 +22,7 @@ public class TaskDao extends OntimizeJdbcDaoSupport {
     public static final String T_FINISHED = "T_FINISHED";
 
     public static final String TOTAL_TASK_TIME = "TOTAL_TASK_TIME";
+    public static final String T_OWNER = "T_OWNER";
 
 }
 
