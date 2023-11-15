@@ -94,5 +94,6 @@
   "PENDING_AND_FINISHED": "Pendientes y finalizados",
   "PROJECT_SUMMARY": "Resumen",
   "UPDATE_TASK_ERROR": "Proyecto archivado. Desarchivar el proyecto antes de intentarlo de nuevo",
-  "T_OWNER": "Creador"
+  "T_OWNER": "Creador",
+  "EDIT_FIELDS": "Editar campos"
 }

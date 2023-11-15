@@ -2,8 +2,13 @@
     overflow: hidden;
 }
 
-.project-detail-form {
+.project-details {
     margin: auto;
     width: 600px;
-    padding: 20px;
+}
+
+.project-alldetails {
+    display: flex;
+    align-items: center;
+    gap: 50px;
 }

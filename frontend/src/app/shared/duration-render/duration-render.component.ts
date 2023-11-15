@@ -14,25 +14,19 @@ export class DurationRenderComponent extends OBaseTableCellRenderer {
     super(injector);
     }
 
-  getCellData(cellvalue: any, rowvalue?: any): string{
-    let hours;
-    let minutes;
-    let days;
-    if(cellvalue == null){
-      hours =  "00";
-      minutes =  "00";
-    }else{
-      days = cellvalue["days"]*24;
-      hours = this.addZero(cellvalue["hours"]+days);
-      minutes = this.addZero(cellvalue["minutes"]);
+    getCellData(cellvalue: any, rowvalue?: any): string {
+      if (!cellvalue) {
+        return '00:00';
+      }
+  
+      const days = cellvalue.days ? cellvalue.days * 24 : 0;
+      const hours = this.addZero(cellvalue.hours + days);
+      const minutes = this.addZero(cellvalue.minutes);
+  
+      return `${hours}:${minutes}`;
     }
-    return `${hours}:${minutes}`;
-  }
 
-  addZero(num){
-    if (num<10) {
-      return "0"+num;
+    addZero(num: number): string {
+      return num < 10 ? '0' + num : num.toString();
     }
-    return num;
-  }
 }

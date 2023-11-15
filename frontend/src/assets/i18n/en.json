@@ -95,5 +95,6 @@
   "PENDING_AND_FINISHED": "Pending and finished",
   "PROJECT_SUMMARY": "Summary",
   "UPDATE_TASK_ERROR": "Archived project. Unarchive project before trying again",
-  "T_OWNER": "Owner"
+  "T_OWNER": "Owner",
+  "EDIT_FIELDS": "Edit fields"
 }

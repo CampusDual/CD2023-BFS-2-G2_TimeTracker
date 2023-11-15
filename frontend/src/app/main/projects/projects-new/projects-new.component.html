@@ -1,8 +1,10 @@
 <o-form service="projects" entity="project" keys="P_ID" header-actions="R;I;U;D" show-header-navigation="no">
-  <o-row>
-    <o-text-input fxFlex="50" class="input-padding" attr="P_NAME" required="yes"></o-text-input>
-  </o-row>
-  <o-row>
-    <o-textarea-input fxFlex="50" class="input-padding" attr="P_DESCRIPTION" required="no"></o-textarea-input>
-  </o-row>
+  <o-column class="new-project">
+    <o-row>
+      <o-text-input fxFlex="100" class="input-padding" attr="P_NAME" required="yes"></o-text-input>
+    </o-row>
+    <o-row>
+      <o-textarea-input fxFlex="100" class="input-padding" attr="P_DESCRIPTION" required="no"></o-textarea-input>
+    </o-row>
+  </o-column>
 </o-form>

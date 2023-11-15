@@ -9,6 +9,10 @@
   text-align: center;
 }
 
+textarea {
+  resize: none !important;
+}
+
 // Layout
 .navMenu {
   nav.ng-star-inserted:first-of-type {
@@ -77,6 +81,28 @@ nav:nth-child(1) > o-app-sidenav-menu-group > a {
 
   .mat-icon {
     color: $primary-color;
+  }
+}
+
+// Details
+.project-details, .task-details {
+  o-text-input {
+    font-size: 18px;
+    width: 100%;
+
+    .mat-input-element, .mat-form-field-label {
+      text-align: center;
+
+      
+    }
+
+    .mat-form-field-label {
+      color: $primary-color;
+    }
+
+    .mat-form-field-underline {
+      display: none;
+    }
   }
 }
 
