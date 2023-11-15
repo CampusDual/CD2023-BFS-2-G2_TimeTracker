@@ -15,4 +15,5 @@ public class UsersProjectDao extends OntimizeJdbcDaoSupport {
     public static final String UP_ID = "UP_ID";
     public static final String P_ID = "P_ID";
     public static final String USER_ = "USER_";
+    public static final String USER_PROJECT_TIME = "USER_PROJECT_TIME";
 }

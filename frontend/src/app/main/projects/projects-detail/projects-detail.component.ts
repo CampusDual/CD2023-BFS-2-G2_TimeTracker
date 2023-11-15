@@ -1,3 +1,4 @@
+import { TemplateBinding } from '@angular/compiler';
 import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { OTableComponent, OTextInputComponent, OntimizeService } from 'ontimize-web-ngx';
@@ -10,9 +11,11 @@ import { OTableComponent, OTextInputComponent, OntimizeService } from 'ontimize-
 export class ProjectsDetailComponent implements OnInit {
 
   @ViewChild('tasksTable', { static: false }) tasksTable: OTableComponent;
-  @ViewChild ('projectTime' , {static : true}) projectTime : OTextInputComponent;
+  @ViewChild('projectTime', { static: true }) projectTime: OTextInputComponent;
   protected service: OntimizeService;
-  hours: number[] = [];
+  p_id: any;
+  arrayChartData: Array<any> = [];
+
 
   constructor(private router: Router, protected injector: Injector) {
     this.service = this.injector.get(OntimizeService);
@@ -25,7 +28,7 @@ export class ProjectsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.configureService();
-   }
+  }
 
   public openTasksDetailsSelected() {
     let selectedItem = this.tasksTable.getSelectedItems();
@@ -35,44 +38,22 @@ export class ProjectsDetailComponent implements OnInit {
     }
   }
 
-  getTaskTotalTimeValue() {
-
-    if (this.service !== null) {
-      const filter = {};
-      const columns = ['TOTAL_TASK_TIME'];
-      this.service.query(filter, columns, 'projectSummaryTasks').subscribe(resp => {
-        if (resp.code === 0) {
-          if (resp.data.length > 0) {
-            for (let i=0; i<resp.data.length; i++){
-             
-            }
-            return this.hours;
-          }
-        } else {
-          //TODO: Mostrar error
-        }
-      });
-    }
-  }
 
 
-  print(data){
-    console.log(data);
-  }
- 
   viewData(dataPT) {
-
+    console.log(dataPT);
+    this.p_id = dataPT.P_ID;
     let projectTotalTime = dataPT.PROJECT_TOTAL_TIME;
 
     let hours;
     let minutes;
     let days;
-    if(projectTotalTime == null){
-      hours =  "00";
-      minutes =  "00";
-    }else{
-      days = projectTotalTime["days"]*24;
-      hours = this.addZero(projectTotalTime["hours"]+days);
+    if (projectTotalTime == null) {
+      hours = "00";
+      minutes = "00";
+    } else {
+      days = projectTotalTime["days"] * 24;
+      hours = this.addZero(projectTotalTime["hours"] + days);
       minutes = this.addZero(projectTotalTime["minutes"]);
     }
 

@@ -81,8 +81,7 @@
                                 columns="T_ID;T_NAME;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;T_FINISHED"
                                 virtual-scroll="no" controls="no" insert-button="yes" detail-mode="none"
                                 visible-columns="T_NAME;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;T_FINISHED"
-                                default-visible-columns="T_NAME;TOTAL_TASK_TIME;T_FINISHED" pagination-controls="yes"
-                                (onDataLoaded)="print($event)">
+                                default-visible-columns="T_NAME;TOTAL_TASK_TIME;T_FINISHED" pagination-controls="yes" (onDataLoaded)="getTaskTotalTimeValue()">
                                 <o-table-column attr="T_DATE" title="T_DATE" type="date"
                                     format="DD/MM/YYYY HH:mm"></o-table-column>
                                 <o-table-column attr="USER_TASK_TIME" title="USER_TASK_TIME" class="text-center">
@@ -102,7 +101,7 @@
                         </o-column>
                         <o-column>
                             <o-column title="{{ 'USERS' |oTranslate}}"></o-column>
-                            <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectTime"
+                            <o-table class="usersProjectTable" service="usersProjects" entity="usersProjectTimeTable"
                                 parent-keys="P_ID" keys="P_ID" columns="P_ID;USER_;USER_PROJECT_TIME"
                                 visible-columns="USER_;USER_PROJECT_TIME" detail-mode="none" controls="no"
                                 virtual-scroll="no">
@@ -114,9 +113,12 @@
                         </o-column>
                     </o-row>
                     <o-row>
-                        <o-column>
-                            <o-chart fxFlex type="pie" service="tasks" entity="projectSummaryTasksGraph" x-axis="T_NAME" y-axis="TOTAL_TASK_TIME"></o-chart>
-                        </o-column>
+                     <o-column>
+                            <o-chart fxFlex type="pie" service="tasks" entity="projectSummaryTasksGraph" parent-keys="P_ID" x-axis="T_NAME" y-axis="TOTAL_TASK_TIME"></o-chart>
+                     </o-column>
+                     <o-column>
+                        <o-chart fxFlex type="pie" service="usersProjects" entity="usersProjectTimeGraph" parent-keys="P_ID" x-axis="USER_" y-axis="USER_PROJECT_TIME"></o-chart>
+                     </o-column> 
                     </o-row>
                 </o-form-layout-manager>
             </o-column>
