@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Injector, ViewChild } from '@angular/core';
 import { OComboComponent, OntimizeService } from 'ontimize-web-ngx';
+import { TIMEOUT_TIMER } from '../definitions';
 
 @Component({
   selector: 'app-timer-controls',
@@ -8,7 +9,6 @@ import { OComboComponent, OntimizeService } from 'ontimize-web-ngx';
   styleUrls: ['./timer-controls.component.scss']
 })
 export class TimerControlsComponent implements OnInit {
-
   isStarted: boolean = false;
   selectedTaskValue: any;
   startTime: number;
@@ -69,7 +69,7 @@ export class TimerControlsComponent implements OnInit {
       this.startTimer();
     }, 15000)
 
-    let i = 15;
+    let i = TIMEOUT_TIMER;
 
     const printCountdown = () => {
       this.countdown.nativeElement.innerHTML = `${i}`;

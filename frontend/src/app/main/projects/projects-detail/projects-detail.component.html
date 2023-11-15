@@ -38,17 +38,12 @@
         </mat-tab>
         <mat-tab label="{{ 'PROJECT_TASKS' | oTranslate }}">
             <o-column fxFlex="100">
-                <o-form-layout-manager mode="dialog" title="NEW_TASK" separator="" attr="newTask">
-                    <o-form-layout-dialog-options width="600px" height="450px"
-                        disable-close="false"></o-form-layout-dialog-options>
-                    <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID"
-                        parent-keys="P_ID"
+                    <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID" parent-keys="P_ID"
                         columns="T_ID;P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-                        virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes" detail-mode="none"
-                        insert-form-route="addTaskProject/new"
-                        visible-columns="T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-                        default-visible-columns="T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED"
-                        (onClick)="openTasksDetailsSelected()">
+                        virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes" detail-form-route="/main/tasks/"
+                        visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
+                        default-visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED">
+                        <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
                         <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
                         <o-table-column attr="T_DATE" title="T_DATE" type="date"
                             format="DD/MM/YYYY HH:mm"></o-table-column>
@@ -66,7 +61,6 @@
                             <app-boolean-finished-render></app-boolean-finished-render>
                         </o-table-column>
                     </o-table>
-                </o-form-layout-manager>
             </o-column>
         </mat-tab>
         <mat-tab label="{{ 'PROJECT_SUMMARY' | oTranslate }}">

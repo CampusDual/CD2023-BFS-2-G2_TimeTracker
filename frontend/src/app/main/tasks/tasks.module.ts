@@ -19,6 +19,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     OntimizeWebModule,
     SharedModule,
     TasksRoutingModule
+  ],
+  exports: [
+    TasksDetailComponent,
+    TasksNewComponent
   ]
 })
 export class TasksModule { }

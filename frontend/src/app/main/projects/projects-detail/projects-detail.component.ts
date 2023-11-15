@@ -12,22 +12,14 @@ export class ProjectsDetailComponent implements OnInit {
 
   @ViewChild('tasksTable', { static: false }) tasksTable: OTableComponent;
   @ViewChild('projectTime', { static: true }) projectTime: OTextInputComponent;
-  protected service: OntimizeService;
   p_id: any;
   arrayChartData: Array<any> = [];
 
 
-  constructor(private router: Router, protected injector: Injector) {
-    this.service = this.injector.get(OntimizeService);
-  }
-
-  protected configureService() {
-    const conf = this.service.getDefaultServiceConfiguration("tasks");
-    this.service.configureService(conf);
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
-    this.configureService();
   }
 
   public openTasksDetailsSelected() {
@@ -37,8 +29,6 @@ export class ProjectsDetailComponent implements OnInit {
       this.router.navigate(['main/tasks/' + taskId]);
     }
   }
-
-
 
   viewData(dataPT) {
     console.log(dataPT);

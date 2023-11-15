@@ -31,7 +31,7 @@ export class ProjectsHomeComponent implements OnInit {
     values.forEach((fil) => {
       if (fil.value != false || fil.value === false) {
         if (fil.attr === "finishedProjetcsCombo") {
-
+          
           filters.push(
             FilterExpressionUtils.buildExpressionEquals(
               "P_FINISHED",
