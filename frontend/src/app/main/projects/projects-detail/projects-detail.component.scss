@@ -2,6 +2,11 @@
     overflow: hidden;
 }
 
+.container {
+   display: flex;
+   align-items: center;
+}
+
 .project-details {
     margin: auto;
     width: 600px;

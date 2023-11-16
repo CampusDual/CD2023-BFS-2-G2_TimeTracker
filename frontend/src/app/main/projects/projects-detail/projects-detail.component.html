@@ -4,6 +4,7 @@
     <o-row class="project-details">
         <o-text-input class="input-padding" attr="P_NAME_TITLE" read-only="yes"></o-text-input>
         <o-text-input #projectTime attr="PROJECT_TOTAL_TIME" read-only="yes"></o-text-input>
+        <o-percent-input #progressPercent label="PROGRESS_PERCENT" [data]="getProgress()" read-only="yes"></o-percent-input>
     </o-row>
     <mat-tab-group oTabGroup="ontimize">
         <mat-tab label="{{ 'PROJECT_DETAILS' | oTranslate }}">
@@ -17,10 +18,10 @@
                     <o-row>
                         <o-textarea-input attr="P_DESCRIPTION" fxFlex="90"></o-textarea-input>
                     </o-row>
-                    <o-row>
+                    <o-row class="container">
                         <o-column fxFlex="50">
-                            <o-text-input fxFlex="30" class="input-padding" attr="P_MAX_HOURS"
-                                required="no"></o-text-input>
+                            <o-integer-input #maxHours class="hours" appearance="outline" fxFlex="40" attr="P_MAX_HOURS"
+                                required="no"></o-integer-input>
                         </o-column>
                         <o-column>
                             <o-checkbox class="archiveProjectCheckbox" attr="P_FINISHED" label="ARCHIVE_PROJECT"

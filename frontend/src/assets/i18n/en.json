@@ -99,5 +99,6 @@
   "P_MAX_HOURS": "Max hours",
   "TASKS_PROJECTS_GRAPH_TITLE": "Time spent per task in the project (minutes)",
   "USER_PROJECT_GRAPH_TITLE": "Time spent per user on the project (minutes)",
-  "REGISTER_TITLE": "Register new user"
+  "REGISTER_TITLE": "Register new user",
+  "PROGRESS_PERCENT": "Progress"
 }

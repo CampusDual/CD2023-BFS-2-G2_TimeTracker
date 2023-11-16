@@ -86,9 +86,13 @@ nav:nth-child(1) > o-app-sidenav-menu-group > a {
 
 // Details
 .project-details, .task-details {
-  o-text-input {
+  o-text-input, o-percent-input {
     font-size: 18px;
     width: 100%;
+
+    svg{
+      display: none;
+    }
 
     .mat-input-element, .mat-form-field-label {
       text-align: center;
