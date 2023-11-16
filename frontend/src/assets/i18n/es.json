@@ -58,7 +58,7 @@
   "NEW_USER": "Añadir usuario",
   "ERROR_USER_INSERT_MSG": "El usuario ya se encuentra en el proyecto",
   "NAME": "Nombre",
-  "SURNAME": "Apellido",
+  "SURNAME": "Apellidos",
   "PROJECT_DETAILS": "Detalles",
   "PROJECT_USERS": "Usuarios",
   "TASK_DETAILS": "Detalles de la tarea",
@@ -100,5 +100,8 @@
   "TASKS_PROJECTS_GRAPH_TITLE": "Tiempo empleado en las tareas del proyecto (minutos)",
   "USER_PROJECT_GRAPH_TITLE": "Tiempo empleado por usuario en el proyecto (minutos)",
   "REGISTER_TITLE": "Registrar nuevo usuario",
-  "PROGRESS_PERCENT": "Progreso"
+  "PROGRESS_PERCENT": "Progreso",
+  "SIGN_UP": "Registrarse",
+  "DONT_HAVE_ACC": "¿No tienes cuenta? Regístrate aquí",
+  "HAVE_ACC": "¿Ya tienes cuenta? Inicia sesión aquí"
 }

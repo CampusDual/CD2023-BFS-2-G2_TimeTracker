@@ -8,7 +8,7 @@
   "LOGOUT": "Logout",
   "VIEW": "Views",
   "HOME": "Home",
-  "LOGIN_TITLE": "Log in to your account",
+  "LOGIN_TITLE": "Log into your account",
   "ERROR_REQUIRED_FIELD": "Field is required",
   "ERROR_MIN_LENGTH_REQUIRED": "The value length entered must be at least 8 characters.",
   "ERROR_SESSION_EXPIRED": "Session expired",
@@ -100,5 +100,8 @@
   "TASKS_PROJECTS_GRAPH_TITLE": "Time spent per task in the project (minutes)",
   "USER_PROJECT_GRAPH_TITLE": "Time spent per user on the project (minutes)",
   "REGISTER_TITLE": "Register new user",
-  "PROGRESS_PERCENT": "Progress"
+  "PROGRESS_PERCENT": "Progress",
+  "SIGN_UP": "Sign up",
+  "DONT_HAVE_ACC": "Don't have an account? Register here",
+  "HAVE_ACC": "Already have an account? Login here"
 }

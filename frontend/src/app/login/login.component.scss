@@ -111,6 +111,19 @@
       }
     }
 
+    .no-acc {
+      margin-top: 2rem;
+      text-align: center;
+      a {
+        color: #676bd2;
+        font-size: 15px;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+
   }
 
   .footer-container {

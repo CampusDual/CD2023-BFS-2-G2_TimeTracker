@@ -34,14 +34,11 @@
           </div>
 
           <button mat-raised-button color="primary" type="submit">{{ 'LOGIN' | oTranslate }}</button>
-          <div layout-padding></div>
-          <div layout-padding></div>
+          <div class="no-acc">
+            <a routerLink="/register">{{ 'DONT_HAVE_ACC' | oTranslate }}</a>
+          </div>
         </form>
-        <div>
-          <a routerLink="/register">{{ 'Register' | oTranslate }}</a>
-        </div>
       </div>
-
     </div>
   </div>
 
