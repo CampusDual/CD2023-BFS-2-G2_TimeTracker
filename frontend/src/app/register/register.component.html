@@ -14,17 +14,7 @@
 
           <div>
             <mat-form-field fxFill class="m-top-16">
-              <input matInput #name class="mat-input" placeholder="{{ 'NAME' | oTranslate }}" id="name" [formControl]="nameCtrl">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field fxFill class="m-top-16">
-              <input matInput #surname class="mat-input" placeholder="{{ 'SURNAME' | oTranslate }}" id="surname" [formControl]="surnameCtrl">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field fxFill class="m-top-16">
-              <input matInput #mail class="mat-input" placeholder="{{ 'E-mail' | oTranslate }}" id="mail" type="mail" [formControl]="mailCtrl">
+              <input matInput #name class="mat-input" placeholder="{{ 'USERNAME' | oTranslate }}" id="name" [formControl]="nameCtrl">
             </mat-form-field>
           </div>
           <div>
@@ -32,7 +22,11 @@
               <input matInput #password class="mat-input" placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password" [formControl]="pwdCtrl">
             </mat-form-field>
           </div>
-
+          <div>
+            <mat-form-field fxFill class="m-top-16">
+              <input matInput #password class="mat-input" placeholder="{{ 'REPEAT_PASSWORD' | oTranslate }}" id="repeat_password" type="password" [formControl]="rpwdCtrl">
+            </mat-form-field>
+          </div>
           <button mat-raised-button color="primary" type="submit">{{ 'SIGN_UP' | oTranslate }}</button>
           <div class="already-acc">
             <a routerLink="/login">{{ 'HAVE_ACC' | oTranslate }}</a>

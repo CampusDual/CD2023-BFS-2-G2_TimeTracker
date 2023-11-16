@@ -106,5 +106,9 @@
   "HAVE_ACC": "Already have an account? Login here",
   "GLOBAL_RECORD": "Global records",
   "PERSONAL_RECORD": "Personal records",
-  "USER_": "User"
+  "USER_": "User",
+  "REGISTER_ERROR_CREATE": "This user already exists",
+  "REPEAT_PASSWORD": "Repeat password",
+  "ERROR_PASSWORD_MSG": "Password doesn't match",
+  "SUCCESSFUL_INSERT_USER_MSG": "Successfull insert new user"
 }

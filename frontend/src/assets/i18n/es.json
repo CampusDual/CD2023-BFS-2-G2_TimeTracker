@@ -106,5 +106,9 @@
   "HAVE_ACC": "¿Ya tienes cuenta? Inicia sesión aquí",
   "GLOBAL_RECORD": "Historial global",
   "PERSONAL_RECORD": "Historial personal",
-  "USER_": "Usuario"
+  "USER_": "Usuario",
+  "REGISTER_ERROR_CREATE": "Usuario existente",
+  "REPEAT_PASSWORD": "Repetir contraseña",
+  "ERROR_PASSWORD_MSG": "Las contraseñas no coinciden",
+  "SUCCESSFUL_INSERT_USER_MSG": "Usuario registrado correctamente"
 }
