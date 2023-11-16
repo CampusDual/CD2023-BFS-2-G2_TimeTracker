@@ -5,6 +5,12 @@
 .container {
    display: flex;
    align-items: center;
+
+   o-checkbox {
+    margin-block: auto;
+    margin-left: auto;
+    padding-bottom: 1.34375em;
+   }
 }
 
 .project-details {

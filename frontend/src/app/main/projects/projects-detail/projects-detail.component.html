@@ -13,19 +13,17 @@
                     <o-column title="{{ 'EDIT_FIELDS' | oTranslate }}"></o-column>
                     <o-row>
                         <o-text-input class="input-padding" attr="P_NAME" fxFlex="60" required="no"></o-text-input>
-                        <o-date-input attr="P_DATE" fxFlex="30" enabled="no"></o-date-input>
+                        <o-date-input attr="P_DATE" fxFlex="30" read-only="yes" class="read-only"></o-date-input>
                     </o-row>
                     <o-row>
                         <o-textarea-input attr="P_DESCRIPTION" fxFlex="90"></o-textarea-input>
                     </o-row>
                     <o-row class="container">
-                        <o-column fxFlex="50">
-                            <o-integer-input #maxHours class="hours" appearance="outline" fxFlex="40" attr="P_MAX_HOURS"
-                                required="no"></o-integer-input>
+                        <o-column fxFlex="15">
+                            <o-integer-input #maxHours appearance="outline" attr="P_MAX_HOURS" required="no"></o-integer-input>
                         </o-column>
-                        <o-column>
-                            <o-checkbox class="archiveProjectCheckbox" attr="P_FINISHED" label="ARCHIVE_PROJECT"
-                                read-only="no"></o-checkbox>
+                        <o-column fxFlex="75">
+                            <o-checkbox fxFlex attr="P_FINISHED" label="ARCHIVE_PROJECT" read-only="no"></o-checkbox>
                         </o-column>
                     </o-row>
                 </o-column>
@@ -51,8 +49,8 @@
                     columns="T_ID;P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
                     virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes"
                     detail-form-route="/main/tasks/"
-                    visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-                    default-visible-columns="P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED">
+                    visible-columns="T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
+                    default-visible-columns="T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED">
                     <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
                     <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
                     <o-table-column attr="T_DATE" title="T_DATE" type="date" format="DD/MM/YYYY HH:mm"></o-table-column>
