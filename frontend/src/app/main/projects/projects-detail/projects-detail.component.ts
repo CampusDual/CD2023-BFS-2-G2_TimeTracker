@@ -1,5 +1,5 @@
 import { TemplateBinding } from '@angular/compiler';
-import { Component, OnInit, Injector, ViewChild } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { OIntegerInputComponent, OPercentInputComponent, OTableComponent, OTextInputComponent, OntimizeService } from 'ontimize-web-ngx';
 import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
@@ -14,7 +14,10 @@ export class ProjectsDetailComponent implements OnInit {
   @ViewChild('tasksTable', { static: false }) tasksTable: OTableComponent;
   @ViewChild('projectTime', { static: true }) projectTime: OTextInputComponent;
   @ViewChild('maxHours', { static: true }) maxHours: OIntegerInputComponent;
-  @ViewChild('progressPercent', { static: true }) progressPercent: OPercentInputComponent;
+  @ViewChild('projectNameHeader', { static: true }) projectNameHeader: ElementRef;
+  @ViewChild('totalTimeHeader', { static: true }) totalTimeHeader: ElementRef;
+  @ViewChild('progressPercentHeader', { static: true }) progressPercentHeader: ElementRef;
+
 
   p_id: any;
   tasksChartParameters: PieChartConfiguration;
@@ -41,22 +44,35 @@ export class ProjectsDetailComponent implements OnInit {
     console.log(dataPT);
     this.p_id = dataPT.P_ID;
     this.totaltime = dataPT.PROJECT_TOTAL_TIME;
+    this.projectNameHeader.nativeElement.innerText = dataPT.P_NAME;
+    this.totalTimeHeader.nativeElement.innerText = this.addZero(Math.floor(this.totaltime / 60)) + ":" + this.addZero(this.totaltime % 60);
+    this.progressPercentHeader.nativeElement.innerText = this.getProgress();
 
     let minutes = this.addZero(this.totaltime % 60);
     let hours =  this.addZero(Math.floor(this.totaltime / 60));
 
     this.projectTime.setValue(`${hours}:${minutes}`);
+
+    console.log(dataPT);
+
+    
   }
 
   getProgress(){
-    let progress = ((this.totaltime/60) * 100 / this.maxHours.getValue())/100;
-    if (progress > 1){
-      this.progressPercent.elementRef.nativeElement.style.color = "red";
+    let progress = ((this.totaltime/60) * 100 / this.maxHours.getValue());
+    if (progress > 100){
+      this.progressPercentHeader.nativeElement.style.color = "red";
     } else {
-      this.progressPercent.elementRef.nativeElement.style.color = "#333";
+      this.progressPercentHeader.nativeElement.style.color = "#333";
     }
 
-    return progress;
+    if (this.maxHours.getValue() === 0 || this.maxHours.getValue() == null){
+      this.progressPercentHeader.nativeElement.parentElement.style.display = "none";
+    } else {
+      this.progressPercentHeader.nativeElement.parentElement.style.display = "flex";
+    }
+
+    return progress.toFixed(2) + "%";
   }
 
 

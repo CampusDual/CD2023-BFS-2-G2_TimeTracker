@@ -1,10 +1,24 @@
 <o-form #taskForm service="tasks" entity="projectTask" keys="T_ID" (onDataLoaded)="print($event)" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
     <o-text-input attr="T_ID" sql-type="INTEGER" hidden></o-text-input>
     <o-row class="task-details">
-            <o-text-input class="input-padding" attr="P_NAME" read-only="yes"></o-text-input>
-            <o-text-input class="input-padding" attr="T_NAME" read-only="yes"></o-text-input>
-            <o-text-input attr="T_OWNER" read-only="yes"></o-text-input>
-        </o-row>
+        <div class="task-details-header">
+            <div>
+                <label for="project-name-header">{{ 'P_NAME' | oTranslate }}</label>
+                <p #projectNameHeader id="project-name-header"></p>
+            </div>
+            <div>
+                <label for="task-name-header">{{ 'T_NAME' | oTranslate }}</label>
+                <p  #taskNameHeader id="task-name-header"></p>
+            </div>
+            <div>
+                <label for="task-owner-header">{{ 'T_OWNER' | oTranslate }}</label>
+                <p #taskOwnerHeader id="task-owner-header"></p>
+            </div>
+        </div>
+
+        <o-text-input class="input-padding" attr="P_NAME" read-only="yes" hidden="yes"></o-text-input>
+        <o-text-input attr="T_OWNER" read-only="yes" hidden="yes"></o-text-input>
+    </o-row>
     <mat-tab-group oTabGroup="ontimize">
         <mat-tab label="{{'TASK_DETAILS' | oTranslate}}">
             <o-column title-label="TASK_DETAILS" class="task-detail-form">

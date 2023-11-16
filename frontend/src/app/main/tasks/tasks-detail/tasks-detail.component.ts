@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { OCheckboxComponent, OFormComponent, OTextInputComponent } from 'ontimize-web-ngx';
 
 @Component({
@@ -13,6 +13,9 @@ export class TasksDetailComponent implements OnInit {
   @ViewChild ('userTotal' , {static : true}) userTotal : OTextInputComponent;
   @ViewChild ('taskCheckbox' , {static : true}) taskCheckbox : OCheckboxComponent;
   @ViewChild ('taskForm' , {static : true}) taskForm : OFormComponent;
+  @ViewChild('taskNameHeader', { static: true }) taskNameHeader: ElementRef;
+  @ViewChild('projectNameHeader', { static: true }) projectNameHeader: ElementRef;
+  @ViewChild('taskOwnerHeader', { static: true }) taskOwnerHeader: ElementRef;
   
   ngOnInit() {
   }
@@ -24,6 +27,9 @@ export class TasksDetailComponent implements OnInit {
 
     this.userTime.setValue(this.formatTime(userTaskTime));
     this.userTotal.setValue(this.formatTime(userTotalTime));
+    this.taskNameHeader.nativeElement.innerText = data.T_NAME;
+    this.projectNameHeader.nativeElement.innerText = data.P_NAME;
+    this.taskOwnerHeader.nativeElement.innerText = data.T_OWNER;
   }
 
   formatTime(TimeBD){

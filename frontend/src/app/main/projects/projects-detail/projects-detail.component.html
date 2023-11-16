@@ -2,9 +2,22 @@
     header-actions="R;U;D" show-header-navigation="no" undo-button="no">
     <o-text-input attr="P_ID" sql-type="INTEGER" hidden></o-text-input>
     <o-row class="project-details">
-        <o-text-input class="input-padding" attr="P_NAME_TITLE" read-only="yes"></o-text-input>
-        <o-text-input #projectTime attr="PROJECT_TOTAL_TIME" read-only="yes"></o-text-input>
-        <o-percent-input #progressPercent label="PROGRESS_PERCENT" [data]="getProgress()" read-only="yes"></o-percent-input>
+        <div class="project-details-header">
+            <div>
+                <label for="project-name-header">{{ 'P_NAME' | oTranslate }}</label>
+                <p #projectNameHeader id="project-name-header"></p>
+            </div>
+            <div>
+                <label for="total-time-header">{{ 'TOTAL_TASK_TIME' | oTranslate }}</label>
+                <p  #totalTimeHeader id="total-time-header"></p>
+            </div>
+            <div class="progress">
+                <label for="progress-header">{{ 'PROGRESS_PERCENT' | oTranslate }}</label>
+                <p  #progressPercentHeader id="progress-header"></p>
+            </div>
+        </div>
+        <o-text-input class="input-padding" attr="P_NAME_TITLE" read-only="yes" hidden="yes"></o-text-input>
+        <o-text-input #projectTime attr="PROJECT_TOTAL_TIME" read-only="yes" hidden="yes"></o-text-input>
     </o-row>
     <mat-tab-group oTabGroup="ontimize">
         <mat-tab label="{{ 'PROJECT_DETAILS' | oTranslate }}">
