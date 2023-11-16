@@ -103,5 +103,8 @@
   "PROGRESS_PERCENT": "Progreso",
   "SIGN_UP": "Registrarse",
   "DONT_HAVE_ACC": "¿No tienes cuenta? Regístrate aquí",
-  "HAVE_ACC": "¿Ya tienes cuenta? Inicia sesión aquí"
+  "HAVE_ACC": "¿Ya tienes cuenta? Inicia sesión aquí",
+  "GLOBAL_RECORD": "Historial global",
+  "PERSONAL_RECORD": "Historial personal",
+  "USER_": "Usuario"
 }

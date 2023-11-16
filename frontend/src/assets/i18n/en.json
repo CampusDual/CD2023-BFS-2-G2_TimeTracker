@@ -103,5 +103,8 @@
   "PROGRESS_PERCENT": "Progress",
   "SIGN_UP": "Sign up",
   "DONT_HAVE_ACC": "Don't have an account? Register here",
-  "HAVE_ACC": "Already have an account? Login here"
+  "HAVE_ACC": "Already have an account? Login here",
+  "GLOBAL_RECORD": "Global records",
+  "PERSONAL_RECORD": "Personal records",
+  "USER_": "User"
 }
