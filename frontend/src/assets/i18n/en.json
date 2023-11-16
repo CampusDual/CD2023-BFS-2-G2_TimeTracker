@@ -95,5 +95,8 @@
   "PROJECT_SUMMARY": "Summary",
   "UPDATE_TASK_ERROR": "Archived project. Unarchive project before trying again",
   "T_OWNER": "Owner",
-  "EDIT_FIELDS": "Edit fields"
+  "EDIT_FIELDS": "Edit fields",
+  "P_MAX_HOURS": "Max hours",
+  "TASKS_PROJECTS_GRAPH_TITLE": "Time spent per task in the project (minutes)",
+  "USER_PROJECT_GRAPH_TITLE": "Time spent per user on the project (minutes)"
 }
