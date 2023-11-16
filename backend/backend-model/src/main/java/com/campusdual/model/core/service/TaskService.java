@@ -76,6 +76,9 @@ public class TaskService implements ITaskService {
     }
     @Override
     public EntityResult projectTaskQuery(Map<String, Object> keyMap, List<String> attrList) {
+        List<Long> minuteTimes = new ArrayList<>();
+        List<Long> minuteUserTimes = new ArrayList<>();
+        List<Long> minuteDecimalTimes = new ArrayList<>();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
@@ -89,8 +92,35 @@ public class TaskService implements ITaskService {
             newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
         }
 
-        return this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectTask");
+        EntityResult res= this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectTask");
 
+        if (res.containsKey(TaskDao.TOTAL_TASK_TIME) || res.containsKey(TaskDao.USER_TASK_TIME) || res.containsKey(TaskDao.TOTAL_TASK_TIME_DECIMAL)) {
+            for (int i = 0; i < res.calculateRecordNumber(); i++) {
+                Map<String, Object> recValues = res.getRecordValues(i);
+                if (recValues.containsKey(TaskDao.TOTAL_TASK_TIME)) {
+                    PGInterval value = (PGInterval) recValues.get(TaskDao.TOTAL_TASK_TIME);
+                    minuteTimes.add(intervalToMinutes(value));
+                } else {
+                    minuteTimes.add(0L);
+                }
+                if (recValues.containsKey(TaskDao.USER_TASK_TIME)) {
+                    PGInterval value = (PGInterval) recValues.get(TaskDao.USER_TASK_TIME);
+                    minuteUserTimes.add(intervalToMinutes(value));
+                } else {
+                    minuteUserTimes.add(0L);
+                }
+                if (recValues.containsKey(TaskDao.TOTAL_TASK_TIME_DECIMAL)) {
+                    PGInterval value = (PGInterval) recValues.get(TaskDao.TOTAL_TASK_TIME_DECIMAL);
+                    minuteDecimalTimes.add(intervalToMinutes(value));
+                } else {
+                    minuteDecimalTimes.add(0L);
+                }
+            }
+            res.put(TaskDao.TOTAL_TASK_TIME, minuteTimes);
+            res.put(TaskDao.USER_TASK_TIME, minuteUserTimes);
+            res.put(TaskDao.TOTAL_TASK_TIME_DECIMAL, minuteDecimalTimes);
+        }
+        return res;
     }
     @Override
     public EntityResult projectSummaryTasksGraphQuery(Map<String, Object> keyMap, List<String> attrList) {
@@ -115,22 +145,9 @@ public class TaskService implements ITaskService {
                 Map<String, Object> recValues = res.getRecordValues(i);
                 if (recValues.containsKey(TaskDao.TOTAL_TASK_TIME)) {
                     PGInterval value = (PGInterval) recValues.get(TaskDao.TOTAL_TASK_TIME);
-                    int hours = value.getHours();
-                    int mins = value.getMinutes();
-                    int days = value.getDays();
-                    int months = value.getMonths();
-                    int years = value.getYears();
-
-                    long totalSeconds = years * 365 * 24 * 60 * 60 +
-                            months * 30 * 24 * 60 * 60 +
-                            days * 24 * 60 * 60 +
-                            hours * 60 * 60 +
-                            mins * 60;
-
-
-                    minuteTimes.add(totalSeconds);
+                    minuteTimes.add(intervalToMinutes(value));
                 }else{
-                    minuteTimes.add(Long.valueOf(0));
+                    minuteTimes.add(0L);
                 }
             }
             res.put(TaskDao.TOTAL_TASK_TIME, minuteTimes);
@@ -138,21 +155,49 @@ public class TaskService implements ITaskService {
         return res;
     }
 
+    public static long intervalToMinutes(PGInterval value) {
+        int hours = value.getHours();
+        int mins = value.getMinutes();
+        int days = value.getDays();
+        int months = value.getMonths();
+        int years = value.getYears();
+
+        long totalMinutes = years * 365 * 24 * 60 +
+                months * 30 * 24 * 60 +
+                days * 24 * 60 +
+                hours * 60 +
+                mins;
+
+        return totalMinutes;
+    }
+
     @Override
     public EntityResult projectSummaryTasksTableQuery(Map<String, Object> keyMap, List<String> attrList) {
+        List<Long> minuteTimes = new ArrayList<>();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
-
         BasicField userField = new BasicField(UsersProjectDao.USER_);
         BasicExpression userExp = new BasicExpression(userField, BasicOperator.EQUAL_OP, authentication.getName());
-
         if (keyMap.containsKey(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY)) {
             newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, new BasicExpression(keyMap.get(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY), BasicOperator.AND_OP, userExp));
         } else {
             newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
         }
+        EntityResult res= this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectSummaryTasks");
 
-        return this.daoHelper.query(this.taskDao, newKeyMap, attrList,"projectSummaryTasks");
+        if (res.containsKey(TaskDao.TOTAL_TASK_TIME)) {
+            for (int i = 0; i < res.calculateRecordNumber(); i++) {
+                Map<String, Object> recValues = res.getRecordValues(i);
+                if (recValues.containsKey(TaskDao.TOTAL_TASK_TIME)) {
+                    PGInterval value = (PGInterval) recValues.get(TaskDao.TOTAL_TASK_TIME);
+                    minuteTimes.add(intervalToMinutes(value));
+                }else{
+                    minuteTimes.add(0L);
+                }
+            }
+            res.put(TaskDao.TOTAL_TASK_TIME, minuteTimes);
+        }
+        return res;
     }
 
     @Override

@@ -14,23 +14,19 @@ export class DurationDecimalRenderComponent extends OBaseTableCellRenderer {
     super(injector);
     }
 
+
   getCellData(cellvalue: any, rowvalue?: any): string{
-    let hours;
-    let minutes;
-    let days;
-    if(cellvalue == null){
-      hours =  "00";
-      minutes =  "00";
-    }else{
-      days = cellvalue["days"]*24;
-      hours = this.addZero(cellvalue["hours"]+days);
-      minutes = this.addZero((cellvalue["minutes"]/60).toString().slice(2,4));
+    if (!cellvalue) {
+      return '00:00';
     }
-    return `${String(hours).padStart(2, "0")}.${String(minutes).padEnd(2, "0")}`;
+
+    let hours =  this.addZero((cellvalue / 60).toFixed(2));
+
+    return `${String(hours).padStart(2, '0')}`;
   }
 
   addZero(num){
-    if (num<1) {
+    if (num<10) {
       return "0"+num;
     }
     return num;

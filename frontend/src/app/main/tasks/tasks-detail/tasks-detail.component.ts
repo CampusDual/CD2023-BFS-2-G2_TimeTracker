@@ -36,18 +36,9 @@ export class TasksDetailComponent implements OnInit {
   }
 
   formatTime(TimeBD){
-    let hours;
-    let minutes;
-    let days;
+    let minutes = this.addZero(TimeBD % 60);
+    let hours =  this.addZero(Math.floor(TimeBD / 60));
 
-    if (TimeBD == null) {
-      hours = "00";
-      minutes = "00";
-    } else {
-      days = TimeBD["days"] * 24;
-      hours = this.addZero(TimeBD["hours"] + days);
-      minutes = this.addZero(TimeBD["minutes"]);
-    }
     return `${hours}:${minutes}`;
   }
 

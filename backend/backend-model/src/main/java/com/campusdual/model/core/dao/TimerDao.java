@@ -16,4 +16,7 @@ public class TimerDao extends OntimizeJdbcDaoSupport {
     public static final String T_ID = "T_ID";
     public static final String TM_START_TIME = "TM_START_TIME";
     public static final String TM_END_TIME = "TM_END_TIME";
+    public static final String TM_DURATION = "TM_DURATION";
+    public static final String TM_DURATION_DECIMAL = "TM_DURATION_DECIMAL";
+
 }

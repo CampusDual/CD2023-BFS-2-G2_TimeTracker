@@ -13,6 +13,7 @@ import com.ontimize.jee.common.db.SQLStatementBuilder.ExtendedSQLConditionValues
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
+import org.postgresql.util.PGInterval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -80,6 +81,8 @@ public class ProjectService implements IProjectService {
 
     @Override
     public EntityResult projectTotalTimeQuery(Map<String, Object> keyMap, List<String> attrList) {
+        List<Long> minuteTimes = new ArrayList<>();
+        List<Long> minuteDecimalTimes = new ArrayList<>();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
@@ -93,7 +96,28 @@ public class ProjectService implements IProjectService {
             newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
         }
 
-        return this.daoHelper.query(this.projectDao, newKeyMap, attrList, "projectTotalTime");
+        EntityResult res= this.daoHelper.query(this.projectDao, newKeyMap, attrList,"projectTotalTime");
+
+        if (res.containsKey(ProjectDao.PROJECT_TOTAL_TIME) || res.containsKey(ProjectDao.PROJECT_TOTAL_TIME_DECIMAL)) {
+            for (int i = 0; i < res.calculateRecordNumber(); i++) {
+                Map<String, Object> recValues = res.getRecordValues(i);
+                if (recValues.containsKey(ProjectDao.PROJECT_TOTAL_TIME)) {
+                    PGInterval value = (PGInterval) recValues.get(ProjectDao.PROJECT_TOTAL_TIME);
+                    minuteTimes.add(TaskService.intervalToMinutes(value));
+                } else {
+                    minuteTimes.add(0L);
+                }
+                if (recValues.containsKey(ProjectDao.PROJECT_TOTAL_TIME_DECIMAL)) {
+                    PGInterval value = (PGInterval) recValues.get(ProjectDao.PROJECT_TOTAL_TIME_DECIMAL);
+                    minuteDecimalTimes.add(TaskService.intervalToMinutes(value));
+                } else {
+                    minuteDecimalTimes.add(0L);
+                }
+            }
+            res.put(ProjectDao.PROJECT_TOTAL_TIME, minuteTimes);
+            res.put(ProjectDao.PROJECT_TOTAL_TIME_DECIMAL, minuteDecimalTimes);
+        }
+        return res;
     }
 
     @Override

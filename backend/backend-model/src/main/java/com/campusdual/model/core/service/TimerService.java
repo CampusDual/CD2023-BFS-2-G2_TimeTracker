@@ -11,6 +11,7 @@ import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
+import org.postgresql.util.PGInterval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
@@ -73,6 +74,9 @@ public class TimerService implements ITimerService {
 
     @Override
     public EntityResult recordQuery(Map<String, Object> keyMap, List<String> attrList) {
+        List<Long> minuteTimes = new ArrayList<>();
+        List<Long> minuteDecimalTimes = new ArrayList<>();
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);
 
@@ -85,7 +89,28 @@ public class TimerService implements ITimerService {
             newKeyMap.put(ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
         }
 
-        return this.daoHelper.query(this.timerDao, newKeyMap, attrList,"record");
+        EntityResult res= this.daoHelper.query(this.timerDao, newKeyMap, attrList,"record");
+
+        if (res.containsKey(TimerDao.TM_DURATION) || res.containsKey(TimerDao.TM_DURATION_DECIMAL)) {
+            for (int i = 0; i < res.calculateRecordNumber(); i++) {
+                Map<String, Object> recValues = res.getRecordValues(i);
+                if (recValues.containsKey(TimerDao.TM_DURATION)) {
+                    PGInterval value = (PGInterval) recValues.get(TimerDao.TM_DURATION);
+                    minuteTimes.add(TaskService.intervalToMinutes(value));
+                } else {
+                    minuteTimes.add(0L);
+                }
+                if (recValues.containsKey(TimerDao.TM_DURATION_DECIMAL)) {
+                    PGInterval value = (PGInterval) recValues.get(TimerDao.TM_DURATION_DECIMAL);
+                    minuteDecimalTimes.add(TaskService.intervalToMinutes(value));
+                } else {
+                    minuteDecimalTimes.add(0L);
+                }
+            }
+            res.put(TimerDao.TM_DURATION, minuteTimes);
+            res.put(TimerDao.TM_DURATION_DECIMAL, minuteDecimalTimes);
+        }
+        return res;
     }
 
     @Override

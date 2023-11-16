@@ -17,10 +17,10 @@ export class ProjectsDetailComponent implements OnInit {
 
 
   constructor(private router: Router) {
+    
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   public openTasksDetailsSelected() {
     let selectedItem = this.tasksTable.getSelectedItems();
@@ -35,17 +35,8 @@ export class ProjectsDetailComponent implements OnInit {
     this.p_id = dataPT.P_ID;
     let projectTotalTime = dataPT.PROJECT_TOTAL_TIME;
 
-    let hours;
-    let minutes;
-    let days;
-    if (projectTotalTime == null) {
-      hours = "00";
-      minutes = "00";
-    } else {
-      days = projectTotalTime["days"] * 24;
-      hours = this.addZero(projectTotalTime["hours"] + days);
-      minutes = this.addZero(projectTotalTime["minutes"]);
-    }
+    let minutes = this.addZero(projectTotalTime % 60);
+    let hours =  this.addZero(Math.floor(projectTotalTime / 60));
 
     this.projectTime.setValue(`${hours}:${minutes}`);
   }

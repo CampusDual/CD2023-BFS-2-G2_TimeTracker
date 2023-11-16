@@ -18,10 +18,9 @@ export class DurationRenderComponent extends OBaseTableCellRenderer {
       if (!cellvalue) {
         return '00:00';
       }
-  
-      const days = cellvalue.days ? cellvalue.days * 24 : 0;
-      const hours = this.addZero(cellvalue.hours + days);
-      const minutes = this.addZero(cellvalue.minutes);
+
+      let minutes = this.addZero(cellvalue % 60);
+      let hours =  this.addZero(Math.floor(cellvalue / 60));
   
       return `${hours}:${minutes}`;
     }
