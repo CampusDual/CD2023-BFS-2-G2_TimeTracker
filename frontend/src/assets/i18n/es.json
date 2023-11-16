@@ -98,5 +98,6 @@
   "EDIT_FIELDS": "Editar campos",
   "P_MAX_HOURS": "Límite horas",
   "TASKS_PROJECTS_GRAPH_TITLE": "Tiempo empleado en las tareas del proyecto (minutos)",
-  "USER_PROJECT_GRAPH_TITLE": "Tiempo empleado por usuario en el proyecto (minutos)"
+  "USER_PROJECT_GRAPH_TITLE": "Tiempo empleado por usuario en el proyecto (minutos)",
+  "REGISTER_TITLE": "Registrar nuevo usuario"
 }

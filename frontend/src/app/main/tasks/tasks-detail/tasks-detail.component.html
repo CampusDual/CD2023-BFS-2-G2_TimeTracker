@@ -1,4 +1,4 @@
-<o-form #taskForm service="tasks" entity="projectTask" (onDataLoaded)="print($event)" keys="T_ID" (onFormModeChange)="prueba($event)" (onUpdate)="UpdateChange()" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
+<o-form #taskForm service="tasks" entity="projectTask" keys="T_ID" (onDataLoaded)="print($event)" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
     <o-text-input attr="T_ID" sql-type="INTEGER" hidden></o-text-input>
     <o-row class="task-details">
             <o-text-input class="input-padding" attr="P_NAME" read-only="yes"></o-text-input>

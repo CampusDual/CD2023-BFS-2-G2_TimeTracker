@@ -7,8 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.campusdual.api.core.service.IUserService;
@@ -48,4 +50,16 @@ public class UserService implements IUserService {
 		return this.daoHelper.delete(this.userDao, keyMap);
 	}
 
+	public EntityResult registerInsert(Map<?, ?> attrMap){
+		EntityResult err;
+		try{
+			err = this.userInsert(attrMap);
+
+		}catch (DataIntegrityViolationException e){
+			err = new EntityResultMapImpl();
+			err.setCode(EntityResult.OPERATION_WRONG);
+			err.setMessage("REGISTER_ERROR_CREATE");
+		}
+		return err;
+	}
 }

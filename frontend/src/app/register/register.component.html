@@ -1,0 +1,55 @@
+<div class="full-page">
+  <div class="login-outer-container">
+
+    <div class="login-bg-container">
+    </div>
+
+    <div class="wrapp-login">
+      <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+          <div class="login-title-container" fxLayout="column">
+            <span class="title_text">{{ 'REGISTER_TITLE' | oTranslate }}:</span>
+          </div>
+
+          <div>
+            <mat-form-field fxFill class="m-top-24">
+              <input matInput #name class="mat-input" placeholder="{{ 'NAME' | oTranslate }}" id="name" [formControl]="nameCtrl">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field fxFill class="m-top-24">
+              <input matInput #surname class="mat-input" placeholder="{{ 'SURNAME' | oTranslate }}" id="surname" [formControl]="surnameCtrl">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field fxFill class="m-top-24">
+              <input matInput #mail class="mat-input" placeholder="{{ 'E-mail' | oTranslate }}" id="mail" type="mail" [formControl]="mailCtrl">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field fxFill class="m-top-24">
+              <input matInput #password class="mat-input" placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password" [formControl]="pwdCtrl">
+            </mat-form-field>
+          </div>
+
+          <button mat-raised-button color="primary" type="submit">{{ 'REGISTER' | oTranslate }}</button>
+          <div layout-padding></div>
+          <div layout-padding></div>
+        </form>
+        <div>
+          <a routerLink="/login">{{ 'Login' | oTranslate }}</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer" class="footer-container">
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <span>{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
+      <span> · 2023 </span>
+    </div>
+  </div>
+
+</div>

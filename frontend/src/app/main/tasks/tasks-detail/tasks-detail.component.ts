@@ -17,15 +17,6 @@ export class TasksDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  UpdateChange(){
-    this.taskForm.reload();
-    console.log("update");
-  }
-
-  prueba(cosa){
-    console.log(cosa);
-  }
-
   print(data) {
 
     let userTaskTime = data.USER_TASK_TIME;
