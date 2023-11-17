@@ -34,29 +34,35 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if (this.registerForm.value.password == this.registerForm.value.repeat_password) {
-      if (this.service !== null) {
-        const values = { USER_ : this.registerForm.value.name, PASSWORD : this.registerForm.value.password, NAME : this.registerForm.value.name};
-        this.service.insert(values, "register").subscribe(resp => {
-          if (resp.code === 0) {
-            if (this.dialogService) {
-              this.dialogService.info("SUCCESSFUL_TITLE", "SUCCESSFUL_INSERT_USER_MSG");
+    if (this.registerForm.value.password != "" && this.registerForm.value.repeat_password != "" && this.registerForm.value.name != "") {
+      if (this.registerForm.value.password === this.registerForm.value.repeat_password) {
+        if (this.service !== null) {
+          const values = { USER_ : this.registerForm.value.name, PASSWORD : this.registerForm.value.password, NAME : this.registerForm.value.name};
+          this.service.insert(values, "register").subscribe(resp => {
+            if (resp.code === 0) {
+              if (this.dialogService) {
+                this.dialogService.info("SUCCESSFUL_TITLE", "SUCCESSFUL_INSERT_USER_MSG");
+              }
+            } else {
+              console.log(resp);
+              console.log("resp");
             }
-          } else {
-            console.log(resp);
-            console.log("resp");
+          },
+          error => {
+            if (this.dialogService) {
+              this.dialogService.error("ERROR", error);
+            }
           }
-        },
-        error => {
-          if (this.dialogService) {
-            this.dialogService.error("ERROR", error);
-          }
+          );
         }
-        );
+      } else {
+        if (this.dialogService) {
+          this.dialogService.error("ERROR", "ERROR_PASSWORD_MSG");
+        }
       }
-    } else {
+    }else {
       if (this.dialogService) {
-        this.dialogService.error("ERROR", "ERROR_PASSWORD_MSG");
+        this.dialogService.error("ERROR", "ERROR_FIELD_EMPTY_MSG");
       }
     }
   }

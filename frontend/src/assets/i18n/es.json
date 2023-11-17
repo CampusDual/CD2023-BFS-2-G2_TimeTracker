@@ -110,5 +110,7 @@
   "REGISTER_ERROR_CREATE": "Usuario existente",
   "REPEAT_PASSWORD": "Repetir contraseña",
   "ERROR_PASSWORD_MSG": "Las contraseñas no coinciden",
-  "SUCCESSFUL_INSERT_USER_MSG": "Usuario registrado correctamente"
+  "SUCCESSFUL_INSERT_USER_MSG": "Usuario creado correctamente",
+  "ERROR_FIELD_EMPTY_MSG": "Hay campos sin rellenar",
+  "SUCCESSFUL_TITLE": "Registro completado"
 }
