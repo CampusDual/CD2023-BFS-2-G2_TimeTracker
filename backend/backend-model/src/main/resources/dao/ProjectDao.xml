@@ -37,7 +37,7 @@
                     LEFT JOIN tablap p ON up.p_id = p.p_id
                     LEFT JOIN tabla t ON p.p_id = t.p_id
                     #WHERE#
-                    #ORDER#
+                    order by P_DATE asc
                 ]]>
             </Sentence>
         </Query>

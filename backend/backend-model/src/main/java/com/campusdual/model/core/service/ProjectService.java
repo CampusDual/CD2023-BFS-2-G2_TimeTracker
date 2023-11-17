@@ -148,7 +148,6 @@ public class ProjectService implements IProjectService {
             ArrayList<Integer> tId = (ArrayList<Integer>) queryRes.get(TaskDao.T_ID);
 
             for (int i = 0; i < tId.size(); i++) {
-
                 Map<String, Object> updateKeyMap = new HashMap<>();
                 Map<String, Object> updateAttrMap = new HashMap<>();
 
@@ -156,8 +155,8 @@ public class ProjectService implements IProjectService {
                 updateAttrMap.put(TaskDao.T_FINISHED, attrMap.get(ProjectDao.P_FINISHED));
                 taskService.taskUpdate(updateAttrMap, updateKeyMap);
             }
+
         }
         return this.daoHelper.update(this.projectDao, attrMap, keyMap);
     }
-
 }

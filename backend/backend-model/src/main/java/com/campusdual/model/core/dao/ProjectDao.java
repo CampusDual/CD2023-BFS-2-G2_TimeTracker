@@ -23,4 +23,5 @@ public class ProjectDao extends OntimizeJdbcDaoSupport {
         public static final String P_FINISHED = "P_FINISHED";
         public static final String PROJECT_TOTAL_TIME = "PROJECT_TOTAL_TIME";
         public static final String PROJECT_TOTAL_TIME_DECIMAL = "PROJECT_TOTAL_TIME_DECIMAL";
+        public static final String P_MAX_HOURS = "P_MAX_HOURS";
 }

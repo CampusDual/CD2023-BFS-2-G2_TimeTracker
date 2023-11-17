@@ -21,6 +21,7 @@ export class ProjectsDetailComponent implements OnInit {
 
   p_id: any;
   tasksChartParameters: PieChartConfiguration;
+  usersChartParameters: PieChartConfiguration;
   totaltime: number;
 
 
@@ -28,6 +29,11 @@ export class ProjectsDetailComponent implements OnInit {
     this.tasksChartParameters = new PieChartConfiguration;
     this.tasksChartParameters.labelSunbeamLayout= false;
     this.tasksChartParameters.labelType="percent";
+    this.tasksChartParameters.legend.expanded = true;
+    this.tasksChartParameters.legendPosition = "bottom";
+
+    this.usersChartParameters = new PieChartConfiguration;
+    this.usersChartParameters.legendPosition = "bottom";
   }
 
   ngOnInit() {  }
@@ -41,7 +47,6 @@ export class ProjectsDetailComponent implements OnInit {
   }
 
   viewData(dataPT) {
-    console.log(dataPT);
     this.p_id = dataPT.P_ID;
     this.totaltime = dataPT.PROJECT_TOTAL_TIME;
     this.projectNameHeader.nativeElement.innerText = dataPT.P_NAME;
@@ -52,10 +57,12 @@ export class ProjectsDetailComponent implements OnInit {
     let hours =  this.addZero(Math.floor(this.totaltime / 60));
 
     this.projectTime.setValue(`${hours}:${minutes}`);
+  }
 
-    console.log(dataPT);
-
-    
+  setNullMax() {
+    if (this.maxHours.getValue() == "") {
+      this.maxHours.setValue(null);
+    }
   }
 
   getProgress(){
