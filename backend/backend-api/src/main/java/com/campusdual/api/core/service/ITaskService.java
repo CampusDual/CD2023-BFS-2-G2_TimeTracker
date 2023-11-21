@@ -18,4 +18,7 @@ public interface ITaskService {
     public EntityResult projectTaskDelete(Map<?, ?> keyMap);
     public EntityResult projectSummaryTasksGraphQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult projectSummaryTasksTableQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult allTasksOrderedQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult allTasksOrderedUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
+    public EntityResult allTasksOrderedDelete(Map<?, ?> keyMap);
 }

@@ -201,6 +201,29 @@ public class TaskService implements ITaskService {
     }
 
     @Override
+    public EntityResult allTasksOrderedQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Object> newKeyMap = new HashMap<>(keyMap);
+
+        SQLStatementBuilder.BasicField userField = new SQLStatementBuilder.BasicField(ProjectDao.USER_);
+        SQLStatementBuilder.BasicExpression userExp = new SQLStatementBuilder.BasicExpression(userField, SQLStatementBuilder.BasicOperator.EQUAL_OP, authentication.getName());
+
+        newKeyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, userExp);
+
+        return this.daoHelper.query(this.taskDao, newKeyMap, attrList, "allTasksOrdered");
+    }
+
+    @Override
+    public EntityResult allTasksOrderedUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+        return this.taskDao.update(attrMap, keyMap);
+    }
+
+    @Override
+    public EntityResult allTasksOrderedDelete(Map<?, ?> keyMap) {
+        return this.taskDao.delete(keyMap);
+    }
+
+    @Override
     public EntityResult unfinishedTasksQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Object> newKeyMap = new HashMap<>(keyMap);

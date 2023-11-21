@@ -12,7 +12,7 @@
                 <o-combo #taskCombo attr="T_ID" label="SELECT_TASK" service="tasks" entity="unfinishedTasks"
                     onchange="changeTask()" value-column="T_ID" columns="T_ID;P_NAME;T_NAME"
                     visible-columns="P_NAME;T_NAME" separator=" > " keys="T_ID" searchable="yes"
-                    [enabled]="!isFirstTask" (click)="refreshCombo()">
+                    [enabled]="!isFirstTask" (click)="refreshCombo()" null-selection="no">
                 </o-combo>
             </o-form>
             <div class="timer-control-btns">
