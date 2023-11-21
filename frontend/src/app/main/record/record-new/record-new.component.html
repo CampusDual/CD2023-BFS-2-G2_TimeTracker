@@ -1,14 +1,18 @@
-<o-form service="timers" entity="record" keys="TM_ID" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
+<o-form service="timers" entity="record" keys="TM_ID" header-actions="R;U;D" show-header-navigation="no"
+    undo-button="no">
     <o-row>
-        <o-combo fxFlex attr="T_ID" label="SELECT_TASK" service="tasks" entity="unfinishedTasks" searchable="yes" null-selection="no"
-            value-column="T_ID" columns="T_ID;P_NAME;T_NAME" visible-columns="P_NAME;T_NAME" separator=" > " keys="T_ID" required="yes">
+        <o-combo fxFlex attr="T_ID" label="SELECT_TASK" service="tasks" entity="unfinishedTasks" searchable="yes"
+            null-selection="no" value-column="T_ID" columns="T_ID;P_NAME;T_NAME" visible-columns="P_NAME;T_NAME"
+            separator=" > " keys="T_ID" required="yes">
         </o-combo>
     </o-row>
     <o-row>
-        <o-time-input fxFlex #startInput class="input-padding" attr="TM_START_TIME" required="yes" [validators]="validatorsArray"></o-time-input>
+        <o-time-input fxFlex #startInput class="input-padding" attr="TM_START_TIME" required="yes"
+            [validators]="validatorsArray"></o-time-input>
     </o-row>
     <o-row>
-        <o-time-input fxFlex #endInput class="input-padding" attr="TM_END_TIME" required="yes" [validators]="validatorsArray"> 
+        <o-time-input fxFlex #endInput class="input-padding" attr="TM_END_TIME" required="yes"
+            [validators]="validatorsArray">
         </o-time-input>
     </o-row>
 </o-form>
