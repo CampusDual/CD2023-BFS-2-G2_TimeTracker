@@ -208,15 +208,18 @@ public class TimerService implements ITimerService {
             }
 
             for (int i = 0; i < startTime.size(); i++) {
-                if (id.get(i).compareTo((Integer) keyMap.get(TimerDao.TM_ID)) != 0) {
-                    if (newStartTime.before(endTime.get(i)) &&
-                            newEndTime.after(startTime.get(i))) {
-                        EntityResult err = new EntityResultMapImpl();
-                        err.setCode(EntityResult.OPERATION_WRONG);
-                        err.setMessage("OVERLAPPING_TASK_MSG");
-                        return err;
-                    }
+                if (endTime.get(i) == null) {
+                    endTime.set(i, Timestamp.valueOf(LocalDateTime.now()));
                 }
+                    if (id.get(i).compareTo((Integer) keyMap.get(TimerDao.TM_ID)) != 0) {
+                        if (newStartTime.before(endTime.get(i)) &&
+                                newEndTime.after(startTime.get(i))) {
+                            EntityResult err = new EntityResultMapImpl();
+                            err.setCode(EntityResult.OPERATION_WRONG);
+                            err.setMessage("OVERLAPPING_TASK_MSG");
+                            return err;
+                        }
+                    }
             }
         }
         return this.daoHelper.update(this.timerDao, attrMap, keyMap);
