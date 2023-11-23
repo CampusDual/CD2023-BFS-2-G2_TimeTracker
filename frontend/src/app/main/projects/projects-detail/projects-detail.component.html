@@ -9,17 +9,17 @@
             </div>
             <div>
                 <label for="total-time-header">{{ 'TOTAL_TASK_TIME' | oTranslate }}</label>
-                <p  #totalTimeHeader id="total-time-header"></p>
+                <p #totalTimeHeader id="total-time-header"></p>
             </div>
             <div class="progress">
                 <label for="progress-header">{{ 'PROGRESS_PERCENT' | oTranslate }}</label>
-                <p  #progressPercentHeader id="progress-header"></p>
+                <p #progressPercentHeader id="progress-header"></p>
             </div>
         </div>
         <o-text-input class="input-padding" attr="P_NAME_TITLE" read-only="yes" hidden="yes"></o-text-input>
         <o-text-input #projectTime attr="PROJECT_TOTAL_TIME" read-only="yes" hidden="yes"></o-text-input>
     </o-row>
-    <mat-tab-group oTabGroup="ontimize">
+    <mat-tab-group oTabGroup="ontimize" (selectedTabChange)="onTabChange($event)">
         <mat-tab label="{{ 'PROJECT_DETAILS' | oTranslate }}">
             <o-row>
                 <o-column fxFlex="50" title-label="PROJECT_DETAILS">
@@ -33,7 +33,8 @@
                     </o-row>
                     <o-row class="container">
                         <o-column fxFlex="20">
-                            <o-integer-input #maxHours appearance="outline" attr="P_MAX_HOURS" required="no" (onValueChange)="setNullMax()"></o-integer-input>
+                            <o-integer-input #maxHours appearance="outline" attr="P_MAX_HOURS" required="no"
+                                (onValueChange)="setNullMax()"></o-integer-input>
                         </o-column>
                         <o-column fxFlex="70">
                             <o-checkbox fxFlex attr="P_FINISHED" label="ARCHIVE_PROJECT" read-only="no"></o-checkbox>
@@ -60,7 +61,8 @@
                 <o-table #tasksTable attr="tasksTable" service="tasks" entity="projectTask" keys="T_ID"
                     parent-keys="P_ID"
                     columns="T_ID;P_NAME;T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
-                    virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes" detail-form-route="/main/tasks/"
+                    virtual-scroll="no" delete-button="no" query-rows="20" insert-button="yes"
+                    detail-form-route="/main/tasks/"
                     visible-columns="T_NAME;T_DATE;TOTAL_TASK_TIME;TOTAL_TASK_TIME_DECIMAL;USER_TASK_TIME;T_FINISHED"
                     default-visible-columns="T_NAME;T_DATE;TOTAL_TASK_TIME;USER_TASK_TIME;T_FINISHED">
                     <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
@@ -128,15 +130,15 @@
                     <o-row>
                         <o-column fxFlex="45" class="tableContainers">
                             <span class="chartTitle">{{'TASKS_PROJECTS_GRAPH_TITLE' | oTranslate }}</span>
-                            <o-chart type="pie" service="tasks" entity="projectSummaryTasksGraph"
-                            parent-keys="P_ID" x-axis="T_NAME" y-axis="TOTAL_TASK_TIME" chart-width="700"
-                            [chart-parameters]="tasksChartParameters"></o-chart>
+                            <o-chart #tasksChart type="pie" service="tasks" entity="projectSummaryTasksGraph"
+                                parent-keys="P_ID" x-axis="T_NAME" y-axis="TOTAL_TASK_TIME"
+                                [chart-parameters]="tasksChartParameters"></o-chart>
                         </o-column>
                         <o-column fxFlex="45" class="tableContainers">
                             <span class="chartTitle">{{'USER_PROJECT_GRAPH_TITLE' | oTranslate }}</span>
-                            <o-chart type="pie" service="usersProjects" entity="usersProjectTimeGraph"
-                            parent-keys="P_ID" x-axis="USER_" y-axis="USER_PROJECT_TIME" chart-width="700"
-                            [chart-parameters]="usersChartParameters"></o-chart>
+                            <o-chart #usersChart type="pie" service="usersProjects" entity="usersProjectTimeGraph"
+                                parent-keys="P_ID" x-axis="USER_" y-axis="USER_PROJECT_TIME"
+                                [chart-parameters]="usersChartParameters"></o-chart>
                         </o-column>
                     </o-row>
                 </o-form-layout-manager>

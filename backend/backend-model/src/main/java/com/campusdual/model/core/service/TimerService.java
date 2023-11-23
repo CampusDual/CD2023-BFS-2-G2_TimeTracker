@@ -206,20 +206,21 @@ public class TimerService implements ITimerService {
                 EntityResult res = this.timerQuery(keyMap, newAttrList);
                 newStartTime = ((ArrayList<Date>) res.get(TimerDao.TM_START_TIME)).get(0);
             }
-
+            Integer idACambiar = (Integer) keyMap.get(TimerDao.TM_ID);
             for (int i = 0; i < startTime.size(); i++) {
-                if (endTime.get(i) == null) {
-                    endTime.set(i, Timestamp.valueOf(LocalDateTime.now()));
-                }
-                    if (id.get(i).compareTo((Integer) keyMap.get(TimerDao.TM_ID)) != 0) {
-                        if (newStartTime.before(endTime.get(i)) &&
-                                newEndTime.after(startTime.get(i))) {
-                            EntityResult err = new EntityResultMapImpl();
-                            err.setCode(EntityResult.OPERATION_WRONG);
-                            err.setMessage("OVERLAPPING_TASK_MSG");
-                            return err;
-                        }
+
+                if (id.get(i).compareTo(idACambiar) != 0) {
+                    boolean solapadoConLapsoCerrado = endTime.get(i) != null && newStartTime.before(endTime.get(i)) &&
+                            newEndTime.after(startTime.get(i));
+                    boolean solapadoConLapsoAbierto = endTime.get(i) == null && newEndTime.after(startTime.get(i));
+
+                    if (solapadoConLapsoCerrado || solapadoConLapsoAbierto) {
+                        EntityResult err = new EntityResultMapImpl();
+                        err.setCode(EntityResult.OPERATION_WRONG);
+                        err.setMessage("OVERLAPPING_TASK_MSG");
+                        return err;
                     }
+                }
             }
         }
         return this.daoHelper.update(this.timerDao, attrMap, keyMap);
